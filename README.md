@@ -10,6 +10,12 @@ This deck presents a new Career Path feature for employees who want practical cl
 
 The product is intentionally not an OKR tracker, learning course marketplace, or performance monitoring dashboard. It is a supportive daily companion that helps employees understand where they can go, what capabilities they need to build, and what small action they can take today.
 
+## Visual Direction
+
+The presentation uses a HappyWork-inspired SaaS HR style: clean white cards, soft blue and mint surfaces, blue primary accents, fresh green CTAs, rounded components, soft shadows, and a supportive low-stress tone.
+
+The first slide anchors the concept around four connected ideas: career direction, capability growth, calendar work context, and visible progress.
+
 ## How to Run Locally
 
 No build step is required.
@@ -30,7 +36,7 @@ http://localhost:8000
 
 ## GitHub Pages Deployment
 
-1. Push this project to a GitHub repository named `happywork-career-path-pitch`.
+1. Push this project to a GitHub repository, such as `Vagueslim/BEER` or `happywork-career-path-pitch`.
 2. Open the repository on GitHub.
 3. Go to **Settings** > **Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
