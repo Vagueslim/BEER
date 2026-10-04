@@ -70,3 +70,17 @@ GitHub Pages will publish the static site from `index.html`.
 - `styles.css` - design tokens, responsive layout, mobile mockups, print styles
 - `script.js` - slide state, keyboard navigation, progress indicator
 - `README.md` - project documentation and deployment notes
+
+## LCCS TOR Reader
+
+[Read the LCCS TOR](https://vagueslim.github.io/BEER/lccs-tor/) on mobile or desktop.
+
+The reader contains the complete Thai TOR and evidence appendix, version 0.1 (2026-10-04). It includes proposed phases, modules and role-based workspaces, acceptance criteria, the 36 original work items, and a register of 77 source records. It remains a draft for scope review, with unresolved decisions shown in the document.
+
+- Open `lccs-tor/index.html`, or visit `/lccs-tor/` on the published site. No build step or external runtime assets are required.
+- Use the contents, section shortcuts, and heading/code search. Wide tables scroll inside their own containers.
+- Download the web copies of the Markdown from `lccs-tor/tor.md` and `lccs-tor/evidence.md`.
+- Source records refer to an internal evidence vault; the original evidence files are not included in this public reader.
+- GitHub Pages publishes `main` from the repository root. `.nojekyll` serves the pre-rendered HTML and downloadable Markdown as static files.
+
+The HappyWork presentation remains at the site root.

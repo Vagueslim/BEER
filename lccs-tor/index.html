@@ -1,0 +1,3061 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174fa2">
+<meta name="description" content="ร่าง TOR ภาพรวม LCCS: Phase 0–5 โมดูลและโปรแกรมที่เสนอ เกณฑ์ตรวจรับ พร้อมภาคผนวกงานและหลักฐาน">
+<title>LCCS — TOR และภาคผนวก</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23174fa2'/%3E%3Cpath d='M20 14h19l8 8v29H20z' fill='white'/%3E%3Cpath d='M27 31h13M27 38h13M27 45h9' stroke='%23174fa2' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--bg:#f4f6f9;--paper:#fff;--ink:#192432;--muted:#526174;--line:#d5dce5;--accent:#174fa2;--soft:#eaf1fb;--focus:#ad5a00;--radius:10px}
+*{box-sizing:border-box}html{scroll-padding-top:88px}body{margin:0;color:var(--ink);background:var(--bg);font:18px/1.8 system-ui,-apple-system,"Segoe UI","Leelawadee UI",Tahoma,sans-serif}a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:#0c3672}button,input,summary{font:inherit}button,summary,a,input{-webkit-tap-highlight-color:transparent}button,a,summary{touch-action:manipulation}button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}button{cursor:pointer}button:disabled{cursor:default}h1,h2,h3,h4{line-height:1.5;text-wrap:pretty;overflow-wrap:anywhere}h1{font-size:30px;letter-spacing:-.03em;margin:0 0 24px}h2{font-size:25px;margin:56px 0 20px;padding-top:24px;border-top:1px solid var(--line)}h3{font-size:21px;margin:32px 0 16px}p{margin:0 0 20px}ul,ol{padding-left:1.4em;margin:0 0 24px}li{margin:8px 0}strong{font-weight:650}code{font:15px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;background:#f0f3f7;padding:2px 5px;border-radius:4px}pre{padding:18px;background:#f0f3f7;overflow:auto;border-radius:var(--radius)}pre code{padding:0}blockquote{margin:24px 0;padding:18px 22px;background:#f7f4eb;border-left:4px solid #8f6b19;border-radius:0 8px 8px 0}blockquote p:last-child{margin:0}
+.skip-link{position:fixed;top:8px;left:8px;z-index:20;background:white;padding:8px 16px;transform:translateY(-160%)}.skip-link:focus{transform:none}.reader-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line)}.header-inner{max-width:1460px;margin:auto;min-height:68px;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:19px;font-weight:750;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}.brand span{color:var(--muted);font-weight:450;margin-left:8px}.header-actions{display:flex;gap:8px;align-items:center}.header-actions a,.plain-button{font-size:15px;text-decoration:none;border:1px solid var(--line);background:white;border-radius:7px;padding:7px 12px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}.plain-button{color:var(--ink)}.page-frame{max-width:1460px;margin:auto;padding:32px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;align-items:start}.sidebar{position:sticky;top:96px;max-height:calc(100vh - 120px);overflow:auto;padding-right:12px;font-size:15px;line-height:1.7;scrollbar-width:thin}.toc-label{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:.02em;margin:0 0 12px}.toc-group{margin-bottom:28px}.toc-group ol,.module-toc ul{list-style:none;padding:0;margin:0}.toc-group li,.module-toc li{margin:4px 0}.toc-group a,.module-toc a{color:#36465b;display:block;padding:7px 10px;border-left:2px solid transparent;text-decoration:none;border-radius:0 6px 6px 0}.toc-group a:hover,.module-toc a:hover{background:var(--soft);color:var(--accent);border-color:var(--accent)}.module-toc summary{cursor:pointer;padding:10px 0;font-size:15px}.reader-main{min-width:0}.reader-intro{margin-bottom:28px}.eyebrow{font-size:15px;color:var(--accent);font-weight:700;margin:0 0 8px}.page-title{font-size:38px;margin:0 0 10px;line-height:1.3;letter-spacing:-.03em}.description{color:var(--muted);font-size:17px;margin-bottom:14px}.document-meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15px;color:var(--muted)}.draft-tag{font-size:14px;color:#6e510b;background:#f4eacb;border:1px solid #cfb97a;border-radius:5px;padding:2px 8px}.reader-tools{padding:22px 24px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:24px}.document-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.document-links a{font-size:16px;font-weight:600;text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:7px;min-height:44px}.document-links a:first-child{background:var(--soft);border-color:#afc6ea}.quick-links{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px;margin:16px 0 0}.quick-links a{min-height:36px;display:flex;align-items:center}.search-label{font-size:15px;font-weight:600;display:block;margin:18px 0 6px}.search-input{width:100%;min-height:48px;padding:10px 13px;font-size:16px;border:1px solid #99a8bb;border-radius:7px;background:white;color:var(--ink)}.search-status{color:var(--muted);font-size:14px;margin:8px 0}.search-results{max-height:380px;overflow:auto;margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.search-results li{margin:0;border-bottom:1px solid var(--line)}.search-results a{display:block;padding:12px 0;text-decoration:none;font-size:16px;line-height:1.6}.result-label{display:block;color:var(--muted);font-size:13px}.document{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:40px;margin-bottom:32px;overflow-wrap:anywhere;min-width:0}.document-label{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;letter-spacing:.04em;font-weight:700;color:var(--muted);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}.document-label a{letter-spacing:0;font-weight:500;font-size:15px;min-height:36px;display:flex;align-items:center}.document h2,.document h3,.document tr[id],.document h1{scroll-margin-top:88px}.document :target{background:#fff4cd;box-shadow:0 0 0 7px #fff4cd;border-radius:4px}.document tr:target{box-shadow:none}.document a{overflow-wrap:anywhere}.source-note{padding:14px 18px;color:var(--muted);border:1px solid var(--line);border-radius:8px;background:#f6f8fb;font-size:15px;line-height:1.7}.table-block{margin:24px 0 30px;max-width:100%;min-width:0}.table-hint{font-size:14px;color:var(--muted);margin:0 0 8px}.table-hint span{margin-left:8px}.table-scroll{overflow-x:auto;width:100%;border:1px solid #cbd5e1;border-radius:8px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}table{border-collapse:collapse;width:100%;font-size:16px;line-height:1.7;min-width:640px}th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;min-width:124px;max-width:440px;overflow-wrap:anywhere}th{font-weight:650;background:#edf2f8;color:#253c58;border-bottom:1px solid #b9c8da}td:first-child{font-weight:550}tr:last-child td{border-bottom:none}tbody tr:nth-child(even){background:#f9fafc}td code{font-size:14px}.mobile-toc{display:none}.reader-footer{font-size:15px;color:var(--muted);padding:0 8px 32px}.reader-footer a{display:inline-flex;min-height:44px;align-items:center}.js-only{display:none}.js .js-only{display:block}.js .header-actions .js-only{display:inline-flex}[hidden]{display:none!important}.noscript-note{font-size:15px;color:var(--muted)}
+@media(max-width:1100px){.page-frame{display:block;max-width:970px;padding:24px}.sidebar{display:none}.mobile-toc{display:block;border-top:1px solid var(--line);margin-top:16px;padding-top:4px}.mobile-toc>summary{cursor:pointer;font-size:16px;font-weight:600;padding:12px 0;min-height:48px}.mobile-toc nav{padding-top:12px;font-size:16px;line-height:1.7}.mobile-toc .toc-group a,.mobile-toc .module-toc a{padding:10px}.document{padding:32px}}
+@media(max-width:600px){.header-inner{padding:8px 16px;min-height:64px;gap:10px}.brand{font-size:17px}.brand span{font-size:15px;margin-left:5px}.header-actions a{font-size:14px;padding:7px 10px}.header-actions .print-button{display:none}.page-frame{padding:22px 12px}.page-title{font-size:32px}.description{font-size:16px}.reader-intro{padding:0 4px;margin-bottom:20px}.document-meta{gap:8px 12px;font-size:14px}.reader-tools{padding:18px 16px;border-radius:8px}.document-links a{flex:1;text-align:center;font-size:16px;padding:9px 10px}.quick-links{font-size:15px;gap:2px 16px}.document{padding:24px 18px;border-radius:8px}.document-label{font-size:14px;flex-wrap:wrap;gap:4px}.document h1{font-size:25px}.document h2{font-size:23px;margin-top:40px}.document h3{font-size:20px}.document ul,.document ol{padding-left:1.2em}blockquote{padding:16px;margin:20px 0}.source-note{padding:12px 14px;font-size:15px}.table-scroll{border-radius:6px}.table-hint{font-size:14px;line-height:1.6}.table-scroll table{min-width:690px}.table-scroll th,.table-scroll td{padding:12px 14px}.search-results{max-height:300px}body{font-size:18px;line-height:1.8}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{html{scroll-padding-top:0}body{background:white;font-size:12pt;line-height:1.55}.reader-header,.sidebar,.reader-tools,.reader-footer,.skip-link{display:none!important}.page-frame{display:block;max-width:none;padding:0}.reader-intro{margin:0 0 20px}.page-title{font-size:25pt}.document{border:0;border-radius:0;padding:0;margin:0 0 30px}.document-label{margin:0 0 15px}.document h1{font-size:21pt}.document h2{font-size:17pt;break-after:avoid}.document h3{font-size:14pt;break-after:avoid}.table-scroll{overflow:visible;border:0}.table-hint{display:none}table{min-width:0!important;table-layout:fixed;font-size:8.5pt;line-height:1.5}td,th{padding:6px;min-width:0;max-width:none;word-break:normal}code,td code{font-size:8.5pt}tr{break-inside:avoid}thead{display:table-header-group}.document :target{background:transparent;box-shadow:none}a{color:inherit}.source-note{background:transparent}#appendix-document{break-before:page}@page{size:A4;margin:16mm}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#tor-title">ข้ามไปเนื้อหา TOR</a>
+<header class="reader-header"><div class="header-inner"><a class="brand" href="#page-top">LCCS <span>เอกสาร TOR</span></a><div class="header-actions"><a href="tor.md" download>ดาวน์โหลด MD</a><button type="button" class="plain-button print-button js-only" id="print-document">พิมพ์</button></div></div></header>
+<div class="page-frame" id="page-top">
+<aside class="sidebar" aria-label="สารบัญเอกสาร"><nav><div class="toc-group"><p class="toc-label">TOR หลัก · 19 หัวข้อ</p><ol><li><a href="#tor-section-1">1. หลักการและเหตุผล</a></li><li><a href="#tor-section-2">2. วัตถุประสงค์และผลลัพธ์</a></li><li><a href="#tor-section-3">3. ฐานหลักฐานและสถานะของข้อกำหนด</a></li><li><a href="#tor-section-4">4. กระบวนการทำงานและผู้เกี่ยวข้อง</a></li><li><a href="#tor-section-5">5. ขอบเขตระบบและรายการโปรแกรม</a></li><li><a href="#tor-section-6">6. แผนระยะงานและเงื่อนไขผ่านแต่ละ Phase</a></li><li><a href="#tor-section-7">7. รายการโมดูลและความสัมพันธ์</a></li><li><a href="#tor-section-8">8. รายละเอียดข้อกำหนดรายโมดูล</a></li><li><a href="#tor-section-9">9. แบบข้อมูลและกฎที่ใช้ร่วมกัน</a></li><li><a href="#tor-section-10">10. ข้อกำหนดด้านคุณภาพและบริการเบื้องหลัง</a></li><li><a href="#tor-section-11">11. การเชื่อมต่อระบบภายนอก</a></li><li><a href="#tor-section-12">12. สิ่งส่งมอบและแพ็กเกจงาน</a></li><li><a href="#tor-section-13">13. การตรวจรับและหลักฐานทดสอบ</a></li><li><a href="#tor-section-14">14. การบริหารโครงการและความรับผิดชอบ</a></li><li><a href="#tor-section-15">15. สิ่งที่อยู่นอกขอบเขตเริ่มต้น</a></li><li><a href="#tor-section-16">16. ความเสี่ยงและเงื่อนไขควบคุม</a></li><li><a href="#tor-section-17">17. เรื่องที่ต้องตัดสินใจและข้อมูลที่ยังขาด</a></li><li><a href="#tor-section-18">18. ข้อมูลที่ต้องเติมก่อนใช้จัดจ้าง</a></li><li><a href="#tor-section-19">19. แหล่งอ้างอิงสำคัญและการดำเนินการถัดไป</a></li></ol></div><div class="toc-group"><p class="toc-label">ภาคผนวก · A–H</p><ol><li><a href="#appendix-section-a">A. วิธีรวมไฟล์และขอบเขตการตรวจ</a></li><li><a href="#appendix-section-b">B. พื้นที่งานเดิม 14 กลุ่มและโมดูล TOR</a></li><li><a href="#appendix-section-c">C. เทียบ 14 โมดูลใน S049 กับรหัส TOR</a></li><li><a href="#appendix-section-d">D. โปรแกรม ต้นแบบ และสื่อที่พบจริง</a></li><li><a href="#appendix-section-e">E. การใช้ 36 ชุดงานเดิมในแผน TOR</a></li><li><a href="#appendix-section-f">F. สำเนาซ้ำ รุ่นต่างกัน และการเลือกฉบับหลัก</a></li><li><a href="#appendix-section-g">G. ทะเบียนหลักฐาน 77 เนื้อหาไม่ซ้ำ</a></li><li><a href="#appendix-section-h">H. วิธีใช้ภาคผนวกทบทวนขอบเขต</a></li></ol></div><details class="module-toc"><summary>โมดูลที่เสนอ · 21 กลุ่ม</summary><ul><li><a href="#tor-fm01">FM01 — ตัวตน องค์กร สิทธิ์ และอำนาจ</a></li><li><a href="#tor-fm02">FM02 — เหตุการณ์และทะเบียนจุดปฏิบัติงาน</a></li><li><a href="#tor-fm03">FM03 — ที่มา คุณภาพข้อมูล ประวัติ หลักฐานและการคุ้มครองข้อมูล</a></li><li><a href="#tor-fm04">FM04 — ออฟไลน์และการซิงก์</a></li><li><a href="#tor-fm05">FM05 — แจ้งเตือนและส่งต่อเรื่องเร่งด่วน</a></li><li><a href="#tor-cm01">CM01 — ลงทะเบียนผู้มาถึงและทะเบียนคน ณ จุดพักพิง</a></li><li><a href="#tor-cm02">CM02 — จำนวนคน ความจุ และการย้าย</a></li><li><a href="#tor-cm03">CM03 — ของคงเหลือโดยประมาณและคำขอ</a></li><li><a href="#tor-cm04">CM04 — ภาพสถานการณ์ส่วนกลาง รายงานและส่งต่อเวร</a></li><li><a href="#tor-cm05">CM05 — สถานะสำหรับครอบครัว</a></li><li><a href="#tor-xm01">XM01 — รับสัญญาณและประเมินภาระการดูแล</a></li><li><a href="#tor-xm02">XM02 — รับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุน</a></li><li><a href="#tor-xm03">XM03 — ตรวจทรัพยากร ความพร้อม และเงื่อนไขก่อนใช้งาน</a></li><li><a href="#tor-xm04">XM04 — วางแผน เป้าหมาย และบันทึกการตัดสินใจ</a></li><li><a href="#tor-xm05">XM05 — ภารกิจและรายงานภาคสนาม</a></li><li><a href="#tor-xm06">XM06 — แผนที่ เส้นทาง และสถานะโครงสร้างพื้นฐาน</a></li><li><a href="#tor-xm07">XM07 — ประสานการแพทย์และส่งต่อ</a></li><li><a href="#tor-xm08">XM08 — คลัง บริจาค ขนส่ง และรับมอบ</a></li><li><a href="#tor-xm09">XM09 — คำขอจัดซื้อ ผู้สนับสนุน และหลักฐานค่าใช้จ่าย</a></li><li><a href="#tor-xm10">XM10 — แฟ้มหลักฐานช่วยเหลือและประกัน</a></li><li><a href="#tor-xm11">XM11 — ข้อมูลสาธารณะที่รับรอง</a></li></ul></details></nav></aside>
+<main class="reader-main">
+<div class="reader-intro"><p class="eyebrow">เอกสารสำหรับทบทวนขอบเขตโครงการ</p><h1 class="page-title">LCCS — TOR</h1><p class="description">ภาพรวมโครงการ แผนระยะงาน โมดูล โปรแกรม และเกณฑ์ส่งมอบ พร้อมทะเบียนหลักฐาน</p><div class="document-meta"><span class="draft-tag">ร่างเพื่อทบทวน</span><span>รุ่น 0.1</span><span>4 ตุลาคม 2569</span></div></div>
+<div class="reader-tools"><nav class="document-links" aria-label="เลือกเอกสาร"><a href="#tor-title">อ่าน TOR หลัก</a><a href="#appendix-title">อ่านภาคผนวก</a></nav><div class="quick-links" aria-label="หัวข้อสำคัญ"><a href="#tor-section-6">แผน Phase</a><a href="#tor-subsection-5-2">โปรแกรม</a><a href="#tor-section-7">โมดูล</a><a href="#tor-section-13">เกณฑ์ตรวจรับ</a><a href="#tor-section-17">เรื่องรอตัดสินใจ</a><a href="#appendix-section-g">ทะเบียนหลักฐาน</a></div><div class="js-only"><label class="search-label" for="document-search">ค้นหาหัวข้อหรือรหัส</label><input class="search-input" id="document-search" type="search" placeholder="เช่น ออฟไลน์, FM04, AT07, S069" autocomplete="off" aria-describedby="search-status" aria-controls="search-results"><p class="search-status" id="search-status" role="status" aria-live="polite"></p><ul class="search-results" id="search-results" aria-label="ผลการค้นหา" hidden></ul></div><noscript><p class="noscript-note">อ่านเอกสารและใช้สารบัญได้ครบ หากต้องการค้นข้อความ ให้ใช้คำสั่งค้นหาในหน้าของเบราว์เซอร์</p></noscript><details class="mobile-toc" id="mobile-toc"><summary>สารบัญทั้งหมด</summary><nav aria-label="สารบัญบนมือถือ"><div class="toc-group"><p class="toc-label">TOR หลัก · 19 หัวข้อ</p><ol><li><a href="#tor-section-1">1. หลักการและเหตุผล</a></li><li><a href="#tor-section-2">2. วัตถุประสงค์และผลลัพธ์</a></li><li><a href="#tor-section-3">3. ฐานหลักฐานและสถานะของข้อกำหนด</a></li><li><a href="#tor-section-4">4. กระบวนการทำงานและผู้เกี่ยวข้อง</a></li><li><a href="#tor-section-5">5. ขอบเขตระบบและรายการโปรแกรม</a></li><li><a href="#tor-section-6">6. แผนระยะงานและเงื่อนไขผ่านแต่ละ Phase</a></li><li><a href="#tor-section-7">7. รายการโมดูลและความสัมพันธ์</a></li><li><a href="#tor-section-8">8. รายละเอียดข้อกำหนดรายโมดูล</a></li><li><a href="#tor-section-9">9. แบบข้อมูลและกฎที่ใช้ร่วมกัน</a></li><li><a href="#tor-section-10">10. ข้อกำหนดด้านคุณภาพและบริการเบื้องหลัง</a></li><li><a href="#tor-section-11">11. การเชื่อมต่อระบบภายนอก</a></li><li><a href="#tor-section-12">12. สิ่งส่งมอบและแพ็กเกจงาน</a></li><li><a href="#tor-section-13">13. การตรวจรับและหลักฐานทดสอบ</a></li><li><a href="#tor-section-14">14. การบริหารโครงการและความรับผิดชอบ</a></li><li><a href="#tor-section-15">15. สิ่งที่อยู่นอกขอบเขตเริ่มต้น</a></li><li><a href="#tor-section-16">16. ความเสี่ยงและเงื่อนไขควบคุม</a></li><li><a href="#tor-section-17">17. เรื่องที่ต้องตัดสินใจและข้อมูลที่ยังขาด</a></li><li><a href="#tor-section-18">18. ข้อมูลที่ต้องเติมก่อนใช้จัดจ้าง</a></li><li><a href="#tor-section-19">19. แหล่งอ้างอิงสำคัญและการดำเนินการถัดไป</a></li></ol></div><div class="toc-group"><p class="toc-label">ภาคผนวก · A–H</p><ol><li><a href="#appendix-section-a">A. วิธีรวมไฟล์และขอบเขตการตรวจ</a></li><li><a href="#appendix-section-b">B. พื้นที่งานเดิม 14 กลุ่มและโมดูล TOR</a></li><li><a href="#appendix-section-c">C. เทียบ 14 โมดูลใน S049 กับรหัส TOR</a></li><li><a href="#appendix-section-d">D. โปรแกรม ต้นแบบ และสื่อที่พบจริง</a></li><li><a href="#appendix-section-e">E. การใช้ 36 ชุดงานเดิมในแผน TOR</a></li><li><a href="#appendix-section-f">F. สำเนาซ้ำ รุ่นต่างกัน และการเลือกฉบับหลัก</a></li><li><a href="#appendix-section-g">G. ทะเบียนหลักฐาน 77 เนื้อหาไม่ซ้ำ</a></li><li><a href="#appendix-section-h">H. วิธีใช้ภาคผนวกทบทวนขอบเขต</a></li></ol></div><details class="module-toc"><summary>โมดูลที่เสนอ · 21 กลุ่ม</summary><ul><li><a href="#tor-fm01">FM01 — ตัวตน องค์กร สิทธิ์ และอำนาจ</a></li><li><a href="#tor-fm02">FM02 — เหตุการณ์และทะเบียนจุดปฏิบัติงาน</a></li><li><a href="#tor-fm03">FM03 — ที่มา คุณภาพข้อมูล ประวัติ หลักฐานและการคุ้มครองข้อมูล</a></li><li><a href="#tor-fm04">FM04 — ออฟไลน์และการซิงก์</a></li><li><a href="#tor-fm05">FM05 — แจ้งเตือนและส่งต่อเรื่องเร่งด่วน</a></li><li><a href="#tor-cm01">CM01 — ลงทะเบียนผู้มาถึงและทะเบียนคน ณ จุดพักพิง</a></li><li><a href="#tor-cm02">CM02 — จำนวนคน ความจุ และการย้าย</a></li><li><a href="#tor-cm03">CM03 — ของคงเหลือโดยประมาณและคำขอ</a></li><li><a href="#tor-cm04">CM04 — ภาพสถานการณ์ส่วนกลาง รายงานและส่งต่อเวร</a></li><li><a href="#tor-cm05">CM05 — สถานะสำหรับครอบครัว</a></li><li><a href="#tor-xm01">XM01 — รับสัญญาณและประเมินภาระการดูแล</a></li><li><a href="#tor-xm02">XM02 — รับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุน</a></li><li><a href="#tor-xm03">XM03 — ตรวจทรัพยากร ความพร้อม และเงื่อนไขก่อนใช้งาน</a></li><li><a href="#tor-xm04">XM04 — วางแผน เป้าหมาย และบันทึกการตัดสินใจ</a></li><li><a href="#tor-xm05">XM05 — ภารกิจและรายงานภาคสนาม</a></li><li><a href="#tor-xm06">XM06 — แผนที่ เส้นทาง และสถานะโครงสร้างพื้นฐาน</a></li><li><a href="#tor-xm07">XM07 — ประสานการแพทย์และส่งต่อ</a></li><li><a href="#tor-xm08">XM08 — คลัง บริจาค ขนส่ง และรับมอบ</a></li><li><a href="#tor-xm09">XM09 — คำขอจัดซื้อ ผู้สนับสนุน และหลักฐานค่าใช้จ่าย</a></li><li><a href="#tor-xm10">XM10 — แฟ้มหลักฐานช่วยเหลือและประกัน</a></li><li><a href="#tor-xm11">XM11 — ข้อมูลสาธารณะที่รับรอง</a></li></ul></details></nav></details></div>
+<article class="document" id="tor-document" aria-label="TOR หลัก"><div class="document-label"><span>01 / TOR หลัก</span><a href="tor.md" download>ดาวน์โหลด TOR หลัก (.md)</a></div><h1 id="tor-title">LCCS — ร่างขอบเขตงาน (TOR) ภาพรวมโครงการและแผนระยะงาน</h1>
+<p><strong>ชื่อโครงการ:</strong> โครงการพัฒนาระบบข้อมูลและประสานงานเพื่อช่วยเหลือผู้ได้รับผลกระทบจากภัยพิบัติ LCCS<br><strong>วันที่จัดทำ:</strong> 4 ตุลาคม 2569 (2026-10-04)<br><strong>รูปแบบ:</strong> TOR ภาพรวมทั้งโครงการ แบ่ง Phase และแยกแพ็กเกจงานที่สามารถพิจารณาจ้างเป็นระยะ<br><strong>ฐานหลักฐาน:</strong> คลัง <code>LCCS (คลังภายใน)</code> และรายการต้นฉบับ S001–S077</p>
+<blockquote>
+<p>เอกสารนี้รวบรวมและเสนอขอบเขตจากเอกสารเดิม ไม่ถือว่าทุกโมดูลได้รับอนุมัติให้พัฒนาแล้ว การเลือก “ภาพรวมทั้งโครงการ” หมายถึงให้เห็นงานทั้งหมดและความสัมพันธ์ ก่อนเลือกระยะที่จะจ้างจริง งบประมาณ ระยะเวลาตามสัญญา หน่วยงานเจ้าของ และเงื่อนไขการใช้ข้อมูลจริงยังต้องกำหนดตามข้อ 17–18</p>
+</blockquote>
+<p><strong>เอกสารประกอบ:</strong> <a href="#appendix-title">ภาคผนวก — โมดูลกับพื้นที่งาน ชุดงานเดิม และทะเบียนหลักฐาน</a></p>
+<h2 id="tor-heading-2">สารบัญ</h2>
+<ol>
+<li>หลักการและเหตุผล</li>
+<li>วัตถุประสงค์และผลลัพธ์</li>
+<li>ฐานหลักฐานและสถานะของข้อกำหนด</li>
+<li>กระบวนการทำงานและผู้เกี่ยวข้อง</li>
+<li>ขอบเขตระบบและรายการโปรแกรม</li>
+<li>แผนระยะงานและเงื่อนไขผ่านแต่ละ Phase</li>
+<li>รายการโมดูลและความสัมพันธ์</li>
+<li>รายละเอียดข้อกำหนดรายโมดูล</li>
+<li>แบบข้อมูลและกฎที่ใช้ร่วมกัน</li>
+<li>ข้อกำหนดด้านคุณภาพและบริการเบื้องหลัง</li>
+<li>การเชื่อมต่อระบบภายนอก</li>
+<li>สิ่งส่งมอบและแพ็กเกจงาน</li>
+<li>การตรวจรับและหลักฐานทดสอบ</li>
+<li>การบริหารโครงการและความรับผิดชอบ</li>
+<li>สิ่งที่อยู่นอกขอบเขตเริ่มต้น</li>
+<li>ความเสี่ยงและเงื่อนไขควบคุม</li>
+<li>เรื่องที่ต้องตัดสินใจและข้อมูลที่ยังขาด</li>
+<li>ข้อมูลที่ต้องเติมก่อนใช้จัดจ้าง</li>
+<li>แหล่งอ้างอิงสำคัญและการดำเนินการถัดไป</li>
+</ol>
+<h2 id="tor-section-1">1. หลักการและเหตุผล</h2>
+<p>เอกสาร LCCS อธิบายปัญหาข้อมูลการช่วยเหลือที่กระจายอยู่ในโทรศัพท์ กลุ่มสนทนา ตารางข้อมูล วิทยุ และความจำของผู้ปฏิบัติงาน ทำให้เชื่อมข้อมูลผู้รอความช่วยเหลือ ผู้ให้ความช่วยเหลือ ทรัพยากร และผลการดำเนินงานได้ยาก โดยเฉพาะเมื่อการสื่อสารขัดข้อง [S069, S070, S072, S077]</p>
+<p>โครงการจึงมุ่งสร้างข้อมูลปฏิบัติการที่มีที่มาและตรวจสอบย้อนหลังได้ ตั้งแต่รับข้อมูล ตรวจสอบ สรุปสถานการณ์ ตัดสินใจ มอบหมายงาน ดำเนินการ และส่งผลกลับ เพื่อให้หน้างาน ส่วนวางแผน ส่วนปฏิบัติการ และส่วนสนับสนุนทำงานต่อกันได้</p>
+<p>เอกสารเดิมมีทั้งเส้นทาง <strong>ศูนย์พักพิงเป็นจุดเริ่ม</strong> และเส้นทาง <strong>รับผู้ช่วยและทรัพยากรเป็นจุดเริ่ม</strong> ร่างนี้ใช้ศูนย์พักพิงเป็นข้อเสนอสำหรับพิสูจน์แกนข้อมูลและออฟไลน์ก่อน พร้อมเก็บเส้นทางทรัพยากรไว้ในภาพรวม การเลือกเส้นทางจริงต้องปิด Q01 ใน Phase 0 มิใช่ตัดสินจากวันที่แก้ไขไฟล์ [S069, S070, S073, Q01]</p>
+<h2 id="tor-section-2">2. วัตถุประสงค์และผลลัพธ์</h2>
+<ol>
+<li>ให้ผู้ปฏิบัติงานบันทึกข้อมูลขั้นต่ำ ณ จุดช่วยเหลือได้เมื่อไม่มีอินเทอร์เน็ต และรักษาข้อมูลจนส่งส่วนกลางสำเร็จ</li>
+<li>ให้ส่วนกลางเห็นจำนวนคน ความจุ ทรัพยากรที่เหลือ และคำขอ พร้อมเวลา แหล่งที่มา และข้อจำกัดของข้อมูล</li>
+<li>ให้การรับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุนเชื่อมกับการตรวจสอบความพร้อม การวางแผน และภารกิจได้เป็นระยะ</li>
+<li>ให้ครอบครัวตรวจสอบสถานะที่ได้รับการยืนยันตามสิทธิ์ โดยกำหนดขอบเขตข้อมูลที่เปิดเผยก่อนใช้งาน</li>
+<li>ให้การตัดสินใจ การส่งต่อ การใช้ทรัพยากร และการส่งมอบมีผู้รับผิดชอบและประวัติที่ย้อนตรวจได้</li>
+<li>ให้ระบบมีเจ้าของ ผู้ดูแล ขั้นตอนทดลองใช้ และเกณฑ์ขยายผลที่ชัดเจน</li>
+</ol>
+<p><strong>ผลลัพธ์ที่ตรวจรับได้:</strong> ข้อมูลยังอยู่หลังปิดเปิดแอป; ส่งข้อมูลซ้ำแล้วไม่สร้างธุรกรรมซ้ำ; ยอดคนอธิบายที่มาได้; คำขอมีสถานะและเจ้าของ; ผลค้นญาติไม่แสดงสถานะเกินหลักฐาน; และทีมรับช่วงงานได้จากสิ่งส่งมอบจริง</p>
+<p>เป้าหมายการลดเวลา เพิ่มความครอบคลุม หรือเพิ่มประสิทธิภาพเป็นเรื่องที่ต้องวัดใน Pilot เอกสารนี้ไม่มีฐานเพียงพอที่จะรับรองร้อยละผลสำเร็จ จำนวนผู้ได้รับประโยชน์ หรือความพร้อมใช้งานระดับประเทศ</p>
+<h2 id="tor-section-3">3. ฐานหลักฐานและสถานะของข้อกำหนด</h2>
+<h3 id="tor-subsection-3-1">3.1 สิ่งที่ตรวจพบในคลัง</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-1">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 1" aria-describedby="table-hint-1"><table>
+<thead>
+<tr>
+<th>รายการ</th>
+<th align="right">ฐานข้อมูลที่ตรวจพบ</th>
+<th>ความหมายและข้อจำกัด</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ตำแหน่งไฟล์ต้นทาง</td>
+<td align="right">112</td>
+<td>จำนวนตาม manifest ที่จัดทำ 2026-09-13 ไม่ใช่จำนวนโปรแกรม</td>
+</tr>
+<tr>
+<td>เนื้อหาต้นฉบับไม่ซ้ำ</td>
+<td align="right">77</td>
+<td>มีสำเนาซ้ำ 35 ตำแหน่ง ต้องไม่นับเป็นงานใหม่</td>
+</tr>
+<tr>
+<td>พื้นที่งานสังเคราะห์</td>
+<td align="right">14</td>
+<td>D01–D14 เป็นการจัดหมวดสถานะ working</td>
+</tr>
+<tr>
+<td>ชุดงานติดตาม</td>
+<td align="right">36</td>
+<td>รวม 8 เรื่องตัดสินใจแล้ว ไม่บวกเป็น 44</td>
+</tr>
+<tr>
+<td>เรื่องตัดสินใจเดิม</td>
+<td align="right">8</td>
+<td>Q01–Q08 ยังไม่มีข้อสรุปในคลังที่อ่าน</td>
+</tr>
+<tr>
+<td>หน้าจอใน MVP Pack</td>
+<td align="right">6</td>
+<td>A–F เป็นชุดหน้าจอในเอกสารหนึ่งฉบับ ไม่ใช่ทุกหน้าจอของแพลตฟอร์ม</td>
+</tr>
+<tr>
+<td>โมดูลใน PDF Matrix</td>
+<td align="right">14</td>
+<td>S049 จัดหมวดอีกแบบหนึ่ง ไม่ใช่ D01–D14 ชุดเดียวกัน</td>
+</tr>
+</tbody></table></div></div>
+<p>จำนวนข้างต้นอ้างอิง <code>99_Admin/FILE_MANIFEST.json</code>, <code>99_Admin/VALIDATION.json</code> และโน้ตภาพรวม ไม่ใช่ผลสำรวจระบบที่ติดตั้งใช้งานทั่วประเทศ รอบ TOR ตรวจไฟล์ต้นฉบับและ SHA-256 ตรง manifest ครบ 77/77 และอ่านเอกสารหลักกับ PDF ประกอบเพื่อจัดขอบเขต แต่ไม่ได้ build/run แอปเดิมหรือทดสอบหน้างาน รายละเอียดระดับการอ่านแต่ละไฟล์อยู่ในภาคผนวก</p>
+<h3 id="tor-subsection-3-2">3.2 วิธีอ่านถ้อยคำในร่าง</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-2">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 2" aria-describedby="table-hint-2"><table>
+<thead>
+<tr>
+<th>สถานะ</th>
+<th>ใช้เมื่อ</th>
+<th>ผลต่อขอบเขตจ้าง</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>หลักฐานเดิม</strong></td>
+<td>มีข้อความ แบบข้อมูล ต้นแบบ หรือไฟล์อ้างอิงจริง</td>
+<td>ใช้เป็นฐานอภิปราย ยังไม่แปลว่าพัฒนาสำเร็จ</td>
+</tr>
+<tr>
+<td><strong>ข้อเสนอ TOR</strong></td>
+<td>การจัดโปรแกรม โมดูล Phase กฎ และเกณฑ์ตรวจรับในร่างนี้</td>
+<td>เป็นร่างข้อกำหนด ต้องรับรองเป็น baseline ของแพ็กเกจที่จะจ้าง</td>
+</tr>
+<tr>
+<td><strong>รอตัดสินใจ</strong></td>
+<td>ขอบเขตขัดกันหรือขาดเจ้าของ/นโยบาย/ข้อมูล</td>
+<td>ต้องปิดก่อนเริ่มงานที่พึ่งคำตอบนั้น</td>
+</tr>
+<tr>
+<td><strong>ทางเลือกขยาย</strong></td>
+<td>เกี่ยวข้องกับอนาคตหรือหน่วยงานภายนอก</td>
+<td>ไม่รวมราคาและข้อผูกพันเริ่มต้นอัตโนมัติ</td>
+</tr>
+</tbody></table></div></div>
+<p>คำว่า <strong>“ต้อง”</strong> ในข้อ 5–14 เป็นถ้อยคำข้อกำหนดที่เสนอสำหรับนำไปตรวจรับเมื่อขอบเขตนั้นได้รับอนุมัติ ไม่ใช่การอ้างว่าระบบเดิมทำได้แล้ว รหัส FM/CM/XM และ PRG เป็นรหัสใหม่ของร่างนี้ ไม่ใช้แทนรหัส M01–M10 ใน S073</p>
+<h3 id="tor-subsection-3-3">3.3 ข้อแตกต่างที่ต้องรักษาไว้</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-3">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 3" aria-describedby="table-hint-3"><table>
+<thead>
+<tr>
+<th>เรื่อง</th>
+<th>หลักฐานที่ต่างกัน</th>
+<th>ข้อเสนอในร่าง</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>จุดเริ่ม</td>
+<td>S073 เริ่ม Resource Intake; S069/S070 เริ่ม Shelter Check-in</td>
+<td>ปิด Q01; แผนในข้อ 6 เป็น shelter-first ที่เสนอ</td>
+</tr>
+<tr>
+<td>แบบข้อมูล</td>
+<td>S077 มี food/water ใน victims; S069 อยู่ shelters; S070 แยก supply_status</td>
+<td>ใช้ snapshot ระดับจุดพร้อมเวลา/หน่วย และออก data dictionary ก่อนสร้างจริง</td>
+</tr>
+<tr>
+<td>รหัส</td>
+<td>มี UUID, local_id/server_id และ DDMM-XXXX</td>
+<td>แยกรหัสภายใน รหัสอ้างอิง และรหัสแสดงผล; ทดสอบชนข้ามเครื่อง</td>
+</tr>
+<tr>
+<td>Family Safety</td>
+<td>มีทั้งค้นชื่อ ผลใกล้เคียง และสถานะปลอดภัย</td>
+<td>แยก “ลงทะเบียนแล้ว” จาก “ยืนยันปลอดภัย”; ปิดสิทธิ์และผู้ยืนยันก่อนเปิดจริง</td>
+</tr>
+<tr>
+<td>ระยะเวลา/ทีม</td>
+<td>มี prototype 2 สัปดาห์และแผนยาวหลายระดับในเอกสารเดิม</td>
+<td>เป็นสมมติฐานเดิม ใช้ gates ในร่างนี้และประมาณใหม่จากขอบเขตจริง</td>
+</tr>
+<tr>
+<td>ชื่อโครงการ</td>
+<td>มี Life Connection Crisis System และ Life-Critical Command System</td>
+<td>ใช้ LCCS ระหว่างรอชื่อทางการใน Q08</td>
+</tr>
+</tbody></table></div></div>
+<h2 id="tor-section-4">4. กระบวนการทำงานและผู้เกี่ยวข้อง</h2>
+<h3 id="tor-subsection-4-1">4.1 กระบวนการของคนก่อนระบบ</h3>
+<ol>
+<li><strong>รวบรวม:</strong> ผู้รับแจ้งและหน้างานบันทึกว่าเกิดอะไร ที่ไหน เมื่อใด จำนวนหรือความต้องการเป็นข้อมูลประมาณหรือยืนยันแล้ว และใครเป็นแหล่งข้อมูล</li>
+<li><strong>ตรวจสอบและประเมิน:</strong> ผู้รับผิดชอบตรวจความซ้ำ ความครบ ความใหม่ และข้อขัดแย้ง แยกข้อมูลที่ใช้ตัดสินใจได้จากข้อมูลที่ต้องติดตาม</li>
+<li><strong>สรุปและแลกเปลี่ยน:</strong> ส่วนวางแผนรวมสถานการณ์ สถานะปฏิบัติการ ทรัพยากร ความเสี่ยง และข้อจำกัด เพื่อใช้ในรอบวางแผน</li>
+<li><strong>ตัดสินใจ:</strong> ผู้มีอำนาจกำหนดเป้าหมาย ลำดับความสำคัญ ผู้รับผิดชอบ และกรอบเวลาปฏิบัติงาน</li>
+<li><strong>ดำเนินการและส่งผล:</strong> ทีมรับงาน รายงานข้อขัดข้อง ผลการช่วยเหลือ และทรัพยากรที่ใช้</li>
+<li><strong>ปรับข้อมูลและส่งต่อเวร:</strong> ผู้รับผิดชอบปรับสถานการณ์ พร้อมบันทึกเรื่องค้างและข้อมูลที่ยังขาด</li>
+</ol>
+<p>ลำดับนี้ใช้จัดการข้อมูลตามแนวทางใน S050/S072/S073 ต้องให้หน่วยงานปฏิบัติการทบทวนบทบาทและแบบฟอร์มของตนก่อนใช้จริง ร่างนี้ไม่ได้รับรองการปฏิบัติตามมาตรฐาน ICS ทุกระดับหรือกำหนดให้ซอฟต์แวร์เป็นผู้บัญชาการเหตุการณ์</p>
+<h3 id="tor-subsection-4-2">4.2 ผู้เกี่ยวข้องและขอบเขตสิทธิ์ที่เสนอ</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-4">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 4" aria-describedby="table-hint-4"><table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>หน้าที่ของคน</th>
+<th>งานในระบบ</th>
+<th>ขอบเขตสิทธิ์หลัก</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ผู้ได้รับผลกระทบ/ผู้ดูแล</td>
+<td>ให้ข้อมูลและแจ้งความต้องการ</td>
+<td>ให้ข้อมูลขั้นต่ำหรือเติมข้อมูลภายหลัง</td>
+<td>ข้อมูลของตนหรือรายการที่ได้รับมอบสิทธิ์</td>
+</tr>
+<tr>
+<td>เจ้าหน้าที่จุดพักพิง</td>
+<td>ลงทะเบียน ตรวจจำนวน อัปเดตของและคำขอ</td>
+<td>Field App</td>
+<td>เหตุการณ์/จุด/เวรที่ได้รับมอบหมาย</td>
+</tr>
+<tr>
+<td>ผู้จัดการศูนย์พักพิง</td>
+<td>รับรองการแก้ยอด ความจุ และการย้าย</td>
+<td>ทบทวนทะเบียนและข้อขัดแย้ง</td>
+<td>ศูนย์ที่รับผิดชอบ</td>
+</tr>
+<tr>
+<td>เจ้าหน้าที่รับแจ้ง/ท้องถิ่น</td>
+<td>รับสัญญาณและติดตามที่มา</td>
+<td>Signal Intake</td>
+<td>พื้นที่รับผิดชอบ; ไม่ยืนยันยอดจริงจากรายงานดิบอัตโนมัติ</td>
+</tr>
+<tr>
+<td>ส่วนวางแผน</td>
+<td>ประเมินข้อมูล จัดภาพรวมและเรื่องที่ต้องตัดสินใจ</td>
+<td>Situation/Planning Console</td>
+<td>ดูข้อมูลตามบทบาทและจัดทำ snapshot</td>
+</tr>
+<tr>
+<td>ผู้บัญชาการ/ผู้มีอำนาจ</td>
+<td>รับรองเป้าหมายและอนุมัติคำสั่ง</td>
+<td>Decision/Assignment</td>
+<td>อำนาจตามองค์กร เหตุการณ์ และพื้นที่ที่กำหนด</td>
+</tr>
+<tr>
+<td>ฝ่ายปฏิบัติการ/หัวหน้าทีม</td>
+<td>รับภารกิจ ดำเนินงาน ส่งรายงาน</td>
+<td>Mission/Field App</td>
+<td>ภารกิจและทีมของตน</td>
+</tr>
+<tr>
+<td>ผู้ประสานทรัพยากร/โลจิสติกส์</td>
+<td>ตรวจความพร้อม จัดสรร รับส่งของ</td>
+<td>Resource/Support Console</td>
+<td>ทรัพยากร คลัง และคำขอที่รับผิดชอบ</td>
+</tr>
+<tr>
+<td>ทีมแพทย์/หน่วยรับส่งต่อ</td>
+<td>ประเมินและรับส่งต่อโดยผู้มีหน้าที่</td>
+<td>Medical Console</td>
+<td>ข้อมูลการส่งต่อที่จำเป็นตามนโยบาย</td>
+</tr>
+<tr>
+<td>ญาติ/ครอบครัว</td>
+<td>ขอทราบสถานะ</td>
+<td>Family Portal</td>
+<td>เฉพาะผลตอบและข้อมูลที่อนุญาต</td>
+</tr>
+<tr>
+<td>ผู้ดูแลองค์กร/ระบบ</td>
+<td>จัดผู้ใช้ อุปกรณ์ และการตั้งค่า</td>
+<td>Admin Console</td>
+<td>แยกงานดูแลระบบจากสิทธิ์อ่านข้อมูลรายบุคคล</td>
+</tr>
+<tr>
+<td>เจ้าของงบ/ผู้ตรวจสอบ</td>
+<td>รับรองค่าใช้จ่ายและตรวจหลักฐาน</td>
+<td>Evidence/Export</td>
+<td>ขอบเขตงบและการตรวจสอบที่ได้รับมอบหมาย</td>
+</tr>
+</tbody></table></div></div>
+<p>รายชื่อหน่วยงานจริง ผู้มีอำนาจอนุมัติ และผู้รับผิดชอบข้อมูลยังต้องแต่งตั้ง การมีชื่อหน่วยงานใน stakeholder map ไม่ใช่หลักฐานว่าหน่วยงานนั้นตกลงเข้าร่วมแล้ว</p>
+<h2 id="tor-section-5">5. ขอบเขตระบบและรายการโปรแกรม</h2>
+<h3 id="tor-subsection-5-1">5.1 ขอบเขตโดยรวม</h3>
+<p>ประกอบด้วยแกนศูนย์พักพิงและข้อมูลออฟไลน์ ส่วนรับสัญญาณและทรัพยากร ส่วนวางแผนและปฏิบัติการ ส่วนสนับสนุนและส่งต่อ และบริการข้อมูลร่วม โดยขยายผ่านการทดลองที่มีเจ้าของและเกณฑ์ตรวจรับ</p>
+<p><strong>MVP ที่เสนอ:</strong> หนึ่งเหตุการณ์ หนึ่งจุดพักพิงที่เตรียมไว้ การลงทะเบียนออฟไลน์ จำนวนคนและความจุ ของเหลือและคำขอ การส่งส่วนกลาง และสถานะสำหรับญาติตามกฎที่รับรอง โดยแยกการพิสูจน์ local persistence ใน Phase 1 จาก Pilot ที่เชื่อมทั้งวงจรใน Phase 2</p>
+<h3 id="tor-subsection-5-2">5.2 โปรแกรมหรือพื้นที่ใช้งานที่เสนอ</h3>
+<p>7 รายการต่อไปนี้เป็น <strong>พื้นที่ใช้งานตามบทบาท</strong> อาจพัฒนาเป็นแอปเดียวที่แยกสิทธิ์ หรือหลายแอปตามผลออกแบบสถาปัตยกรรม ไม่ได้บังคับให้สร้าง 7 repository หรือ 7 โปรแกรมติดตั้ง</p>
+<div class="table-block"><p class="table-hint" id="table-hint-5">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 5" aria-describedby="table-hint-5"><table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>โปรแกรม/พื้นที่ใช้งาน</th>
+<th>ผู้ใช้หลัก</th>
+<th>หน้าหรือฟังก์ชันสำคัญ</th>
+<th>เริ่มใน Phase</th>
+</tr>
+</thead>
+<tbody><tr id="tor-record-prg01" data-record="PRG01">
+<td>PRG01</td>
+<td>ระบบบริหารจัดการกลาง (Admin Console)</td>
+<td>ผู้ดูแลระบบ/องค์กร</td>
+<td>ผู้ใช้ สิทธิ์ เหตุการณ์ จุด อุปกรณ์ ปัญหา sync ประวัติและการตั้งค่า</td>
+<td>1</td>
+</tr>
+<tr id="tor-record-prg02" data-record="PRG02">
+<td>PRG02</td>
+<td>แอปภาคสนามแบบออฟไลน์ (Field App)</td>
+<td>เจ้าหน้าที่จุด/ทีมภาคสนาม</td>
+<td>เลือกจุด ลงทะเบียน แก้ข้อมูล ดูยอด ของเหลือ คำขอ sync; เพิ่ม mission/report ภายหลัง</td>
+<td>เริ่ม 1; mission 3B; referral 4 เมื่อเลือก</td>
+</tr>
+<tr id="tor-record-prg03" data-record="PRG03">
+<td>PRG03</td>
+<td>ระบบภาพรวมและวางแผนส่วนกลาง</td>
+<td>ส่วนวางแผน/ปฏิบัติการ/ผู้มีอำนาจ</td>
+<td>สถานการณ์ แหล่งข้อมูล คำขอ ทรัพยากร เป้าหมาย การตัดสินใจ ภารกิจ แผนที่ รายงาน</td>
+<td>2–3</td>
+</tr>
+<tr id="tor-record-prg04" data-record="PRG04">
+<td>PRG04</td>
+<td>ระบบสถานะสำหรับครอบครัวและข้อมูลสาธารณะ</td>
+<td>ญาติ/ประชาชน</td>
+<td>ผลตอบสถานะตามสิทธิ์; ข่าวสารที่รับรอง; ช่องทางส่งเรื่องตามขอบเขตที่เลือก</td>
+<td>เริ่ม 2 ตาม policy; public info 3B; evidence tracking 4 เมื่อเลือก</td>
+</tr>
+<tr id="tor-record-prg05" data-record="PRG05">
+<td>PRG05</td>
+<td>ระบบรับผู้ช่วยและทรัพยากร</td>
+<td>บุคคล/ทีม/องค์กร/ผู้สนับสนุน</td>
+<td>ลงทะเบียนผู้ช่วย ทีม อุปกรณ์ สิ่งสนับสนุน import ติดตามผล review</td>
+<td>3</td>
+</tr>
+<tr id="tor-record-prg06" data-record="PRG06">
+<td>PRG06</td>
+<td>ระบบโลจิสติกส์และหลักฐานการสนับสนุน</td>
+<td>คลัง/ผู้ประสาน/เจ้าของงบ</td>
+<td>รับของ lot จัดสรร ขนส่ง รับมอบ vendor คำขอจัดซื้อ แฟ้มหลักฐาน</td>
+<td>4</td>
+</tr>
+<tr id="tor-record-prg07" data-record="PRG07">
+<td>PRG07</td>
+<td>ระบบประสานการแพทย์และส่งต่อ</td>
+<td>ผู้ประสานการแพทย์/หน่วยรับส่งต่อ</td>
+<td>คำขอส่งต่อ ปลายทางรับเคส สถานะและหลักฐานการส่งต่อ</td>
+<td>4 แบบมีเงื่อนไข</td>
+</tr>
+</tbody></table></div></div>
+<h3 id="tor-subsection-5-3">5.3 บริการเบื้องหลังที่ต้องออกแบบร่วม</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-6">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 6" aria-describedby="table-hint-6"><table>
+<thead>
+<tr>
+<th>บริการ</th>
+<th>หน้าที่</th>
+<th>ต้องเริ่มเมื่อ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Identity/Authorization</td>
+<td>บัญชี องค์กร บทบาท การมอบสิทธิ์ และ session</td>
+<td>เริ่มมีผู้ใช้และข้อมูล</td>
+</tr>
+<tr>
+<td>Local Store/Sync</td>
+<td>app shell ฐานข้อมูลในเครื่อง outbox retry และ conflict</td>
+<td>Field App Phase 1; ทดสอบ backend จริง Phase 2</td>
+</tr>
+<tr>
+<td>API/Database</td>
+<td>รักษาข้อมูลหลัก กฎสิทธิ์ version และ transaction</td>
+<td>เชื่อมข้อมูลส่วนกลาง Phase 2</td>
+</tr>
+<tr>
+<td>Evidence/Files/Audit</td>
+<td>ประวัติ ที่มา เอกสารแนบและสิทธิ์ไฟล์</td>
+<td>ประวัติตั้งแต่บันทึกแรก; ไฟล์เมื่อรวมรูป/เอกสารในขอบเขต</td>
+</tr>
+<tr>
+<td>Notification/Integration</td>
+<td>แจ้งเตือน เชื่อมช่องทางและบันทึกผลส่ง</td>
+<td>เริ่มในแอป Phase 2; gateway ภายนอกตามข้อตกลง</td>
+</tr>
+<tr>
+<td>Operations/Monitoring</td>
+<td>เฝ้าระบบ backup restore deploy และ incident handling</td>
+<td>ก่อนเปิด Pilot ที่ใช้ข้อมูลจริง</td>
+</tr>
+</tbody></table></div></div>
+<h3 id="tor-subsection-5-4">5.4 โปรแกรมและต้นแบบที่พบเดิม</h3>
+<p>คลังมีต้นแบบ shelter check-in/family search, volunteer onboarding, skill coordinator, rapid onboarding, phone/scenario simulation, government console journey, เว็บไซต์เล่าโครงการ, สื่อ evidence/decision และ React fiscal dashboard รวมทั้งภาพและไฟล์ preview หลายรุ่น สิ่งเหล่านี้ใช้เป็น reference ได้ แต่ยังไม่รับรอง backend การเชื่อมข้อมูล หรือความพร้อมหน้างาน [S003, S005, S008, S022–S027, S038, S044, S046, S052–S058, S066–S070]</p>
+<p>ภาพ GIS/route/layer และไฟล์ preview เป็นทรัพย์สินอ้างอิง ไม่คิดเป็นโปรแกรมใหม่โดยอัตโนมัติ Fiscal dashboard เป็นงานสาธิตการเงินอีกส่วนหนึ่ง ไม่ถือว่าเป็น backend ของศูนย์พักพิง รายการแยกตามต้นแบบและรุ่นอยู่ในภาคผนวก</p>
+<h2 id="tor-section-6">6. แผนระยะงานและเงื่อนไขผ่านแต่ละ Phase</h2>
+<h3 id="tor-subsection-6-1">6.1 หลักการแบ่งระยะ</h3>
+<ul>
+<li>Phase คือระยะพัฒนาและพิสูจน์ระบบ ไม่ใช่ลำดับเวลาของเหตุภัยพิบัติจริง สัญญาณก่อนตั้งศูนย์บัญชาการยังเกิดก่อนงานพักพิงได้ในกระบวนการจริง</li>
+<li>Phase 0 ปิดขอบเขตและบทบาท; Phase 1–2 พิสูจน์แกนข้อมูล; Phase 3–4 ขยายความสามารถตามเจ้าของงาน; Phase 5 รับรองการใช้งานต่อเนื่องตามขนาดที่ตกลง</li>
+<li>สิทธิ์ ความปลอดภัย ที่มา และประวัติต้องเริ่มตั้งแต่เก็บข้อมูล ไม่เลื่อนไปทำเฉพาะระยะ production</li>
+<li>ทุกระยะมี gate หากยังไม่ผ่านให้แก้ข้อบกพร่องหรือปรับขอบเขตที่อนุมัติ ไม่ถือว่าเลื่อนระยะเพราะหน้าจอเสร็จแล้ว</li>
+</ul>
+<h3 id="tor-subsection-6-2">6.2 ตารางระยะงาน</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-7">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 7" aria-describedby="table-hint-7"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>เป้าหมาย</th>
+<th>ขอบเขตหลัก</th>
+<th>สิ่งส่งมอบและเงื่อนไขผ่าน</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>0 — ยืนยันกระบวนการและ baseline</strong></td>
+<td>ให้รู้ว่าจะสร้างอะไร ใครใช้ ใครรับรอง</td>
+<td>ลงทะเบียน Q01–Q08 และปิดข้อที่แพ็กเกจแรกพึ่ง; actor/authority, core data model, privacy, site/device, test plan, integration inventory</td>
+<td>scope แพ็กเกจแรก รายการ in/out ผังงานและสิทธิ์ dictionary acceptance matrix และ decision log รับรองโดยเจ้าของงาน; ข้อของส่วนขยายมี owner และ gate ก่อนเริ่มส่วนนั้น</td>
+</tr>
+<tr>
+<td><strong>1 — พิสูจน์หน้างานออฟไลน์</strong></td>
+<td>บันทึกข้อมูลและยอดได้จริงบนเครื่องที่เตรียมไว้</td>
+<td>FM01–FM04 ระดับ slice; CM01–CM02; PRG01/PRG02</td>
+<td>ทดลองข้อมูลจำลอง บันทึกผู้มาถึงรวม 10 คน ปิดแอป/รีสตาร์ตเครื่องแล้วข้อมูลและยอดยังอยู่ แก้ยอดมีประวัติ; ไม่ใช้ผลนี้รับรอง sync แล้ว</td>
+</tr>
+<tr>
+<td><strong>2 — เชื่อมทั้งวงจรและ Pilot แกนหลัก</strong></td>
+<td>หน้างานส่งส่วนกลางและให้ผู้มีสิทธิ์ใช้ข้อมูลได้</td>
+<td>sync backend จริง; CM03–CM05, FM05 เริ่มแจ้งเตือนในแอป; PRG03/PRG04</td>
+<td>อย่างน้อย 2 เครื่องใน scenario ทดสอบ; retry ไม่ซ้ำ; แก้ conflict/dedup; count/need/last sync ตรง; family outcome ตามสิทธิ์; UAT และแผน fallback</td>
+</tr>
+<tr>
+<td><strong>3A — รับสัญญาณและทรัพยากร</strong></td>
+<td>เปลี่ยนรายงานและข้อเสนอช่วยเหลือเป็นข้อมูลที่ประเมินได้</td>
+<td>XM01–XM03; PRG05; review queue</td>
+<td>แยกรายงานดิบ/ประมาณ/ยืนยัน; resource card เชื่อมผู้ติดต่อ เงื่อนไข ความพร้อมและ review; ไม่ถือว่า verified = พร้อมรับงาน</td>
+</tr>
+<tr>
+<td><strong>3B — วางแผน ภารกิจ และภาพพื้นที่</strong></td>
+<td>เชื่อมข้อมูลกับการตัดสินใจและผลปฏิบัติการ</td>
+<td>XM04–XM06, XM11; ขยาย PRG02/03/04</td>
+<td>snapshot ตาม operational period; ผู้มีอำนาจอนุมัติ; ทีมรับ/ปฏิเสธงานและรายงานกลับ; route/source/staleness; ข่าวสารที่รับรอง</td>
+</tr>
+<tr>
+<td><strong>4 — ส่วนสนับสนุนเฉพาะด้าน</strong></td>
+<td>เพิ่มบริการที่มีหน่วยงานเจ้าของและนโยบายรองรับ</td>
+<td>XM07–XM10; PRG06/07</td>
+<td>ตรวจรับเป็นแพ็กเกจย่อย: medical referral, inventory/delivery, procurement, relief evidence; แต่ละส่วนมี owner และเกณฑ์ก่อนเปิด</td>
+</tr>
+<tr>
+<td><strong>5 — ใช้งานต่อเนื่องและหลายหน่วยงาน</strong></td>
+<td>ให้ระบบดูแลต่อและขยายตามปริมาณที่กำหนดได้</td>
+<td>hardening, cross-org permissions, approved integrations, migration/archive, support</td>
+<td>load/security/recovery tests ตาม baseline; deploy/rollback/restore ได้; runbook training และบริการดูแลมีผู้รับช่วง</td>
+</tr>
+</tbody></table></div></div>
+<p>Phase 3A/3B เป็นสองส่วนภายใน Phase 3; ระบบข้อมูลร่วมและหน้าที่บางส่วนทำขนานกันได้หลังออก interface และ acceptance baseline แล้ว Phase 4 แต่ละแพ็กเกจอาจเริ่มหลังผ่าน prerequisites ของตัวเอง โดยไม่จำเป็นต้องซื้อครบทุกส่วน ส่วน Phase 5 ใช้กับชุดฟังก์ชันที่ตกลงนำขึ้น production แม้บางทางเลือก Phase 4 ยังไม่ถูกเลือก</p>
+<p>ขอบเขต Pilot แกนหลักยังเป็นหนึ่งจุดปฏิบัติงาน การทดสอบ transfer ใน AT11 ใช้จุดปลายทางที่สองในชุดข้อมูล/สภาพแวดล้อมทดสอบ เพื่อพิสูจน์กฎข้อมูล ไม่ถือว่าอนุมัติขยาย Pilot จริงเป็นสองจุด หากต้องใช้หลายจุดจริงให้รับรอง scope และทรัพยากรเพิ่มก่อน</p>
+<h3 id="tor-subsection-6-3">6.3 ความสัมพันธ์และลำดับตัดสินใจ</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-8">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 8" aria-describedby="table-hint-8"><table>
+<thead>
+<tr>
+<th>งาน</th>
+<th>ต้องพร้อมก่อน</th>
+<th>ผลหากยังไม่พร้อม</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Offline intake</td>
+<td>Q01, Q02, Q04, Q05, Q08 และสิทธิ์เก็บข้อมูล</td>
+<td>ยังล็อก form/record/count rule ไม่ได้</td>
+</tr>
+<tr>
+<td>Sync และยอดส่วนกลาง</td>
+<td>identity mapping, event/site scope, revision/idempotency, server acknowledgement</td>
+<td>ไม่ใช้ UI ออนไลน์เป็นหลักฐานส่งสำเร็จ</td>
+</tr>
+<tr>
+<td>Family Portal</td>
+<td>Q03, policy ของสถานะ/ผู้ยืนยัน/สิทธิ์/อายุข้อมูล</td>
+<td>ทดลองเฉพาะข้อมูลจำลอง; ยังไม่เปิดค้นข้อมูลจริง</td>
+</tr>
+<tr>
+<td>Supply/Needs</td>
+<td>Q06 และหน่วยนับ/สถานะ/ผู้รับผิดชอบ</td>
+<td>เปรียบเทียบและปิดคำขอจากยอดไม่ได้</td>
+</tr>
+<tr>
+<td>Mission dispatch</td>
+<td>resource readiness และอำนาจมอบหมาย</td>
+<td>แสดงข้อเสนอจัดสรรได้ แต่ยังไม่ออกคำสั่งจริง</td>
+</tr>
+<tr>
+<td>Medical referral</td>
+<td>medical owner, protocol, data access และหน่วยรับส่งต่อ</td>
+<td>คงเพียง flag ขอความช่วยเหลือ ไม่เปิด workflow ทางการแพทย์จริง</td>
+</tr>
+<tr>
+<td>Procurement/Relief evidence</td>
+<td>Q07, budget/policy owner, approved process/integration</td>
+<td>จัดแฟ้มอ้างอิงได้เฉพาะที่อนุญาต; ไม่อนุมัติสิทธิ์/จ่ายเงิน</td>
+</tr>
+</tbody></table></div></div>
+<p><strong>ระยะเวลาและงบ:</strong> ให้ประมาณแยกแต่ละแพ็กเกจหลัง Phase 0 โดยแจกงาน วิเคราะห์/ออกแบบ พัฒนา เชื่อมต่อ ทดสอบ อบรม และดูแล พร้อม assumptions และงานที่รอหน่วยงานภายนอก ไม่ยกตัวเลข 2 สัปดาห์หรือระยะเวลาใน S073 มาใช้เป็นกำหนดส่งตามสัญญา</p>
+<p><strong>หากเลือก resource-first ใน Q01:</strong> เปลี่ยน Phase 1 เป็น XM02–XM03 ระดับ intake→review→resource card และเลื่อน shelter slice ตาม dependency; FM01–FM04 และกฎข้อมูลร่วมยังต้องมีในระดับที่ใช้จริง ให้จัดทำ baseline ฉบับแก้ก่อนเริ่มแพ็กเกจ มิใช่ถือว่าเอกสารเดิมเลือกให้แล้ว</p>
+<h2 id="tor-section-7">7. รายการโมดูลและความสัมพันธ์</h2>
+<p>ร่างนี้จัดเป็น <strong>21 โมดูลความสามารถที่เสนอ</strong>: 5 ฐานระบบ (FM), 5 แกนเริ่มต้น (CM), 11 ส่วนขยาย (XM) เพื่อให้ประมาณและตรวจรับได้ ไม่ใช่การนับโปรแกรมเดิมหรือจำนวนโมดูลที่อนุมัติแล้ว</p>
+<div class="table-block"><p class="table-hint" id="table-hint-9">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 9" aria-describedby="table-hint-9"><table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>โมดูล</th>
+<th>Phase</th>
+<th>โปรแกรมหลัก</th>
+<th>พื้นที่งาน/หลักฐานตั้งต้น</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FM01</td>
+<td>ตัวตน องค์กร สิทธิ์ และอำนาจ</td>
+<td>1–5</td>
+<td>PRG01; ใช้ร่วมทุกโปรแกรม</td>
+<td>D13, S049</td>
+</tr>
+<tr>
+<td>FM02</td>
+<td>เหตุการณ์และทะเบียนจุดปฏิบัติงาน</td>
+<td>1–5</td>
+<td>PRG01/02/03</td>
+<td>D01/D05/D13, S049/S069/S070</td>
+</tr>
+<tr>
+<td>FM03</td>
+<td>ที่มา คุณภาพข้อมูล ประวัติ หลักฐานและการคุ้มครองข้อมูล</td>
+<td>1–5</td>
+<td>ทุกโปรแกรมตามสิทธิ์</td>
+<td>D02/D13, S049/S069/S070</td>
+</tr>
+<tr>
+<td>FM04</td>
+<td>ออฟไลน์และการซิงก์</td>
+<td>1–5</td>
+<td>PRG02; PRG01 ดูปัญหา</td>
+<td>D02, S069/S070</td>
+</tr>
+<tr>
+<td>FM05</td>
+<td>แจ้งเตือนและส่งต่อเรื่องเร่งด่วน</td>
+<td>2–5</td>
+<td>PRG01/02/03/06/07</td>
+<td>S049, D04/D09</td>
+</tr>
+<tr>
+<td>CM01</td>
+<td>ลงทะเบียนผู้มาถึงและทะเบียนคน ณ จุดพักพิง</td>
+<td>1–2</td>
+<td>PRG02</td>
+<td>D01, S067/S069/S070</td>
+</tr>
+<tr>
+<td>CM02</td>
+<td>จำนวนคน ความจุ และการย้าย</td>
+<td>1–2</td>
+<td>PRG02/03</td>
+<td>D03, Q04</td>
+</tr>
+<tr>
+<td>CM03</td>
+<td>ของคงเหลือโดยประมาณและคำขอ</td>
+<td>2</td>
+<td>PRG02/03</td>
+<td>D04, S069/S070</td>
+</tr>
+<tr>
+<td>CM04</td>
+<td>ภาพสถานการณ์ส่วนกลาง รายงานและส่งต่อเวร</td>
+<td>2–5</td>
+<td>PRG03</td>
+<td>D05, S049/S075</td>
+</tr>
+<tr>
+<td>CM05</td>
+<td>สถานะสำหรับครอบครัว</td>
+<td>2 แบบมีเงื่อนไข</td>
+<td>PRG04</td>
+<td>D06, Q03, S069/S070</td>
+</tr>
+<tr>
+<td>XM01</td>
+<td>รับสัญญาณและประเมินภาระการดูแล</td>
+<td>3A</td>
+<td>PRG03/04</td>
+<td>D07, S041/S072/S073</td>
+</tr>
+<tr>
+<td>XM02</td>
+<td>รับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุน</td>
+<td>3A</td>
+<td>PRG05</td>
+<td>D08, S038/S073</td>
+</tr>
+<tr>
+<td>XM03</td>
+<td>ตรวจทรัพยากร ความพร้อม และเงื่อนไขก่อนใช้งาน</td>
+<td>3A</td>
+<td>PRG03/05</td>
+<td>D08, S046/S058/S073</td>
+</tr>
+<tr>
+<td>XM04</td>
+<td>วางแผน เป้าหมาย และบันทึกการตัดสินใจ</td>
+<td>3B</td>
+<td>PRG03</td>
+<td>D09, S050/S072/S073</td>
+</tr>
+<tr>
+<td>XM05</td>
+<td>ภารกิจและรายงานภาคสนาม</td>
+<td>3B</td>
+<td>PRG02/03</td>
+<td>D09, S049/S073</td>
+</tr>
+<tr>
+<td>XM06</td>
+<td>แผนที่ เส้นทาง และสถานะโครงสร้างพื้นฐาน</td>
+<td>3B</td>
+<td>PRG02/03</td>
+<td>D09, S049/S075</td>
+</tr>
+<tr>
+<td>XM07</td>
+<td>ประสานการแพทย์และส่งต่อ</td>
+<td>4 แบบมีเงื่อนไข</td>
+<td>PRG07/02</td>
+<td>D10, S073/S075</td>
+</tr>
+<tr>
+<td>XM08</td>
+<td>คลัง บริจาค ขนส่ง และรับมอบ</td>
+<td>4 แบบแพ็กเกจ</td>
+<td>PRG06</td>
+<td>D11, S038/S073/S075</td>
+</tr>
+<tr>
+<td>XM09</td>
+<td>คำขอจัดซื้อ ผู้สนับสนุน และหลักฐานค่าใช้จ่าย</td>
+<td>4 แบบมีเงื่อนไข</td>
+<td>PRG06</td>
+<td>D12, S073</td>
+</tr>
+<tr>
+<td>XM10</td>
+<td>แฟ้มหลักฐานช่วยเหลือและประกัน</td>
+<td>4 ทางเลือก</td>
+<td>PRG06; PRG04 เฉพาะติดตามที่อนุญาต</td>
+<td>D12, Q07, S077</td>
+</tr>
+<tr>
+<td>XM11</td>
+<td>ข้อมูลสาธารณะที่รับรอง</td>
+<td>3B ทางเลือก</td>
+<td>PRG04</td>
+<td>S072/S073</td>
+</tr>
+</tbody></table></div></div>
+<p>D13 เป็นงานเจ้าของระบบและ Pilot ที่ทำควบคู่ทุกระยะ; D14 เป็นงานวิจัย เรื่องเล่าและสื่อประกอบ มิได้แปลงเป็นโปรแกรมปฏิบัติการเพิ่มทั้งหมด ส่วน Catering และ WASH ใน S075 แยกเป็นขอบเขตย่อยของ XM08/XM06/XM07 ตามหน้าที่ที่เลือก ไม่มีการสั่งให้สร้างระบบครัวหรือสุขาภิบาลเต็มรูปแบบใน MVP</p>
+<h2 id="tor-section-8">8. รายละเอียดข้อกำหนดรายโมดูล</h2>
+<p>ข้อกำหนดต่อไปนี้เป็นข้อเสนอ TOR โดยแต่ละแพ็กเกจต้องแนบรายละเอียด field/state/role และกรณีทดสอบที่รับรองก่อนเริ่มพัฒนา</p>
+<h3 id="tor-fm01" data-module="true">FM01 — ตัวตน องค์กร สิทธิ์ และอำนาจ</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> จัดบัญชี องค์กร บทบาท พื้นที่/เหตุการณ์ที่เข้าถึง การมอบสิทธิ์ และการระงับสิทธิ์; แยกผู้ดูแลเทคนิคจากผู้อนุมัติภารกิจและผู้อ่านข้อมูลอ่อนไหว</li>
+<li><strong>ข้อมูลหลัก:</strong> user, organization, role, event/site scope, delegation, session/device, ผู้อนุมัติและระยะเวลาสิทธิ์</li>
+<li><strong>กฎ/ข้อยกเว้น:</strong> ตรวจสิทธิ์ที่ server/API และไฟล์แนบ; ปฏิเสธการข้ามขอบเขต; การใช้งาน offline ต้องกำหนดอายุสิทธิ์และขั้นตอนเมื่อเพิกถอนสิทธิ์ขณะเครื่องยัง offline</li>
+<li><strong>ตรวจรับ:</strong> บัญชีเดียวกันเข้าได้เฉพาะบทบาทที่กำหนด; ทดสอบเรียก API/เปิดไฟล์โดยตรงและเปลี่ยน ID แล้วไม่หลุดขอบเขต; มีประวัติการให้/ยกเลิกสิทธิ์</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> permission matrix, authority/delegation rule, session policy และผล negative tests [S049, D13]</li>
+</ul>
+<h3 id="tor-fm02" data-module="true">FM02 — เหตุการณ์และทะเบียนจุดปฏิบัติงาน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> สร้าง/เลือกเหตุการณ์ จุดพักพิง จุดช่วยเหลือ พื้นที่ องค์กรเจ้าของ และผู้รับผิดชอบ; รักษาประวัติการเปลี่ยนแปลง</li>
+<li><strong>ข้อมูลหลัก:</strong> incident ID, site ID, type, name, location, owner, contact, capacity, lifecycle status และเวลา</li>
+<li><strong>กฎ/ข้อยกเว้น:</strong> รหัสภายในไม่เปลี่ยนเมื่อเปลี่ยนชื่อ; แยก lifecycle เช่น active/closed จากสถานะความจุ near capacity/full; จุดที่ปิดยังตรวจประวัติได้</li>
+<li><strong>ตรวจรับ:</strong> บันทึกจากสองเหตุการณ์ไม่ปนกัน; เปลี่ยนชื่อ/ความจุแล้วรายการเดิมยังอ้างถึงจุดที่ถูกต้อง; จุดใหม่ offline เข้าส่วนกลางโดยไม่ชนหรือมีขั้นตอน reconcile</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> site/event schema, lifecycle และ reconciliation cases [S049, S069, S070]</li>
+</ul>
+<h3 id="tor-fm03" data-module="true">FM03 — ที่มา คุณภาพข้อมูล ประวัติ หลักฐานและการคุ้มครองข้อมูล</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> บันทึกแหล่งข้อมูล ผู้บันทึก เวลาที่เกิด/สังเกต/รับรายงาน ระดับความเชื่อมั่น revision การแก้ไข และการเข้าถึง/ส่งออกตามนโยบาย; จัดสิทธิ์เอกสารแนบเมื่อมีในขอบเขต</li>
+<li><strong>กฎ/ข้อยกเว้น:</strong> ประวัติแก้ไขไม่ถูกแทนที่เงียบ ๆ; แยกรายงานดิบ ข้อมูลประมาณ และข้อมูลที่ตรวจแล้ว; รูปถ่ายและเลขประจำตัวไม่บังคับหากไม่จำเป็นต่อ slice; การลบ/ลดข้อมูลต้องตามนโยบาย retention ที่รับรอง</li>
+<li><strong>ตรวจรับ:</strong> ย้อนจากยอด/สถานะไปหา record และผู้แก้ได้; ป้องกันการแก้ audit ผ่านบัญชีปกติ; แสดงว่าข้อมูลขัดแย้ง/เก่า/ที่มาไม่ครบ; ไฟล์และ export ไม่ข้ามสิทธิ์</li>
+<li><strong>สิ่งส่งมอบ:</strong> data classification, provenance/audit specification, attachment policy, retention และตัวอย่าง export ที่ลดข้อมูลตามสิทธิ์</li>
+<li><strong>หลักฐาน:</strong> [S049, S069, S070] เป็นฐานแนวคิด ไม่ใช่หลักฐานว่าการเข้ารหัสหรือ audit ถูกพัฒนาแล้ว</li>
+</ul>
+<h3 id="tor-fm04" data-module="true">FM04 — ออฟไลน์และการซิงก์</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> เตรียม app shell และข้อมูลจุดที่จำเป็น; บันทึก local transaction กับ outbox; แสดง pending/syncing/synced/conflict/failed; retry และ reconcile หลายเครื่อง</li>
+<li><strong>กฎ:</strong> ข้อความ “บันทึกแล้ว” หมายถึงบันทึก local สำเร็จ; “ส่งแล้ว” ต้องมี server acknowledgement; retry ใช้ operation ID เดิม; business status แยกจาก sync status</li>
+<li><strong>ข้อยกเว้น:</strong> first use ไม่มีเน็ต, storage เต็ม/ถูกล้าง, version migration, server รับสำเร็จแต่ response หาย, app ถูกปิดระหว่างส่ง, เครื่องหาย และเวลาเครื่องคลาดเคลื่อนต้องมีพฤติกรรมที่ระบุ</li>
+<li><strong>ตรวจรับ:</strong> เตรียมเครื่อง→ปิดเน็ต→บันทึก→ปิดแอปและรีสตาร์ตเครื่อง→เปิดใหม่; ส่งซ้ำ/ขาดสัญญาณกลางทางแล้วไม่เพิ่ม record ซ้ำ; conflict ยังมีข้อมูลต้นทางและผู้ทบทวน</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> sync protocol, operation identity, acknowledgement, conflict rules, offline readiness checklist และ recovery guide [S069, S070, Q05]</li>
+</ul>
+<h3 id="tor-fm05" data-module="true">FM05 — แจ้งเตือนและส่งต่อเรื่องเร่งด่วน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> แจ้งในแอปเมื่อมีคำขอเร่งด่วน ข้อมูลค้างหรือภารกิจต้องติดตาม; ตั้งผู้รับ trigger ลำดับ escalation และยืนยันรับทราบ</li>
+<li><strong>ข้อมูล/สถานะ:</strong> notification ID, object ID, recipient, channel, attempt, sent/delivered/acknowledged/failed และเวลา โดยแยกการส่งสำเร็จจากการรับทราบ</li>
+<li><strong>กฎ/ข้อยกเว้น:</strong> ข้อความภายนอก/preview ไม่ใส่ข้อมูลอ่อนไหวเกินนโยบาย; ส่งซ้ำไม่รบกวนไม่จำเป็น; ช่องทางภายนอกล่มต้องแสดง failure และทางติดตามด้วยคน</li>
+<li><strong>ตรวจรับ:</strong> trigger ส่งถึงผู้มีหน้าที่ที่ถูกต้อง; ผู้ใช้ไร้สิทธิ์ไม่เห็น payload; failed ไม่แสดงว่าเจ้าหน้าที่รับทราบแล้ว; gateway mock ไม่ใช้แทนผล live integration</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> notification/escalation matrix และ delivery logs [S049]; SMS/LINE/email/push ภายนอกเป็นทางเลือกในข้อ 11</li>
+</ul>
+<h3 id="tor-cm01" data-module="true">CM01 — ลงทะเบียนผู้มาถึงและทะเบียนคน ณ จุดพักพิง</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> เริ่มจากกลุ่มคนที่มาถึงจริง; เลือกเหตุการณ์/จุด; ระบุจำนวนและข้อมูลขั้นต่ำ; เติมข้อมูลรายบุคคลภายหลัง; แก้ข้อมูลด้วย revision; ให้รหัสอ้างอิงตาม Q02</li>
+<li><strong>ข้อมูลขั้นต่ำที่เสนอสำหรับ slice:</strong> registration group, site/event, total present, age-group breakdown ถ้าทราบ, officer/device และเวลา; ชื่อ เบอร์ บัตร และความสัมพันธ์ครัวเรือนเก็บเมื่อมีเหตุจำเป็นและนโยบายรองรับ</li>
+<li><strong>กฎ:</strong> กลุ่มผู้มาด้วยกันไม่เท่ากับครัวเรือน; ไม่มีบัตร/มือถือ/วันเกิดไม่ขัดขวางการบันทึกขั้นต่ำ; สถานะลงทะเบียนไม่เท่ากับ safe; flag ขอแพทย์ไม่ใช่การวินิจฉัย</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> ข้อมูลไม่ครบยังบันทึกได้; unknown age ไม่ถูกแต่งเป็นข้อมูลจริง; เติมรายบุคคลแล้วไม่เพิ่มยอดซ้ำ; possible duplicate ให้บันทึกได้พร้อมคิว review</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> intake form/states, minimum-data rule, group→person linkage และ revision cases [D01, S067, S069, S070, Q02/Q04]</li>
+</ul>
+<h3 id="tor-cm02" data-module="true">CM02 — จำนวนคน ความจุ และการย้าย</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> แสดงจำนวนที่อยู่ปัจจุบัน ยอดรับเข้า/ออก/ย้าย ความจุ และสถานะใกล้เต็ม/เต็ม พร้อมแยกประมาณจากยืนยัน</li>
+<li><strong>กฎ:</strong> กำหนด record ที่เป็นฐานยอดเพียงชุดเดียว; รายบุคคลที่เพิ่มให้กลุ่มเดิมต้องไม่บวกซ้ำ; การย้ายต้องเชื่อมออกต้นทาง/รับปลายทางและสถานะระหว่างทาง; การแก้ยอดต้องมีเหตุผล/ผู้รับรอง</li>
+<li><strong>ข้อยกเว้น:</strong> duplicate ข้ามเครื่อง ผู้ย้ายยังไม่ถึงปลายทาง ความจุเปลี่ยน ไม่ทราบอายุ และศูนย์ไม่ส่งข้อมูล; ห้ามสรุปจำนวนคนทั้งเหตุการณ์ว่าไม่ซ้ำหาก dedup ระหว่างจุดยังพิสูจน์ไม่ได้</li>
+<li><strong>ตรวจรับ:</strong> fixture ที่รู้ยอดให้ผลตรงก่อน/หลัง sync; รับ 10 คน แก้กลุ่ม เติมคนในกลุ่ม และย้ายแล้วไม่บวกซ้ำ; แสดงสถานะ provisional หรือ unresolved เมื่อยังตัดสินความซ้ำไม่ได้</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> counting policy, transfer model, dedup review และ expected-total fixtures [D03, Q04, S069/S070]</li>
+</ul>
+<h3 id="tor-cm03" data-module="true">CM03 — ของคงเหลือโดยประมาณและคำขอ</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> บันทึก snapshot น้ำ/อาหาร/พื้นที่ ณ จุด พร้อมหน่วย เวลา ผู้รายงาน และฐานประมาณการ; สร้างคำขอระบุชนิด จำนวน หน่วย ความเร่งด่วนและเจ้าของ</li>
+<li><strong>สถานะคำขอที่เสนอ:</strong> requested→acknowledged→preparing→dispatched→completed; cancelled เมื่อผู้มีสิทธิ์ยกเลิก; การรับบางส่วนต้องแสดง requested/received/outstanding แยกกัน</li>
+<li><strong>กฎ/ข้อยกเว้น:</strong> “น้ำเหลือ 8 ชั่วโมง” เป็นการประมาณพร้อมฐานคำนวณ มิใช่ stock ledger; unknown ไม่เท่ากับ 0; dispatch ไม่เท่ากับได้รับของ; การลดคำขอ/รับบางส่วนมีประวัติ</li>
+<li><strong>ตรวจรับ:</strong> ขอ 200 ขวด ส่ง 120 รับจริง 100 แล้วแสดงยอดตามความหมายแต่ละขั้น ไม่ปิดครบอัตโนมัติ; ใช้หน่วยต่างกันไม่รวมโดยไม่มี conversion ที่รับรอง</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> unit dictionary, supply snapshot form, need workflow และ fulfillment cases [D04, Q06, S069/S070]</li>
+</ul>
+<h3 id="tor-cm04" data-module="true">CM04 — ภาพสถานการณ์ส่วนกลาง รายงานและส่งต่อเวร</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> สรุปคน ความจุ กลุ่มที่ต้องดูแล ของขาด คำขอ และสถานะส่งข้อมูลตามขอบเขต; filter เหตุการณ์/พื้นที่/ช่วงเวลา; export รายงานและ handover เรื่องค้าง</li>
+<li><strong>กฎ:</strong> ทุกยอดมี source/as-of/ระดับประมาณหรือยืนยัน; last sync แยกจาก observed time; ส่วนกลางที่ติดต่อเครื่องไม่ได้ไม่อ้างว่ารู้คิว unsent ปัจจุบันทั้งหมด</li>
+<li><strong>ข้อยกเว้น:</strong> ข้อมูลเก่า ติดขัด ขัดแย้ง หรือยังไม่เคยส่ง; แยก “ไม่มีข้อมูล” จาก “ไม่มีคน/ไม่มีความต้องการ”; จำกัดแถวและข้อมูล export ตามสิทธิ์</li>
+<li><strong>ตรวจรับ:</strong> ยอดตรง fixture และรายการที่ server รับ; ข้อมูลก่อน/หลัง sync แสดงเวลาและที่มา; export/handover ตรงข้อมูล ณ snapshot และมีประวัติส่งออก</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> indicator definitions, dashboard/report pack, freshness rules, handover template [D05, S049/S069/S070/S075]</li>
+</ul>
+<h3 id="tor-cm05" data-module="true">CM05 — สถานะสำหรับครอบครัว</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> รับคำขอค้น/ยืนยันตามช่องทางที่รับรอง; แสดง found/possible match/pending review/not found และ safety status ที่มีผู้ยืนยันตามสิทธิ์</li>
+<li><strong>กฎ:</strong> ผลใกล้เคียงยังไม่เป็นการยืนยันคนเดียวกัน; check-in ยังไม่เป็น safe; not found ไม่สรุปว่าเสียชีวิต/สูญหาย/ไม่เคยได้รับช่วย; แสดงเวลาที่สถานะอ้างถึงและข้อจำกัดการ sync</li>
+<li><strong>สิทธิ์/ข้อยกเว้น:</strong> นโยบายผู้ค้นและการยืนยันความสัมพันธ์ต้องเลือกใน Q03; ไม่เปิดพิกัดละเอียด เลขบัตร เบอร์ หรือข้อมูลการแพทย์โดยอัตโนมัติ; จำกัดการไล่ค้นและบันทึกเหตุผิดปกติ</li>
+<li><strong>ตรวจรับ:</strong> fixture ของทุก outcome รวมชื่อซ้ำ ผู้ไร้สิทธิ์ ศูนย์ยังไม่ส่ง และสถานะเก่า; API/ไฟล์/export ไม่คืนข้อมูลเกินนโยบาย; ผู้ไม่มีสิทธิ์เปลี่ยน safety status ไม่สำเร็จ</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> search/verification policy, response matrix, safety-state transition authority และ abuse tests [D06, Q03, S069/S070]</li>
+</ul>
+<h3 id="tor-xm01" data-module="true">XM01 — รับสัญญาณและประเมินภาระการดูแล</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> รับแจ้งด้วยคน/web และช่องทางที่ตกลง; เก็บ raw signal, location confidence, reported count, vulnerability/need; review ความซ้ำ; สร้าง care-load snapshot</li>
+<li><strong>กฎ:</strong> แยกจำนวนข้อความ จำนวนกลุ่ม และจำนวนคน; raw signal ไม่บวกเป็น headcount จริง; source/time/confidence และวิธีรวมต้องแสดง; ประมาณการมีเจ้าของและรุ่น</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> หลายช่องทางแจ้งคนกลุ่มเดียวกันต้องมี trace และ unresolved flag; รายงานขัดกันยังเก็บต้นฉบับ; USSD simulator ผ่านได้เฉพาะเกณฑ์ simulator ไม่ยืนยันว่าเชื่อม operator แล้ว</li>
+<li><strong>สิ่งส่งมอบ:</strong> channel contract, raw→reviewed→snapshot model และ dedup fixtures</li>
+<li><strong>หลักฐาน/เงื่อนไข:</strong> [D07, S024, S041, S073]; live USSD/SMS รอข้อ 11</li>
+</ul>
+<h3 id="tor-xm02" data-module="true">XM02 — รับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> intake type บุคคล ทีม/องค์กร อุปกรณ์ supply lot และ bulk import ที่เลือก; เก็บ capability ปริมาณ หน่วย ที่ตั้ง ETA ผู้ติดต่อ และข้อจำกัดก่อนเริ่มช่วย</li>
+<li><strong>กฎ:</strong> แยกผู้เสนอ resource จากตัว resource และสิทธิ์ให้มอบหมาย; ข้อมูลขั้นต่ำตาม type; import ต้องมี preview ตรวจ field/duplicate และแจ้งแถวผิด ไม่ผ่านทั้งไฟล์เงียบ ๆ</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> บุคคลอยู่หลายทีม/ทรัพยากรถูกเสนอซ้ำ/ยังไม่ทราบ ETA; resource card ย้อนถึง intake ได้; import ซ้ำตาม policy ไม่ทำให้ capacity ซ้ำ</li>
+<li><strong>สิ่งส่งมอบ:</strong> intake schemas, forms/resource cards, import template และ error report</li>
+<li><strong>หลักฐาน:</strong> [D08, S038, S044, S073]; support lot ในระยะนี้เป็นข้อเสนอสิ่งสนับสนุน มิใช่การรับเข้าคลังจริง</li>
+</ul>
+<h3 id="tor-xm03" data-module="true">XM03 — ตรวจทรัพยากร ความพร้อม และเงื่อนไขก่อนใช้งาน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> คิว coordinator review, verified/needs more info/rejected; แสดง readiness, availability, staging, สิ่งที่ต้องมีเพื่อเริ่มงาน และผลการตรวจ</li>
+<li><strong>กฎ:</strong> verification และ readiness เป็นคนละสถานะ; assignment ต้องตาม availability/permission; resource ที่จองให้ภารกิจอื่นแล้วไม่เป็นพร้อมเต็มจำนวน</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> ยกเลิกความพร้อมหลัง review หรือส่วนติดต่อขาด; ย้อนเหตุผลและผู้ตรวจได้; สถานะ stale ไม่แสดงเป็นพร้อมทันที; ไม่มอบหมายเกิน capacity ที่กำหนด</li>
+<li><strong>สิ่งส่งมอบ:</strong> review/readiness state model, coordinator board และ resource reservation policy</li>
+<li><strong>หลักฐาน:</strong> [D08, S046/S058, S073]</li>
+</ul>
+<h3 id="tor-xm04" data-module="true">XM04 — วางแผน เป้าหมาย และบันทึกการตัดสินใจ</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> สร้าง snapshot สถานการณ์ ทรัพยากร ข้อจำกัด ช่องว่างข้อมูล และเรื่องรอตัดสินใจสำหรับ operational period; บันทึกเป้าหมาย กลยุทธ์ ลำดับสำคัญ ผู้อนุมัติ และเหตุผล</li>
+<li><strong>กฎ:</strong> snapshot คงหลักฐานที่ใช้ในขณะตัดสินใจ; เป้าหมายและคำสั่งจริงต้องมีผู้มีอำนาจ; เวอร์ชันใหม่ไม่เปลี่ยนบันทึกเก่า; ข้อมูลที่ยังขาดแสดงว่าไม่เก็บ/เข้าไม่ถึง/ใช้ไม่ได้/ประมาณ</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> เปลี่ยนแผนกลางรอบ มี conflicting report หรือข้อมูลเก่า; ย้อน decision→source→mission ได้; บัญชีผู้ดูข้อมูลอนุมัติคำสั่งไม่ได้</li>
+<li><strong>สิ่งส่งมอบ:</strong> planning/decision workflow, snapshot model, authority matrix และ template ที่หน่วยงานรับรอง</li>
+<li><strong>หลักฐาน:</strong> [S050/S072/S073, D09]; การสร้าง IAP/แบบฟอร์ม ICS ครบชุดเป็นทางเลือกเมื่อระบุรายการและ owner จริง</li>
+</ul>
+<h3 id="tor-xm05" data-module="true">XM05 — ภารกิจและรายงานภาคสนาม</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> แปลงคำขอ/เป้าหมายเป็น mission; เสนอทีม/ทรัพยากร; อนุมัติ มอบหมาย รับ/ปฏิเสธงาน อัปเดตและส่งผล offline ตามสิทธิ์; รองรับ Scout/Damage &amp; Needs Assessment เป็นแบบรายงานย่อยเมื่อเลือกขอบเขตสำรวจ</li>
+<li><strong>สถานะที่เสนอ:</strong> draft→approved→assigned→accepted→in progress→reported→closed; rejected/cancelled/blocked ต้องมีเหตุผลและผู้มีสิทธิ์</li>
+<li><strong>กฎ:</strong> ระบบสนับสนุนการตัดสินใจ ผู้มีอำนาจเป็นผู้สั่งการ; field report ที่ส่งซ้ำไม่ปิด mission ซ้ำ; completion report ต่างจากผลที่ reviewer รับรอง; ปลด resource ตามนโยบายจริง</li>
+<li><strong>ตรวจรับ:</strong> เดิน flow ครบหนึ่งภารกิจรวมทีมปฏิเสธ งานติดขัด และรายงาน offline; อัปเดตได้เฉพาะทีม/ผู้มีสิทธิ์; handover เห็นงานค้างและเวอร์ชันคำสั่ง</li>
+<li><strong>สิ่งส่งมอบ/หลักฐาน:</strong> dispatch workflow, mission card, field report, scout assessment ที่เลือก และ completion/exception tests [D09, S049/S071/S073]</li>
+</ul>
+<h3 id="tor-xm06" data-module="true">XM06 — แผนที่ เส้นทาง และสถานะโครงสร้างพื้นฐาน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> แสดงจุด คำขอ ภารกิจ พื้นที่เสี่ยง เส้นทาง และสถานะถนน ไฟฟ้า น้ำ สื่อสาร/สุขาภิบาลตาม layers ที่เลือก; ดู confidence/source/as-of และข้อจำกัดการเข้าถึง; รองรับ Pre-setup Checklist ก่อนเปิดจุด เช่น รถเข้าถึง ไฟ น้ำ สัญญาณ ห้องน้ำ พื้นที่แยกและความจุ เมื่อหน่วยงานเลือกใช้</li>
+<li><strong>กฎ:</strong> แยกข้อมูลอ้างอิงและข้อมูลหน้างาน; route suggestion ไม่รับรองว่าเส้นทางปลอดภัย; จำกัด layers และพิกัดอ่อนไหว; พิกัด unknown ไม่แปลงเป็นจุดจริง</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> map provider ล่ม/ไม่มี GPS/ข้อมูลชั้นเก่า; ยังเห็นรายการและคำอธิบายสถานที่ที่จำเป็น; layers มี provenance; ไม่เปิดข้อมูลข้ามสิทธิ์</li>
+<li><strong>สิ่งส่งมอบ:</strong> layer/source inventory, map/list fallback, pre-setup assessment ที่เลือก และ route/location confidence policy; ผล checklist เป็นข้อมูลให้ผู้รับผิดชอบประเมิน มิใช่ระบบรับรองพื้นที่ปลอดภัยอัตโนมัติ</li>
+<li><strong>หลักฐาน/ขอบเขต:</strong> [D09, S049/S071/S075]; mesh/satellite/generator ใน blueprint เป็น infrastructure dependency การจัดซื้อหรือควบคุมอุปกรณ์จริงต้องเป็นแพ็กเกจแยก</li>
+</ul>
+<h3 id="tor-xm07" data-module="true">XM07 — ประสานการแพทย์และส่งต่อ</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> บันทึกคำขอการช่วยเหลือ/ส่งต่อ ผู้ประสาน ปลายทางตอบรับ สถานะการเคลื่อนย้าย และหลักฐานรับต่อ ตาม protocol ที่ผู้รับผิดชอบกำหนด</li>
+<li><strong>กฎ:</strong> clinical assessment/triage เป็นหน้าที่ผู้ได้รับมอบหมาย; flag บาดเจ็บใน MVP ไม่ใช้แทนการประเมิน; ความพร้อมปลายทางต้องมีเวลาและผู้รับรอง; ไม่ปิดส่งต่อจากสถานะรถออกเพียงอย่างเดียว</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> ปลายทางไม่รับ เปลี่ยนปลายทาง สื่อสารขาด และข้อมูลคนไม่ครบ; scenario ต้องผ่านผู้ปฏิบัติการแพทย์; ทดสอบสิทธิ์ข้อมูลและการตอบรับทั้งสองฝ่าย</li>
+<li><strong>สิ่งส่งมอบ:</strong> approved referral protocol/data set, responsibility matrix และ handoff tests</li>
+<li><strong>หลักฐาน/เงื่อนไข:</strong> [D10, S073/S075]; เริ่มเมื่อมี medical owner/หน่วยรับส่งต่อ ไม่รวมเวชระเบียนเต็มหรือการตัดสินใจรักษาอัตโนมัติ</li>
+</ul>
+<h3 id="tor-xm08" data-module="true">XM08 — คลัง บริจาค ขนส่ง และรับมอบ</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> เปลี่ยนข้อเสนอสิ่งสนับสนุนเป็น lot ที่รับจริง; บันทึกหน่วย สถานที่ สภาพ/วันหมดอายุเมื่อเกี่ยวข้อง; รับเข้า จอง จ่าย โอน ส่ง รับบางส่วน คืน/เสียหาย และหลักฐานรับมอบ</li>
+<li><strong>กฎ:</strong> stock ledger ต่างจาก CM03 supply snapshot; offered ไม่เท่ากับ received; quantity/unit/conversion ชัด; ห้ามมี ledger operation ซ้ำจาก retry; การปรับยอดมีผู้รับรอง</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> รับไม่ครบ ขนส่งผิดจุด ของหมดอายุ/เสียหาย และหน่วยต่างกัน; test fixture รับ→จ่าย→คืน→โอนแล้ว balance ตรงและ trace ถึงคำขอ</li>
+<li><strong>สิ่งส่งมอบ:</strong> inventory/lot model, receiving/delivery workflow, unit master และ reconciliation tests</li>
+<li><strong>หลักฐาน/ทางเลือก:</strong> [D11, S038/S073/S075]; Catering เพิ่ม meal demand/แจกจ่าย/ของเสียได้เมื่อมี owner; ไม่เพิ่มระบบเมนู/โภชนาการเต็มโดยอัตโนมัติ</li>
+</ul>
+<h3 id="tor-xm09" data-module="true">XM09 — คำขอจัดซื้อ ผู้สนับสนุน และหลักฐานค่าใช้จ่าย</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> เชื่อม demand กับคำขอจัดซื้อ ผู้รับผิดชอบงบ vendor/partner การอนุมัติ หลักฐานส่งมอบ และสถานะค่าใช้จ่ายตามขั้นตอนเจ้าของงบ</li>
+<li><strong>กฎ:</strong> การเสนอจัดซื้อไม่เท่ากับอนุมัติ; ผู้มีอำนาจและลำดับอนุมัติต้องกำหนดก่อน; audit ตั้งแต่สร้างคำขอ; งานนี้ไม่ทำให้การจัดซื้อถูกต้องตามระเบียบโดยอัตโนมัติ</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> เปลี่ยนยอด อนุมัติบางส่วน ยกเลิก และส่งมอบไม่ครบ; ทดสอบผู้ไร้อำนาจอนุมัติไม่ได้; หลักฐานเชื่อม request→approval→delivery ได้</li>
+<li><strong>สิ่งส่งมอบ:</strong> owner-approved procurement workflow, authority/amount rules และ evidence/export pack</li>
+<li><strong>หลักฐาน/เงื่อนไข:</strong> [D12, S073]; ไม่ยกตัวเลขจาก fiscal mock data เป็นงบหรือรายการใช้จ่ายจริง</li>
+</ul>
+<h3 id="tor-xm10" data-module="true">XM10 — แฟ้มหลักฐานช่วยเหลือและประกัน</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> จัดแฟ้มข้อมูลเหตุการณ์ การลงทะเบียน และหลักฐานที่หน่วยงานอนุญาตให้ใช้ประกอบการพิจารณา; ส่งออก/ส่งต่อ/ติดตามตาม interface ที่ตกลง</li>
+<li><strong>กฎ:</strong> check-in เป็นหลักฐานหนึ่งรายการ ไม่รับรองสิทธิ์เงินช่วยเหลือหรือเคลมประกัน; ข้อมูลที่ส่งต้องมี purpose/recipient/permission และประวัติ; แยกสถานะส่งแฟ้มจากผลพิจารณาภายนอก</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> ผู้รับปฏิเสธแฟ้ม/หลักฐานไม่ครบ/ติดต่อระบบภายนอกไม่ได้; ไม่มี response ไม่แสดงอนุมัติ; ผู้ไม่มีสิทธิ์ไม่ส่งออกข้อมูลรายบุคคล</li>
+<li><strong>สิ่งส่งมอบ:</strong> evidence requirement matrix, approved handoff/API contract และ response state model</li>
+<li><strong>หลักฐาน/เงื่อนไข:</strong> [D12, Q07, S077]; เป็นทางเลือกจนมีหน่วยงานเจ้าของเกณฑ์และข้อตกลงใช้งาน</li>
+</ul>
+<h3 id="tor-xm11" data-module="true">XM11 — ข้อมูลสาธารณะที่รับรอง</h3>
+<ul>
+<li><strong>ความสามารถ:</strong> จัดทำ ทบทวน อนุมัติ เผยแพร่ แก้ไข และหมดอายุข้อความสถานการณ์/คำแนะนำ/จุดบริการ ตามผู้รับผิดชอบการสื่อสาร</li>
+<li><strong>กฎ:</strong> ข้อความสาธารณะอ้างถึงเหตุการณ์ เวลา แหล่งที่มา ผู้อนุมัติและรุ่น; ไม่ดึงรายงานดิบหรือข้อมูลคนไปเผยแพร่อัตโนมัติ; เก็บประวัติการแก้ไข</li>
+<li><strong>ข้อยกเว้น/ตรวจรับ:</strong> ข่าวเก่า คำแนะนำเปลี่ยน ช่องทางส่งล้มเหลว; draft ไม่เผยแพร่; expired มีการแสดงสถานะที่ตกลง; gateway แต่ละช่องทางมีผลส่งตรวจได้</li>
+<li><strong>สิ่งส่งมอบ:</strong> public-message workflow, content/approval/expiry policy และ publish tests</li>
+<li><strong>หลักฐาน:</strong> [S072/S073]; เว็บไซต์ portfolio เดิมใช้เล่าโครงการ ไม่ใช้แทนแหล่งประกาศปฏิบัติการที่รับรอง</li>
+</ul>
+<h2 id="tor-section-9">9. แบบข้อมูลและกฎที่ใช้ร่วมกัน</h2>
+<h3 id="tor-subsection-9-1">9.1 Entity หลักที่ต้องออกแบบ</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-10">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 10" aria-describedby="table-hint-10"><table>
+<thead>
+<tr>
+<th>กลุ่ม</th>
+<th>Entity</th>
+<th>จุดที่ต้องแยก</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>อำนาจและขอบเขต</td>
+<td>User, Organization, Role, Delegation, Incident, Site, Device</td>
+<td>org role ต่างจากอำนาจสั่งการ; เหตุการณ์ต่างจากปีงบ</td>
+</tr>
+<tr>
+<td>คนและการอยู่ ณ จุด</td>
+<td>Registration Group, Person, Household, Check-in/Stay, Transfer</td>
+<td>กลุ่มที่มาด้วยกันต่างจากครัวเรือน; คนต่างจากจำนวน check-in</td>
+</tr>
+<tr>
+<td>คำยืนยันสถานะคน</td>
+<td>Safety Assertion/Status Verification</td>
+<td>เชื่อม person/record, status, verifier/authority, evidence/source, observed/effective/recorded time, revision/revocation และ visibility; แยกจากการอยู่ ณ จุด</td>
+</tr>
+<tr>
+<td>ทรัพยากร/คำขอ</td>
+<td>Supply Snapshot, Need Request, Fulfillment, Resource, Resource Offer/Review</td>
+<td>ของประมาณต่างจาก stock ledger; คำขอต่างจากได้รับแล้ว</td>
+</tr>
+<tr>
+<td>การส่งข้อมูล</td>
+<td>Local Operation, Revision, Sync Batch, Server Receipt, Conflict/Dedup Case</td>
+<td>retry ต่างจากธุรกรรมใหม่; conflict ต่างจาก failed</td>
+</tr>
+<tr>
+<td>ข้อมูลสถานการณ์</td>
+<td>Raw Signal, Reviewed Observation, Care-load/Situation Snapshot, Map Layer</td>
+<td>reported count ต่างจาก verified count</td>
+</tr>
+<tr>
+<td>การทำงาน</td>
+<td>Objective, Operational Period, Decision, Mission, Field Report</td>
+<td>รายงานผลต่างจากผู้รับรองปิดงาน</td>
+</tr>
+<tr>
+<td>ส่วนขยาย</td>
+<td>Referral, Inventory Lot/Movement, Delivery Receipt, Procurement Request, Evidence Case</td>
+<td>ส่งต่อ/ส่งแฟ้มต่างจากรับสำเร็จ/อนุมัติ</td>
+</tr>
+<tr>
+<td>ประวัติ/การสื่อสาร</td>
+<td>Audit Event, Attachment, Export, Notification, Public Message</td>
+<td>sent ต่างจาก delivered/acknowledged</td>
+</tr>
+</tbody></table></div></div>
+<p>ตารางนี้เป็น conceptual model มิใช่ SQL schema สำเร็จ ใน Phase 0 ต้องกำหนด cardinality, required fields, null/unknown, ownership, index และกฎแก้ไขเฉพาะแกนข้อมูลร่วมกับแพ็กเกจแรก ส่วนรายละเอียด Entity ของแพ็กเกจขยายให้รับรองก่อนเริ่มแพ็กเกจนั้น โดยไม่ขัด interface และกฎร่วมที่ตกลงไว้</p>
+<h3 id="tor-subsection-9-2">9.2 กฎร่วมที่ต้องพิสูจน์</h3>
+<ol>
+<li>ใช้รหัสข้อมูลภายในที่ไม่ชนระหว่างเครื่อง และแยกรหัสอ้างอิงสำหรับคน/เจ้าหน้าที่จาก primary identity</li>
+<li>การบันทึก local และ outbox ต้องสัมพันธ์กัน ไม่แสดงสำเร็จขณะที่รายการไม่มีคิวส่งหรือไม่ได้บันทึก</li>
+<li>เติมข้อมูล person ให้ group เดิมต้องมี linkage และวิธีนับที่ไม่บวกจำนวนซ้ำ; ถ้าทำ dedup ไม่ได้ให้แสดงยอดประมาณ/รอ review</li>
+<li>เก็บ source, actor, event/site, revision และเวลาสำคัญ; เก็บ timezone/เวลา server receipt แยกจากเวลาตามเครื่อง</li>
+<li>unknown, not collected, not applicable และ 0 เป็นคนละความหมาย</li>
+<li>แยกสถานะธุรกิจ สถานะตรวจสอบ สถานะความพร้อม สถานะส่งข้อมูล และสถานะข้อมูลเก่า</li>
+<li>ทุก transition ที่มีผลต่อ safe, จำนวนคน, mission, stock หรือ approval ต้องมีผู้มีสิทธิ์และเหตุผลตามกฎ</li>
+<li>เกณฑ์ข้อมูลเก่าและการอนุมานต้องกำหนดต่อ domain ไม่มีค่า freshness ค่าเดียวสำหรับทุกข้อมูล</li>
+</ol>
+<h2 id="tor-section-10">10. ข้อกำหนดด้านคุณภาพและบริการเบื้องหลัง</h2>
+<h3 id="tor-subsection-10-1">10.1 การใช้งาน</h3>
+<p>รองรับภาษาไทย ใช้หน้าจอที่อ่านง่ายบนอุปกรณ์จริงที่เลือก ฟอร์มไม่ต้องพึ่งสีเพียงอย่างเดียว สถานะ local/ส่วนกลางชัด มีข้อความบอกผลและวิธีกลับมาทำงานเมื่อผิดพลาด ผู้ใช้งานต้องผ่าน task-based UAT ตามบทบาท ไม่ใช้คำว่า “ไม่ต้องอบรม” เป็นข้อเท็จจริงจาก demo</p>
+<p>การรองรับ Android/iOS/browser และรุ่นขั้นต่ำต้องระบุใน device/browser matrix หลังสำรวจอุปกรณ์ ความสามารถ offline ของแต่ละแพลตฟอร์มต้องทดสอบบนชุดนั้นก่อนรับรอง</p>
+<h3 id="tor-subsection-10-2">10.2 ความปลอดภัยและข้อมูล</h3>
+<p>ตรวจสิทธิ์ที่ backend/API ไฟล์แนบและ export; ใช้การสื่อสารที่ป้องกันการอ่านระหว่างทาง; ไม่เก็บ secret ใน client/log; กำหนด app/session lock และ MFA ตามบทบาท; ออกแบบ local data/key protection พร้อมขอบเขตเมื่อเครื่องหาย/ถูกล้าง/สิทธิ์ถูกเพิกถอนขณะ offline</p>
+<p>ต้องมีแผน minimization, retention, ลดข้อมูลในเครื่องหลังส่งเมื่อเหมาะสม, response ต่อเครื่องหาย และการอนุญาตใช้ข้อมูลจริงที่เจ้าของข้อมูลรับรอง การเป็น PWA หรือใช้ IndexedDB ไม่ได้ทำให้ข้อมูลในเครื่องเข้ารหัสโดยอัตโนมัติ ต้องออก protection/key/session-lock policy ตาม threat model และพิสูจน์ control ที่เลือกบนอุปกรณ์จริง ไม่อ้างว่า remote wipe หรือเพิกถอนสิทธิ์มีผลทันทีบนเครื่องที่ยัง offline</p>
+<p>Retention matrix ต้องระบุ local/server/files/exports/backups รวมเหตุผลข้อยกเว้น อายุสำเนา ผู้รับผิดชอบ และวิธีลด/ลบตามนโยบายที่รับรอง แยกสิ่งที่ระบบควบคุมได้จากสำเนาที่ส่งให้หน่วยงานอื่นและต้องอาศัยกระบวนการของผู้รับ</p>
+<h3 id="tor-subsection-10-3">10.3 ความถูกต้อง ความทนทาน และการดูแล</h3>
+<p>มี fixtures ตรวจยอด/สถานะ, idempotency/reconciliation, error monitoring, backup และ restore ที่ทดลองได้; มี schema/app-version migration; deploy/rollback และ runbook ส่งต่อทีมดูแล แยก environment ทดลองกับที่ใช้จริง</p>
+<p>ผลแจ้ง online ต้องอ้างอิงการเชื่อมต่อที่ตรวจได้; ผล sync ต้องอ้างอิง server receipt มิใช่ timer; monitoring ที่ส่วนกลางต้องบอกขอบเขตสิ่งที่รู้และสิ่งที่เครื่อง offline ยังไม่ส่ง</p>
+<h3 id="tor-subsection-10-4">10.4 ตัวเลขคุณภาพที่ต้องกำหนดก่อนตรึงราคา/เริ่มงาน</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-11">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 11" aria-describedby="table-hint-11"><table>
+<thead>
+<tr>
+<th>ตัวแปร</th>
+<th>สิ่งที่ต้องตกลง</th>
+<th>วิธีพิสูจน์</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Local save time</td>
+<td>percentile/เวลาสูงสุดบนรุ่นอุปกรณ์ที่เลือกและปริมาณข้อมูลกำหนด</td>
+<td>วัดจากกดบันทึกถึง transaction สำเร็จจริง</td>
+</tr>
+<tr>
+<td>Offline capacity</td>
+<td>records/media ต่อเครื่องและช่วงเวลาที่ต้องอยู่ offline</td>
+<td>ทดสอบข้อมูลตามขนาดพร้อม storage-pressure cases</td>
+</tr>
+<tr>
+<td>Sync performance</td>
+<td>ขนาด batch, bandwidth/latency, backlog และเวลาที่รับทั้งหมด</td>
+<td>network-conditioned test และตรวจ server receipts</td>
+</tr>
+<tr>
+<td>Dashboard freshness</td>
+<td>อายุข้อมูลที่ยอมรับ per domain และ refresh หลัง server รับ</td>
+<td>เปรียบเทียบ observed/received/rendered timestamps</td>
+</tr>
+<tr>
+<td>Load</td>
+<td>concurrent users, events/sites, daily operations และ peak profile</td>
+<td>load test พร้อมรายงาน response/error/resource usage</td>
+</tr>
+<tr>
+<td>Availability/recovery</td>
+<td>service window, downtime, RPO/RTO และ backup interval</td>
+<td>incident simulation และ restore rehearsal</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>severity, response/resolution, service hours และ escalation</td>
+<td>ตารางบริการและ incident records ตามสัญญา</td>
+</tr>
+</tbody></table></div></div>
+<p>ไม่กำหนด SLA/จำนวนผู้ใช้/ความจุจากการคาดเดา ค่าตารางนี้ต้องถูกเติมและรับรองใน baseline ของแพ็กเกจที่เกี่ยวข้อง มิฉะนั้นยังเปรียบเทียบราคาและตรวจรับคุณภาพส่วนนั้นไม่ได้</p>
+<h3 id="tor-subsection-10-5">10.5 ซอฟต์แวร์และเทคโนโลยีที่พบ/เสนอไว้</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-12">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 12" aria-describedby="table-hint-12"><table>
+<thead>
+<tr>
+<th>ชั้นระบบ</th>
+<th>ชื่อในหลักฐานเดิม</th>
+<th>สถานะสำหรับ TOR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ต้นแบบ UI</td>
+<td>HTML/CSS/JavaScript; React/Vite/TypeScript/Tailwind/Recharts ใน source บางโครงการ</td>
+<td>มี source/reference; ไม่ถือว่า framework ของทุกโปรแกรมถูกเลือกแล้ว</td>
+</tr>
+<tr>
+<td>Field frontend</td>
+<td>React PWA</td>
+<td>ข้อเสนอ S069/S070; ต้องพิสูจน์กับอุปกรณ์และ offline policy</td>
+</tr>
+<tr>
+<td>Local storage/runtime</td>
+<td>IndexedDB, Service Worker, Workbox/custom SW</td>
+<td>ข้อเสนอทางเทคนิค; ต้องพิสูจน์ persistence/version/key management</td>
+</tr>
+<tr>
+<td>Backend/data</td>
+<td>Supabase/PostgreSQL, Auth/Storage</td>
+<td>ข้อเสนอ prototype; ต้องตรวจ hosting/data/operations requirements ก่อนเลือก</td>
+</tr>
+<tr>
+<td>Hosting/source control</td>
+<td>Vercel/Netlify/GitHub; GitHub Pages สำหรับ static demo</td>
+<td>แยก demo hosting จาก hosting ของข้อมูลปฏิบัติการจริง</td>
+</tr>
+<tr>
+<td>Mapping/channels</td>
+<td>Map/GIS provider, SMS/USSD/LINE/email/push</td>
+<td>ยังต้องเลือก provider, quota, license, account และข้อตกลง</td>
+</tr>
+</tbody></table></div></div>
+<p>ให้ระบุเทคโนโลยีจริงหลัง architecture review และต้นทุนตลอดการใช้งาน ไม่บังคับซื้อผลิตภัณฑ์หรือผูกผู้ให้บริการจากรายชื่อในต้นแบบเพียงอย่างเดียว ผู้พัฒนาต้องส่ง dependency/license inventory และขั้นตอน build/deploy ที่ทีมรับช่วงทำซ้ำได้</p>
+<h2 id="tor-section-11">11. การเชื่อมต่อระบบภายนอก</h2>
+<div class="table-block"><p class="table-hint" id="table-hint-13">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 13" aria-describedby="table-hint-13"><table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>ขอบเขตที่เสนอ</th>
+<th>สิ่งที่ต้องมี</th>
+<th>การตรวจรับ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Field↔Backend↔Dashboard</td>
+<td>แกนระบบของ Phase 2</td>
+<td>API/schema, operation identity, auth และ acknowledgements</td>
+<td>ข้อมูลใหม่จาก field ไปถึงส่วนกลางจริง พร้อม retry/conflict</td>
+</tr>
+<tr>
+<td>Identity provider/SSO</td>
+<td>ทางเลือกเมื่อมีหลายองค์กร</td>
+<td>IdP owner/protocol/claim mapping/role authority</td>
+<td>sandbox/production ตาม agreement; ไม่ใช้ account mock แทน</td>
+</tr>
+<tr>
+<td>SMS/USSD</td>
+<td>ช่องทางรับสัญญาณหรือแจ้งเตือนระยะขยาย</td>
+<td>operator/provider, channel code, consent/policy, quota/cost และ fallback</td>
+<td>end-to-end กับ provider; แยก simulator results</td>
+</tr>
+<tr>
+<td>LINE/email/push</td>
+<td>ทางเลือกแจ้งเตือน</td>
+<td>channel owner/token, payload policy, delivery semantics</td>
+<td>ส่ง/ล้มเหลว/รับทราบตามขอบเขตที่ provider ตรวจได้</td>
+</tr>
+<tr>
+<td>Map/GIS/ข้อมูลสภาพพื้นที่</td>
+<td>layers ที่เลือก</td>
+<td>license/source, recency, coordinate system และ outage behavior</td>
+<td>source-to-layer mapping พร้อม unavailable/stale cases</td>
+</tr>
+<tr>
+<td>โรงพยาบาล/EMS</td>
+<td>ทางเลือกการประสานส่งต่อ</td>
+<td>protocol owner, accepted data, receiving workflow และ access</td>
+<td>มีผลตอบรับจากหน่วยรับ; mock และจริงแยกกัน</td>
+</tr>
+<tr>
+<td>ทะเบียนราษฎร์/แหล่งยืนยันบุคคล</td>
+<td>ทางเลือกนอก MVP</td>
+<td>การอนุญาตและ data contract จริง</td>
+<td>ข้อมูลและสิทธิ์ตามข้อตกลง; ไม่มีข้อตกลงยังไม่รวม live integration</td>
+</tr>
+<tr>
+<td>งบ/เงินช่วยเหลือ/ประกัน</td>
+<td>ทางเลือกเชื่อมแฟ้ม/ผลพิจารณา</td>
+<td>owner/criteria/API/authority/privacy</td>
+<td>สถานะส่งแฟ้มและสถานะตอบจากภายนอกแยกกัน</td>
+</tr>
+</tbody></table></div></div>
+<p>ไม่มีหลักฐานในคลังที่เพียงพอให้รับรองว่าการเชื่อมทุกหน่วยงานเกิดขึ้นแล้ว ให้ระบุเจ้าของ interface, endpoint, version, test environment, ค่าใช้บริการและคนจัดการบัญชีใน integration inventory ก่อนจ้างส่วนเชื่อมต่อ</p>
+<p>Interface contract ขั้นต่ำต้องมี payload/schema/version mapping, timeout/retry/rate limit, idempotency/correlation, delivery/acknowledgement semantics, partial/invalid responses, expected state เมื่อปลายทางล่ม, owner/escalation และ fallback การยืนยันว่าได้รับ payload ไม่เท่ากับผู้รับดำเนินงานหรืออนุมัติแล้ว</p>
+<h2 id="tor-section-12">12. สิ่งส่งมอบและแพ็กเกจงาน</h2>
+<h3 id="tor-subsection-12-1">12.1 สิ่งส่งมอบขั้นต่ำ</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-14">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 14" aria-describedby="table-hint-14"><table>
+<thead>
+<tr>
+<th>ระยะ</th>
+<th>สิ่งส่งมอบ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Phase 0</td>
+<td>baseline scope/in-out, actor/process/state/exception, authority/permission matrix, decision register, conceptual/data dictionary, architecture/options, integration inventory, estimation assumptions และ acceptance matrix</td>
+</tr>
+<tr>
+<td>Phase 1</td>
+<td>runnable offline slice, source/build guide, local data/outbox/revision model, prepared-device guide, fixtures และผล reopen/restart/storage/error tests</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>API/database/migrations, sync/conflict/dedup, dashboard/need/family policy implementation, logs, end-to-end/security/UAT reports, backup/restore/fallback และ pilot guide</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>intake/review/resource card, signal/snapshot rules, planning/mission/GIS/public-info ที่เลือก, authority/workflow และ tests ตามแพ็กเกจ</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>approved domain workflows, data contracts, receiving/stock/referral/procurement/evidence tests, manuals และ interface results เฉพาะส่วนที่จ้าง</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>production deployment, migration/recovery/rollback evidence, agreed load/security results, training/admin/operator guides, runbook, dependency/licenses และ support handover</td>
+</tr>
+</tbody></table></div></div>
+<p>ทุก release ต้องมี version, รายการ requirement ที่ครอบคลุม, known limitations, test environment/device/data, ผลผ่าน/ไม่ผ่าน และ issue ที่ยังค้าง ข้อมูลตัวอย่างต้องแยกจากข้อมูลจริงอย่างชัดเจน</p>
+<h3 id="tor-subsection-12-2">12.2 แพ็กเกจสำหรับพิจารณาจ้าง</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-15">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 15" aria-describedby="table-hint-15"><table>
+<thead>
+<tr>
+<th>แพ็กเกจ</th>
+<th>โมดูล/งานหลัก</th>
+<th>จุดตรวจรับ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PKG00 — วิเคราะห์และออก baseline</td>
+<td>Phase 0 และ D13</td>
+<td>เอกสารและเกณฑ์ผ่านก่อนพัฒนา</td>
+</tr>
+<tr>
+<td>PKG01 — แกนข้อมูลและ Field Offline</td>
+<td>FM01–FM04, CM01–CM02</td>
+<td>local persistence/count/privacy ตาม Phase 1</td>
+</tr>
+<tr>
+<td>PKG02 — MVP เชื่อมส่วนกลาง</td>
+<td>CM03–CM05, FM04 backend, FM05 in-app</td>
+<td>end-to-end multi-device และ UAT ตาม Phase 2</td>
+</tr>
+<tr>
+<td>PKG03 — Signals/Resource Intake</td>
+<td>XM01–XM03</td>
+<td>signal provenance/review/readiness/import</td>
+</tr>
+<tr>
+<td>PKG04 — Planning/Operations</td>
+<td>XM04–XM06, XM11 ถ้าเลือก</td>
+<td>authorized decisions→missions→field outcomes</td>
+</tr>
+<tr>
+<td>PKG05 — Logistics</td>
+<td>XM08</td>
+<td>receiving/allocation/delivery/stock reconciliation</td>
+</tr>
+<tr>
+<td>PKG06 — Medical Coordination</td>
+<td>XM07</td>
+<td>approved referral/handoff/access</td>
+</tr>
+<tr>
+<td>PKG07 — Procurement/Relief Evidence</td>
+<td>XM09/XM10 แยกราคาและเกณฑ์</td>
+<td>authorized workflow/evidence handoff</td>
+</tr>
+<tr>
+<td>PKG08 — Production/Operations</td>
+<td>Phase 5 และ integration ที่ตกลง</td>
+<td>agreed scale/security/recovery/support</td>
+</tr>
+</tbody></table></div></div>
+<p>แพ็กเกจเป็นข้อเสนอแยกงาน ไม่ใช่การกำหนดผู้รับจ้างหรือหน่วยงานผู้ซื้อ การแยกหลายทีมต้องมี data/API/event ID/authority/acceptance owner ร่วมกันก่อน เพื่อลดการสร้างทะเบียนและยอดที่ไม่เชื่อมกัน งานฐานที่ใช้ซ้ำคิดราคาและความรับผิดชอบให้ชัด ไม่คิดพัฒนาใหม่ทุกแพ็กเกจโดยไม่มีเหตุผล</p>
+<h2 id="tor-section-13">13. การตรวจรับและหลักฐานทดสอบ</h2>
+<h3 id="tor-subsection-13-1">13.1 กรณีหลักของ Phase 1–2</h3>
+<p>ตัวเลข 10 คน, น้ำ 8 ชั่วโมง และคำขอ 200 ขวดใช้เป็น <strong>scenario ตัวอย่างจากฐาน MVP</strong> ไม่ใช่ capacity/SLA หรือผลทดสอบที่ทำแล้ว จำนวนอย่างน้อย 2 เครื่องและกรณี failure ต่อไปนี้เป็นเกณฑ์ที่เสนอเพิ่มเพื่อพิสูจน์ความน่าเชื่อถือ</p>
+<div class="table-block"><p class="table-hint" id="table-hint-16">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 16" aria-describedby="table-hint-16"><table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>กรณี</th>
+<th>ผลที่คาดและหลักฐาน</th>
+<th>Gate</th>
+</tr>
+</thead>
+<tbody><tr id="tor-record-at01" data-record="AT01">
+<td>AT01</td>
+<td>เตรียมเครื่อง เลือกเหตุการณ์/จุด ปิดอินเทอร์เน็ต</td>
+<td>app shell และข้อมูลจุดเปิดได้; แสดง offline readiness จริง</td>
+<td>1</td>
+</tr>
+<tr id="tor-record-at02" data-record="AT02">
+<td>AT02</td>
+<td>ลงทะเบียนผู้มาถึงรวม 10 คนโดยข้อมูลส่วนบุคคลไม่ครบ</td>
+<td>transaction local สำเร็จ ข้อมูล/ยอดถูกต้อง; บัตร/มือถือไม่บังคับตามกฎ slice</td>
+<td>1</td>
+</tr>
+<tr id="tor-record-at03" data-record="AT03">
+<td>AT03</td>
+<td>ปิดแอป รีสตาร์ตเครื่อง เปิดใหม่ขณะ offline</td>
+<td>records, revisions, ยอดและคิวส่งยังอยู่; สถานะไม่ได้แต่งว่า synced</td>
+<td>1</td>
+</tr>
+<tr id="tor-record-at04" data-record="AT04">
+<td>AT04</td>
+<td>แก้ยอดกลุ่มและเติมข้อมูล person</td>
+<td>ไม่เกิดยอดบวกซ้ำ; มี before/after/actor/reason</td>
+<td>1–2</td>
+</tr>
+<tr id="tor-record-at05" data-record="AT05">
+<td>AT05</td>
+<td>บันทึก flag ขอความช่วยเหลือแพทย์ 1 คน</td>
+<td>ติดตามได้ตามสิทธิ์; ไม่แสดง diagnosis/safe อัตโนมัติ</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at06" data-record="AT06">
+<td>AT06</td>
+<td>น้ำเหลือประมาณ 8 ชั่วโมงและขอน้ำ 200 ขวด</td>
+<td>หน่วย ที่มา เวลา ฐานประมาณและคำขอแยกชัด</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at07" data-record="AT07">
+<td>AT07</td>
+<td>เปิดเน็ต ส่งส่วนกลาง; response หายหลัง server รับแล้ว; retry</td>
+<td>server มี logical operation เดียว; client แสดง receipt/ผล retry ถูกต้อง</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at08" data-record="AT08">
+<td>AT08</td>
+<td>ขาดสัญญาณหรือปิดแอประหว่างส่ง batch</td>
+<td>คิวไม่หาย; ส่งต่อ/ทบทวนได้; rejected/conflict items ไม่ถูกกลืน</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at09" data-record="AT09">
+<td>AT09</td>
+<td>2 เครื่องลงรายการที่อาจเป็นคนกลุ่มเดียวกัน</td>
+<td>เก็บหลักฐานสองฝั่ง แสดง possible duplicate และ review; ก่อนตัดสินแสดงยอดตาม counting policy</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at10" data-record="AT10">
+<td>AT10</td>
+<td>แก้ record เดียวกันคนละเครื่อง</td>
+<td>ใช้กฎ conflict ที่รับรอง มีผู้แก้และเหตุผล; ไม่ทับข้อมูลเงียบ ๆ</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at11" data-record="AT11">
+<td>AT11</td>
+<td>ตรวจยอดศูนย์และย้ายผู้พักระหว่างจุดตัวอย่าง</td>
+<td>record-level expected totals ตรง; ไม่ double-count transfer ตามกฎที่เลือก</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at12" data-record="AT12">
+<td>AT12</td>
+<td>ส่วนกลางดูจุดที่ offline/ข้อมูลเก่า</td>
+<td>แสดง last observation/receipt/sync และ unknown; ไม่อ้าง unsent queue ที่ไม่เคยรับ</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at13" data-record="AT13">
+<td>AT13</td>
+<td>ขอ 200 ส่ง 120 รับ 100 แล้วส่งเพิ่มเติม/ยกเลิกตามกรณี</td>
+<td>requested/dispatched/received/outstanding ถูกต้อง; completed ตามเงื่อนไขรับรอง</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at14" data-record="AT14">
+<td>AT14</td>
+<td>ญาติค้นชื่อซ้ำ/ใกล้เคียง/ยังไม่ส่ง/สถานะเก่า</td>
+<td>outcome ตรง response matrix; ไม่พบไม่สรุปอันตราย; safe มีผู้ยืนยันและเวลา</td>
+<td>2</td>
+</tr>
+<tr id="tor-record-at15" data-record="AT15">
+<td>AT15</td>
+<td>เปลี่ยน ID/เรียก API/เปิดไฟล์/export ด้วยผู้ไร้สิทธิ์</td>
+<td>ไม่หลุดข้อมูลข้าม org/event/site หรือข้อมูลอ่อนไหว</td>
+<td>1–2 ตามส่วนที่มี</td>
+</tr>
+<tr id="tor-record-at16" data-record="AT16">
+<td>AT16</td>
+<td>storage เต็ม/ไม่ได้เตรียมเครื่อง/ข้อมูลถูกล้าง/upgrade/เครื่องหาย</td>
+<td>ไม่แสดงบันทึกสำเร็จเมื่อไม่ได้บันทึก; แสดงข้อจำกัดและใช้ fallback/recovery ตามแผน</td>
+<td>1–2</td>
+</tr>
+<tr id="tor-record-at17" data-record="AT17">
+<td>AT17</td>
+<td>backup→restore และ operator handover</td>
+<td>restore ได้ตามขอบเขตที่ตกลง; count/need/status และ audit ตรง; ทีมใหม่เห็นเรื่องค้างและคู่มือ</td>
+<td>2; ยืนยัน scale อีกครั้งใน 5</td>
+</tr>
+<tr id="tor-record-at18" data-record="AT18">
+<td>AT18</td>
+<td>local-data protection/session lock/offline expiry/เครื่องหาย</td>
+<td>control และพฤติกรรมตรง protection/key/lock policy บนอุปกรณ์เป้าหมาย; sensitive data ไม่เปิดเกิน threat model ที่รับรอง; ระบุข้อจำกัดเมื่อเครื่องยัง offline</td>
+<td>1–2</td>
+</tr>
+<tr id="tor-record-at19" data-record="AT19">
+<td>AT19</td>
+<td>trace create/edit/status/merge/sync/permission/export รวม offline→sync</td>
+<td>actor/source/object/revision/time/reason ครบตาม action; บัญชีปกติแก้ audit ย้อนหลังไม่ได้; trace กลับ record ต้นทางได้</td>
+<td>1–2 ตาม actions ที่มี</td>
+</tr>
+<tr id="tor-record-at20" data-record="AT20">
+<td>AT20</td>
+<td>retention/ลดข้อมูลตามอายุและวัตถุประสงค์ที่เลือก</td>
+<td>local/server/files/exports/backups ปฏิบัติตาม matrix หรือบันทึกข้อยกเว้น/ผู้รับผิดชอบ; ไม่อ้างว่าสำเนาที่ควบคุมไม่ได้ถูกลบแล้ว</td>
+<td>2; ขยายใน 5</td>
+</tr>
+</tbody></table></div></div>
+<h3 id="tor-subsection-13-2">13.2 กรณีส่วนขยาย</h3>
+<p>แต่ละ XM ใช้เกณฑ์ในข้อ 8 และต้องมี traceability requirement→scenario→expected result→evidence ครอบคลุมเส้นทางปกติ ข้อมูลไม่ครบ สิทธิ์ไม่พอ ช่องทางขัดข้อง การแก้ไข/ยกเลิก และการส่งซ้ำ หากเลือก Scout/Pre-setup ให้เพิ่ม scenario รายงาน offline, พิกัดหรือที่มาไม่ครบ และ checklist ยังไม่ผ่าน เพื่อให้ผู้รับผิดชอบประเมินก่อนเปิดจุด Integration จริงต้องตรวจ end-to-end กับระบบปลายทาง รวม invalid/partial response และ outage ตาม contract ไม่รับจาก simulator เพียงอย่างเดียว</p>
+<h3 id="tor-subsection-13-3">13.3 เงื่อนไขรับมอบที่เสนอ</h3>
+<ol>
+<li>เกณฑ์ของแพ็กเกจที่รับรองไว้ผ่านครบ พร้อมหลักฐานตรวจซ้ำได้</li>
+<li>ข้อบกพร่องที่ทำให้ข้อมูลสูญหาย ยอด/สถานะสำคัญผิด สิทธิ์หลุด หรือปฏิบัติงานตาม scenario ไม่ได้ ต้องแก้ก่อนรับมอบส่วนนั้น</li>
+<li>ปัญหาที่เหลือต้องมีรายการผลกระทบ วิธีหลีกเลี่ยง เจ้าของและกำหนดแก้ที่คณะผู้รับมอบยอมรับ มิใช่ซ่อนใน known issues</li>
+<li>ผู้รับผิดชอบงานจริงร่วม UAT; technical test ผ่านอย่างเดียวไม่พอรับรองกระบวนการภาคสนาม</li>
+<li>การทดลองข้อมูลจริงต้องผ่านเงื่อนไข owner/policy/site/device/support ก่อนตาม Phase 0–2</li>
+</ol>
+<p>ผู้มีอำนาจลงนามตรวจรับ ระยะเวลาตรวจและแก้ไข เงื่อนไขชำระเงิน และข้อสัญญาต้องกำหนดในฉบับจัดจ้างตามข้อ 18</p>
+<h2 id="tor-section-14">14. การบริหารโครงการและความรับผิดชอบ</h2>
+<h3 id="tor-subsection-14-1">14.1 บทบาทที่ต้องมี</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-17">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 17" aria-describedby="table-hint-17"><table>
+<thead>
+<tr>
+<th>บทบาท</th>
+<th>ความรับผิดชอบขั้นต่ำ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Project/Product Owner</td>
+<td>รับรองปัญหา scope ลำดับงานและการเปลี่ยนขอบเขต</td>
+</tr>
+<tr>
+<td>Operational/Domain Owner</td>
+<td>รับรอง workflow, authority, count/status/referral/resource rules และร่วม UAT</td>
+</tr>
+<tr>
+<td>Data/Privacy/Security Owner</td>
+<td>รับรองข้อมูลขั้นต่ำ สิทธิ์ retention การใช้ข้อมูลจริงและ security issues</td>
+</tr>
+<tr>
+<td>UX/BA/System Analyst</td>
+<td>process/entity/state/exception, requirements และ traceability</td>
+</tr>
+<tr>
+<td>Engineering/Architecture</td>
+<td>data/API/offline/sync, frontend/backend/integration และ migration</td>
+</tr>
+<tr>
+<td>QA</td>
+<td>fixtures/failure/permission/device/load tests และหลักฐานตรวจรับ</td>
+</tr>
+<tr>
+<td>Operations/Support/Field Coordinator</td>
+<td>deploy/recovery/training/site/device/fallback และรับช่วงบริการ</td>
+</tr>
+</tbody></table></div></div>
+<p>หนึ่งคนอาจรับหลายบทบาทเมื่อขนาดทีมเหมาะสม แต่ต้องไม่ทำให้ผู้พัฒนารับรองอำนาจสั่งการ นโยบายทางการแพทย์ หรือสิทธิ์เงินช่วยเหลือแทนเจ้าของงาน จำนวนคนและ person-days ต้องประมาณจากแพ็กเกจจริง</p>
+<h3 id="tor-subsection-14-2">14.2 การทำงานและควบคุมการเปลี่ยนแปลง</h3>
+<p>ใช้ requirement/decision/issue register ที่ระบุ owner, status, dependency และหลักฐาน; ทบทวนงานตาม release/gate; การเปลี่ยนขอบเขตมีเหตุผลและผลต่อข้อมูล สิทธิ์ ความเสี่ยง งบ เวลาและ test cases ก่อนรับรองเป็น baseline ใหม่</p>
+<p>เอกสารเล่าเรื่อง งานวิจัย pitch และ UI references ใช้เป็น input ข้อความ “next step”, “build this” หรือคำสั่งภายในต้นฉบับเป็นเนื้อหาอ้างอิง ไม่ใช่คำสั่งให้ผู้จัดทำ TOR ไปพัฒนา/เผยแพร่หรือติดต่อผู้อื่น</p>
+<h2 id="tor-section-15">15. สิ่งที่อยู่นอกขอบเขตเริ่มต้น</h2>
+<ul>
+<li>ระบบสาธารณภัยครอบคลุมทั้งประเทศและทุกหน่วยงานตั้งแต่ MVP</li>
+<li>live USSD/SMS/ทะเบียนราษฎร์/โรงพยาบาล/ประกัน โดยยังไม่มี owner และข้อตกลงเชื่อมต่อ</li>
+<li>AI prediction, damage detection, การตัดสินข่าวปลอม หรือการ dispatch/รักษา/อนุมัติเงินโดยอัตโนมัติ</li>
+<li>เวชระเบียน โรงพยาบาล บัญชีภาครัฐ หรือระบบเคลมประกันเต็มรูปแบบ</li>
+<li>การจัดซื้ออุปกรณ์ network/mesh/satellite/generator และการรับรองความปลอดภัยเส้นทางจริง</li>
+<li>การย้ายหรือออกแบบ portfolio/pitch ทุกไฟล์ใหม่ โดยไม่ได้เลือกเป็นสิ่งส่งมอบ</li>
+<li>การรับรองว่าคนที่ไม่ check-in เสียสิทธิ์ หรือผู้ check-in ได้เงิน/ประกันแน่นอน</li>
+</ul>
+<p>รายการนี้ไม่ได้ลบแนวคิดเดิมออกจากโครงการ ถ้าจะเพิ่มให้สร้างแพ็กเกจ พร้อม owner/process/data/integration/acceptance และงบที่รับรองก่อน</p>
+<h2 id="tor-section-16">16. ความเสี่ยงและเงื่อนไขควบคุม</h2>
+<div class="table-block"><p class="table-hint" id="table-hint-18">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 18" aria-describedby="table-hint-18"><table>
+<thead>
+<tr>
+<th>ความเสี่ยง</th>
+<th>ผลกระทบ</th>
+<th>การจัดการใน TOR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ขอบเขตสองแนวเริ่มต้นปนกัน</td>
+<td>จ้างงานที่ไม่ตอบ pilot จริง</td>
+<td>Q01 + baseline Phase 0</td>
+</tr>
+<tr>
+<td>นับ group/household/person/record ซ้ำ</td>
+<td>จัดสรรของและ capacity ผิด</td>
+<td>counting policy, linkage และ fixtures CM01/CM02</td>
+</tr>
+<tr>
+<td>บันทึกได้แต่ persistence/sync ไม่จริง</td>
+<td>ข้อมูลหายหรือส่วนกลางเข้าใจผิด</td>
+<td>AT03/AT07/AT08 และ server receipts</td>
+</tr>
+<tr>
+<td>safe/complete/ready เกินหลักฐาน</td>
+<td>ตัดสินใจและสื่อสารผิด</td>
+<td>แยก state/authority/as-of ตามโมดูล</td>
+</tr>
+<tr>
+<td>ต้อง review ทุกเรื่องโดยไม่มีเจ้าของ</td>
+<td>คิวสะสมและข้อมูลเก่า</td>
+<td>review tier/owner/escalation และ provisional state</td>
+</tr>
+<tr>
+<td>สิทธิ์หรือไฟล์หลุดข้ามขอบเขต</td>
+<td>ข้อมูลคนและภารกิจรั่ว</td>
+<td>API/file/export negative tests และ minimal data</td>
+</tr>
+<tr>
+<td>external integration ไม่ได้รับอนุญาต/ล่าช้า</td>
+<td>ส่งมอบ end-to-end ไม่ได้</td>
+<td>ตรึง interface agreement และแยก mock/live</td>
+</tr>
+<tr>
+<td>ไม่มีหน่วยงานรับช่วงหรือ fallback</td>
+<td>ใช้จริงและดูแลต่อไม่ได้</td>
+<td>D13, training/runbook/site/device/support owner</td>
+</tr>
+<tr>
+<td>ตีความไฟล์สาธิตเป็นผลภาคสนาม</td>
+<td>TOR ผูกกับ readiness ที่ไม่มีหลักฐาน</td>
+<td>source/readiness register; gate ตามผลทดสอบ</td>
+</tr>
+</tbody></table></div></div>
+<h2 id="tor-section-17">17. เรื่องที่ต้องตัดสินใจและข้อมูลที่ยังขาด</h2>
+<h3 id="tor-subsection-17-1">17.1 เรื่องเดิม Q01–Q08</h3>
+<div class="table-block"><p class="table-hint" id="table-hint-19">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 19" aria-describedby="table-hint-19"><table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>เรื่อง</th>
+<th>ต้องได้คำตอบอะไร</th>
+<th>ก่อนเริ่มส่วนใด</th>
+</tr>
+</thead>
+<tbody><tr id="tor-record-q01" data-record="Q01">
+<td>Q01</td>
+<td>จุดเริ่ม</td>
+<td>shelter-first หรือ resource-first, scenario/site และรายการไม่ทำ</td>
+<td>ล็อกแพ็กเกจแรก</td>
+</tr>
+<tr id="tor-record-q02" data-record="Q02">
+<td>Q02</td>
+<td>ข้อมูลขั้นต่ำและรหัส</td>
+<td>required/optional/unknown, group/person code/internal identity และคนไม่มีบัตร</td>
+<td>ออก form/schema</td>
+</tr>
+<tr id="tor-record-q03" data-record="Q03">
+<td>Q03</td>
+<td>ครอบครัวเห็นอะไร</td>
+<td>ใครค้นได้ วิธีตรวจสัมพันธ์ ผลตอบ ผู้ยืนยัน safe และข้อมูลเปิดเผย</td>
+<td>เปิด CM05 ด้วยข้อมูลจริง</td>
+</tr>
+<tr id="tor-record-q04" data-record="Q04">
+<td>Q04</td>
+<td>นับคนจาก record ใด</td>
+<td>arrival group/household/person/stay/transfer/revision/dedup policy</td>
+<td>ใช้ยอดตัดสินใจ</td>
+</tr>
+<tr id="tor-record-q05" data-record="Q05">
+<td>Q05</td>
+<td>offline พร้อมใช้อย่างไร</td>
+<td>prepared-device, first use, storage/version/key และ recovery</td>
+<td>รับรอง Field Offline</td>
+</tr>
+<tr id="tor-record-q06" data-record="Q06">
+<td>Q06</td>
+<td>รูป/ของคงเหลือเก็บระดับไหน</td>
+<td>photo in/out, snapshot vs ledger, หน่วย/ฐาน burn rate</td>
+<td>CM03/attachments/XM08</td>
+</tr>
+<tr id="tor-record-q07" data-record="Q07">
+<td>Q07</td>
+<td>หลักฐานเชื่อมสิทธิ์อย่างไร</td>
+<td>owner/criteria/purpose/interface และภาษาที่ไม่รับประกันสิทธิ์</td>
+<td>XM09/XM10</td>
+</tr>
+<tr id="tor-record-q08" data-record="Q08">
+<td>Q08</td>
+<td>ฉบับหลักและเจ้าของ</td>
+<td>ชื่อทางการ source baseline หน่วยงานรับผิดชอบ และผู้รับช่วง</td>
+<td>ตรึง TOR/ใช้ข้อมูลจริง</td>
+</tr>
+</tbody></table></div></div>
+<p>ในคลังที่อ่านทั้ง 8 เรื่องยังเป็น <strong>“ยังไม่ตัดสินใจ”</strong> การทำ TOR ครั้งนี้ไม่เปลี่ยนสถานะโน้ตต้นทางแทนผู้มีอำนาจ</p>
+<h3 id="tor-subsection-17-2">17.2 ข้อมูลเพิ่มเติมที่ต้องเก็บ</h3>
+<p>หน่วยงานผู้จ้าง/เจ้าของระบบและข้อมูล; pilot site/ผู้ร่วมงาน; ปริมาณคน/จุด/เครื่อง/ข้อมูล; ชุดอุปกรณ์และสัญญาณ; ระยะเวลาที่ต้อง offline; hosting location/provider; วิธีให้สิทธิ์ offline; ระยะเก็บข้อมูล; หน่วยรับส่งต่อ/ผู้รับแฟ้ม; live API/channel access; งบและต้นทุนดูแล; ผู้ตรวจรับ; และเป้าหมาย SLA/support</p>
+<p>ข้อมูลขาดให้ลงทะเบียนพร้อมประเภท <strong>ยังไม่เก็บ / มีแต่เข้าไม่ถึง / ได้แต่ใช้ไม่ได้ / เป็นประมาณการ</strong> ระบุแหล่ง ผู้ตามข้อมูล ผู้ใช้ข้อมูล วันปรับปรุง และผลต่อการตัดสินใจ</p>
+<h2 id="tor-section-18">18. ข้อมูลที่ต้องเติมก่อนใช้จัดจ้าง</h2>
+<div class="table-block"><p class="table-hint" id="table-hint-20">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 20" aria-describedby="table-hint-20"><table>
+<thead>
+<tr>
+<th>รายการ</th>
+<th>สถานะร่างนี้</th>
+<th>ผู้รับผิดชอบที่ต้องกำหนด</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ชื่อทางการ/หน่วยงานผู้จ้าง/เจ้าของ</td>
+<td>ยังไม่มีข้อยืนยัน</td>
+<td>เจ้าของโครงการ</td>
+</tr>
+<tr>
+<td>แพ็กเกจที่รวมจริงและ acceptance baseline</td>
+<td>มีข้อเสนอ PKG00–08</td>
+<td>เจ้าของงานและผู้ตรวจรับ</td>
+</tr>
+<tr>
+<td>ระยะเวลาเริ่ม/จบและ milestone</td>
+<td>ยังไม่กำหนดวันหรือจำนวนวัน</td>
+<td>เจ้าของโครงการร่วมทีมประมาณงาน</td>
+</tr>
+<tr>
+<td>งบประมาณ/เพดาน/รายการต้นทุน</td>
+<td>ยังไม่มีฐานราคา</td>
+<td>เจ้าของงบ</td>
+</tr>
+<tr>
+<td>งวดเงิน/เงื่อนไขจ่าย/ช่วงแก้ไข</td>
+<td>ยังไม่กำหนด</td>
+<td>หน่วยงานผู้จ้าง/ผู้ดูแลสัญญา</td>
+</tr>
+<tr>
+<td>สิทธิ์ใน source/data/บัญชี/การรับช่วง</td>
+<td>เสนอให้ส่ง source/docs/operations; สิทธิ์ตามสัญญายังไม่กำหนด</td>
+<td>เจ้าของระบบและผู้ดูแลสัญญา</td>
+</tr>
+<tr>
+<td>hosting/license/API/device/communication fees</td>
+<td>เป็นค่าใช้จ่ายที่ต้องแจกแจง</td>
+<td>เจ้าของระบบ/งบ</td>
+</tr>
+<tr>
+<td>warranty/support/service hours/SLA</td>
+<td>ยังไม่กำหนดค่าตัวเลข</td>
+<td>เจ้าของบริการ</td>
+</tr>
+<tr>
+<td>ผู้ลงนาม/คณะตรวจรับ/วันตรวจ</td>
+<td>ยังไม่แต่งตั้ง</td>
+<td>หน่วยงานผู้จ้าง</td>
+</tr>
+<tr>
+<td>เงื่อนไขข้อมูลและ interface ของหน่วยงานภายนอก</td>
+<td>ยังไม่ยืนยันความตกลง</td>
+<td>data/interface/domain owners</td>
+</tr>
+</tbody></table></div></div>
+<p>ร่างนี้ใช้พิจารณาภาพรวมและแยกงานได้ ก่อนใช้เป็นฉบับประกาศจัดจ้างต้องเติมและรับรองรายการที่เกี่ยวกับแพ็กเกจนั้น หากมีรูปแบบ TOR หรือข้อสัญญาของหน่วยงาน ให้ปรับเข้ารูปแบบนั้นและให้ผู้รับผิดชอบตรวจ ไม่ถือว่าการรวบรวมเชิงเทคนิคนี้รับรองข้อกฎหมาย/ระเบียบการจัดซื้อ</p>
+<h2 id="tor-section-19">19. แหล่งอ้างอิงสำคัญและการดำเนินการถัดไป</h2>
+<h3 id="tor-subsection-19-1">19.1 แหล่งอ้างอิง</h3>
+<p>รหัส S หมายถึงไฟล์ใน <code>90_Originals/</code> ของคลัง LCCS; source card อยู่ <code>05_Sources/</code> รายชื่อและระดับการอ่านครบอยู่ในภาคผนวก รหัส D/Q/T อยู่ <code>02_Domains/</code>, <code>04_Decisions/</code>, <code>03_Work/</code> ตามลำดับ</p>
+<div class="table-block"><p class="table-hint" id="table-hint-21">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 21" aria-describedby="table-hint-21"><table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>เอกสาร</th>
+<th>ใช้ประกอบ</th>
+</tr>
+</thead>
+<tbody><tr id="tor-record-s038" data-record="S038">
+<td>S038</td>
+<td>LCCS_Rapid_Onboarding_v0.1.md</td>
+<td>intake types/resources/needs-first</td>
+</tr>
+<tr id="tor-record-s041" data-record="S041">
+<td>S041</td>
+<td>LCCS_USSD_Response_Protocol_v0.1.md</td>
+<td>raw signal และ care-load proposal</td>
+</tr>
+<tr id="tor-record-s049" data-record="S049">
+<td>S049</td>
+<td>LCCS MVP — Domain - Actor - Module Matrix.pdf</td>
+<td>14 module concepts, actors, API/security</td>
+</tr>
+<tr id="tor-record-s050" data-record="S050">
+<td>S050</td>
+<td>LCCS Research.md</td>
+<td>แนวทางอธิบาย planning process; ยังต้องทบทวนกับ domain owner</td>
+</tr>
+<tr id="tor-record-s051" data-record="S051">
+<td>S051</td>
+<td>LCCS Strategic UX Integration.pdf</td>
+<td>phase/UX direction เดิม; ไม่รับรองคำอ้าง readiness/standard</td>
+</tr>
+<tr id="tor-record-s067" data-record="S067">
+<td>S067</td>
+<td>LCCS_Journey_PreRead3.md</td>
+<td>journey shelter/registration/family</td>
+</tr>
+<tr id="tor-record-s069" data-record="S069">
+<td>S069</td>
+<td>LCCS_MVP_PACK (1).md</td>
+<td>shelter-first scope, 9 must-have, A–F, scenario</td>
+</tr>
+<tr id="tor-record-s070" data-record="S070">
+<td>S070</td>
+<td>LCCS_MVP_System_Relationship_For_Vut.md</td>
+<td>field-local-sync-backend-dashboard-family</td>
+</tr>
+<tr id="tor-record-s072" data-record="S072">
+<td>S072</td>
+<td>LCCS_Project_Collected_Notes_v0.2.md</td>
+<td>human roles, system layers และภาพขยาย</td>
+</tr>
+<tr id="tor-record-s073" data-record="S073">
+<td>S073</td>
+<td>LCCS_Project_Size_and_Scope_v0.1.md</td>
+<td>resource-first, full modules และ package proposal</td>
+</tr>
+<tr id="tor-record-s075" data-record="S075">
+<td>S075</td>
+<td>LCCS_Service_Blueprint.pdf</td>
+<td>11 nodes, catering/WASH, handover และ resilience</td>
+</tr>
+<tr id="tor-record-s077" data-record="S077">
+<td>S077</td>
+<td>LCCS_Summary.md</td>
+<td>สองขาปฏิบัติการและ unknowns; ไม่รับรองตัวเลข/สิทธิ์</td>
+</tr>
+</tbody></table></div></div>
+<p>โน้ต <code>00 - เริ่มที่นี่.md</code>, <code>01_Overview/*</code>, <code>02_Domains/*</code>, <code>03_Work/01 - งานทั้งหมด 36 ชุด.md</code>, <code>04_Decisions/*</code> และ <code>99_Admin/*</code> เป็นแหล่งจัดหมวดและตรวจสถานะ working ของคลัง ไม่ใช่การอนุมัติจากหน่วยงานภายนอก</p>
+<h3 id="tor-subsection-19-2">19.2 การดำเนินการถัดไป</h3>
+<p>ใช้ร่างนี้ทบทวน <strong>Q01 จุดเริ่ม และ Q08 เจ้าของ/ฉบับหลัก</strong> ก่อน จากนั้นออก baseline ของ <strong>PKG00–PKG02</strong> หรือชุด resource-first ที่เลือก โดยปิดข้อมูลขั้นต่ำ วิธีนับ ความพร้อม offline และสิทธิ์ครอบครัวที่เกี่ยวข้อง จึงประมาณงบ เวลา และเงื่อนไขตรวจรับตามสัญญาได้ งานขยายคงเห็นในภาพรวมแต่เลือกจ้างเมื่อ prerequisites ของส่วนนั้นพร้อม</p>
+<p><strong>ประวัติเอกสาร:</strong> v0.1 จัดทำจากคลังเดิมเพื่อรวบรวม TOR ภาพรวมเป็น Markdown เมื่อ 2026-10-04; ไม่แก้ไขต้นฉบับ ไม่พัฒนา/เชื่อมต่อ/เผยแพร่ระบบ และไม่รับรองผลทดลองที่ยังไม่มีหลักฐาน</p>
+</article>
+<article class="document" id="appendix-document" aria-label="ภาคผนวก"><div class="document-label"><span>02 / ภาคผนวกงานและหลักฐาน</span><a href="evidence.md" download>ดาวน์โหลด ภาคผนวก (.md)</a></div><p class="source-note">ทะเบียนนี้แสดงชื่อและตำแหน่งไฟล์เพื่อใช้อ้างอิง หลักฐานต้นฉบับอยู่ในคลังภายใน และไม่ได้แนบไฟล์ต้นฉบับ 77 รายการไว้บนเว็บ</p><h1 id="appendix-title">LCCS TOR — ภาคผนวก งานและหลักฐาน</h1>
+<p><a href="#tor-title">กลับไป TOR หลัก</a></p>
+<p>ภาคผนวกนี้เก็บที่มาของพื้นที่งาน โมดูล โปรแกรม/ต้นแบบ และรายการไฟล์ที่เห็นในกราฟ เพื่อย้อนตรวจขอบเขตได้ ใช้แผน Phase และรหัส FM/CM/XM/PRG ใน TOR หลักเป็นแผนเสนอเดียวกัน ส่วน D/Q/T/S เป็นรหัสในคลังเดิม ไม่ได้ถือว่ารายการใดอนุมัติพัฒนาแล้ว</p>
+<p>คลังต้นทาง: <code>LCCS (คลังภายใน)</code><br>วันจัดทำภาคผนวก: 2026-10-04<br>ฐาน manifest เดิม: 2026-09-13</p>
+<h2 id="appendix-section-a">A. วิธีรวมไฟล์และขอบเขตการตรวจ</h2>
+<ul>
+<li>ฐานเดิมมี 112 ตำแหน่งต้นทาง รวมเป็น 77 เนื้อหาไม่ซ้ำ และ 35 สำเนาซ้ำ; นับตาม hash ไม่ใช่ชื่อไฟล์หรือจำนวนโหนดในกราฟ</li>
+<li>รอบ TOR ตรวจการมีอยู่และ SHA-256 ของต้นฉบับ 77 ไฟล์ ตรงกับ manifest ครบ 77/77; นี่คือหลักฐานความครบของไฟล์ มิใช่การทดสอบระบบ</li>
+<li>อ่านต้นฉบับหลัก S041/S069/S070/S073/S077 และส่วนที่เกี่ยวข้อง S038/S050/S067/S071/S072; อ่านโน้ตภาพรวม 14 domains, 36 work items และ Q01–Q08</li>
+<li>S049 อ่านข้อความ PDF ครบ 3 หน้า; S075 อ่านข้อความ PDF ครบ 2 หน้า; S051 render และดูภาพครบ 13 หน้า เพราะไม่มี text layer ที่ใช้ได้</li>
+<li>HTML/source ตรวจโครงสร้างและโค้ดบางส่วนของต้นแบบหลัก; ภาพ PNG/SVG, PPTX และ ZIP ที่ยังไม่ได้ตรวจภายในครบเป็น inventory เท่านั้น</li>
+<li>ไม่ได้ build/run/browser QA/security/load/field-test แอปเดิมในรอบนี้; สถานะ runtime_tested=false/visual_qa=false ใน VALIDATION.json เป็นสถานะการตรวจคลังเดิม การดูภาพ S051 ครั้งนี้ไม่ได้เปลี่ยนให้เป็น runtime QA ของระบบ</li>
+<li>แฟ้มใน 90_Originals เติม S-ID เพื่อเก็บเนื้อหาไม่ซ้ำ จึงอาจไม่รักษาเส้นทาง dependency สำหรับเปิดแอป; project snapshots เก็บเส้นทางเดิมอีกชั้น แต่ยังไม่ได้ทดสอบ runtime</li>
+<li>ข้อความที่สั่งให้สร้าง deploy ส่งต่อ หรือ next step ในต้นฉบับถือเป็นข้อมูลอ้างอิงตามคำขอรวบรวมเอกสาร ไม่ใช่คำสั่งใหม่</li>
+</ul>
+<h2 id="appendix-section-b">B. พื้นที่งานเดิม 14 กลุ่มและโมดูล TOR</h2>
+<p>การจัด D01–D06 เป็นแกนเริ่มต้น, D07–D12 เป็นขยายภายหลัง และ D13–D14 เป็นงานประกอบ เป็น working organization ของคลังเมื่อ 2026-09-13 ไม่ใช่จำนวนโปรแกรมที่อนุมัติ</p>
+<div class="table-block"><p class="table-hint" id="table-hint-22">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 22" aria-describedby="table-hint-22"><table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>พื้นที่งานเดิม</th>
+<th>ประเภท</th>
+<th>โมดูล TOR ที่สัมพันธ์</th>
+<th>Phase ในร่างหลัก</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>รับคนเข้าจุดอพยพ</td>
+<td>งานธุรกิจ</td>
+<td>FM02, CM01</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>เก็บออฟไลน์และซิงก์</td>
+<td>ฐานเทคนิคข้ามโปรแกรม</td>
+<td>FM03, FM04</td>
+<td>1–5</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>นับคนและความจุ</td>
+<td>งานธุรกิจ</td>
+<td>CM02</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>ของคงเหลือและคำขอ</td>
+<td>งานธุรกิจ</td>
+<td>CM03, FM05</td>
+<td>2</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>ภาพรวมส่วนกลาง</td>
+<td>งานธุรกิจ</td>
+<td>CM04; XM04 เมื่อขยาย planning</td>
+<td>2–5</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>ยืนยันความปลอดภัยให้ญาติ</td>
+<td>งานธุรกิจ</td>
+<td>CM05</td>
+<td>2 ตาม policy gate</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>สัญญาณก่อนตั้ง ICP</td>
+<td>งานธุรกิจ</td>
+<td>XM01</td>
+<td>3A</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>รับผู้ช่วยและทรัพยากร</td>
+<td>งานธุรกิจ</td>
+<td>XM02, XM03</td>
+<td>3A</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>ภารกิจและภาพพื้นที่</td>
+<td>งานธุรกิจ</td>
+<td>XM04, XM05, XM06; FM05; XM11 สื่อสารที่รับรอง</td>
+<td>3B</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>การแพทย์และส่งต่อ</td>
+<td>งานธุรกิจ</td>
+<td>XM07</td>
+<td>4 แบบมี owner</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>ของบริจาคและโลจิสติกส์</td>
+<td>งานธุรกิจ</td>
+<td>XM08; เชื่อม CM03/XM02</td>
+<td>4; intake offer เริ่ม 3A</td>
+</tr>
+<tr>
+<td>D12</td>
+<td>เงินช่วยเหลือ ประกัน และจัดซื้อ</td>
+<td>งานธุรกิจ</td>
+<td>XM09, XM10</td>
+<td>4 ตาม owner/interface</td>
+</tr>
+<tr>
+<td>D13</td>
+<td>เจ้าของระบบและการทดลองใช้</td>
+<td>Governance/Pilot</td>
+<td>งานบริหารทุกระยะ; FM01–FM03 และ operations</td>
+<td>0–5</td>
+</tr>
+<tr>
+<td>D14</td>
+<td>เรื่องเล่า งานวิจัย และพอร์ต</td>
+<td>Research/Communication</td>
+<td>งานประกอบตามที่เลือก; ไม่สร้างโปรแกรมใหม่จากทุกไฟล์</td>
+<td>0 และรายระยะ</td>
+</tr>
+</tbody></table></div></div>
+<p>ประเภทสังเคราะห์: 11 พื้นที่ธุรกิจ + 1 ฐานเทคนิค + 2 งานประกอบ รายการเต็มจากโน้ตเดิมมีดังนี้</p>
+<div class="table-block"><p class="table-hint" id="table-hint-23">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 23" aria-describedby="table-hint-23"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>พื้นที่งานในคลัง</th>
+<th>ประเภทที่เสนอสำหรับ TOR</th>
+<th>สิ่งที่มีตามโน้ตต้นทาง</th>
+<th>ช่องว่างที่ต้องปิดก่อนผูกสัญญา</th>
+<th>หลักฐานตั้งต้น</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>รับคนเข้าจุดอพยพ</td>
+<td>Business: รับคน/ครัวเรือนและประวัติเข้าออก</td>
+<td>Pre-Read, MVP Pack, HTML จำลอง</td>
+<td>แยก Person/Household/Check-in; ไม่มีบัตร/วันเกิด; ย้ายออก</td>
+<td>S069</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>เก็บออฟไลน์และซิงก์</td>
+<td>Technical foundation ใช้ข้ามโปรแกรม</td>
+<td>Architecture และ state proposal; ไม่พบ implementation ใน source ที่ค้นตามโน้ต</td>
+<td>เตรียมเครื่อง, durable save, idempotency, retry, conflict, recovery</td>
+<td>S070</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>นับคนและความจุ</td>
+<td>Business: occupancy/capacity</td>
+<td>แบบข้อมูลและหน้าตัวอย่างจำนวนคน</td>
+<td>แหล่งยอดเดียว; ไม่รวม household/person ซ้ำ; ย้ายจุด</td>
+<td>S069</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>ของคงเหลือและคำขอ</td>
+<td>Business: stock status/need request ระดับจุด</td>
+<td>Schema, statuses, widgets</td>
+<td>หน่วย, consumption assumptions, สถานะคำขอ, แยกคำขอจากการส่งจริง</td>
+<td>S069</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>ภาพรวมส่วนกลาง</td>
+<td>Business: common operational picture/decision support</td>
+<td>แนวคิด dashboard; fiscal board แยกงาน</td>
+<td>เชื่อมข้อมูลจริง, last sync, stale/unknown, สิทธิ์ต่อจุด</td>
+<td>S070</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>ยืนยันความปลอดภัยให้ญาติ</td>
+<td>Business: controlled family confirmation</td>
+<td>HTML ผลสำเร็จรูปและข้อเสนอ visibility ต่างระดับ</td>
+<td>ผู้ยืนยัน, สิทธิ์/ผลค้น, ไม่พบเพราะไม่ sync; check-in ไม่เท่ากับปลอดภัยอัตโนมัติ</td>
+<td>S067</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>สัญญาณก่อนตั้ง ICP</td>
+<td>Business: early signal/care load</td>
+<td>Protocol, phone simulator, scenario walkthrough</td>
+<td>ช่องทางจริง, รายงานซ้ำไม่ใช่จำนวนคน, confidence, ไม่ตอบกลับ</td>
+<td>S041</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>รับผู้ช่วยและทรัพยากร</td>
+<td>Business: resource onboarding/readiness</td>
+<td>เอกสารละเอียด, activity diagrams, volunteer/skill coordinator demos</td>
+<td>เชื่อมหน้าจอจริง, verification แยก readiness, เลือก intake types</td>
+<td>S038</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>ภารกิจและภาพพื้นที่</td>
+<td>Business: mission/field situation</td>
+<td>Concept, GIS illustration, scenario, resource board</td>
+<td>ผู้มีอำนาจ/เจ้าของภารกิจ, ส่งต่อ, สถานะ, พิกัด/เส้นทาง, อายุข้อมูล</td>
+<td>S072</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>การแพทย์และส่งต่อ</td>
+<td>Business: medical handoff เมื่อผู้ปฏิบัติงานรับรอง</td>
+<td>แนวคิด triage/hospital coordination; MVP มีเพียง flags</td>
+<td>แยก care flag จาก clinical workflow; ผู้รับผิดชอบรับส่งต่อ</td>
+<td>S072</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>ของบริจาคและโลจิสติกส์</td>
+<td>Business: donation lot/match/delivery</td>
+<td>Supply-lot onboarding และ support workflow</td>
+<td>หน่วย, reservation, partial delivery, expiry, proof of receipt</td>
+<td>S072</td>
+</tr>
+<tr>
+<td>D12</td>
+<td>เงินช่วยเหลือ ประกัน และจัดซื้อ</td>
+<td>Business: evidence/agency process integration</td>
+<td>Narrative และ fiscal mock data; MVP ตัดอนุมัติสิทธิ์จริง</td>
+<td>แยก evidence/eligibility/payment/claim, owner, เกณฑ์และ integration</td>
+<td>S077</td>
+</tr>
+<tr>
+<td>D13</td>
+<td>เจ้าของระบบและการทดลองใช้</td>
+<td>Governance/implementation support</td>
+<td>Unknowns และคำถาม pilot; ไม่พบ commitment ตามโน้ต</td>
+<td>Owner, พื้นที่ทดลอง, privacy/access, support, recovery, real-user testing</td>
+<td>S077</td>
+</tr>
+<tr>
+<td>D14</td>
+<td>เรื่องเล่า งานวิจัย และพอร์ต</td>
+<td>Research/communication support</td>
+<td>Onepage, deploy copy, pitch, research, fiscal React app</td>
+<td>ฉบับหลัก, ตรวจวันที่/ตัวเลข, แยก demo จาก claim ผลใช้งานจริง</td>
+<td>S074</td>
+</tr>
+</tbody></table></div></div>
+<h2 id="appendix-section-c">C. เทียบ 14 โมดูลใน S049 กับรหัส TOR</h2>
+<p>S049 เป็น PDF Matrix อีกชุดหนึ่ง รหัส D01–D14 และจำนวน 14 โมดูลใน S049 จึงไม่ใช่รายการเดียวกัน รายละเอียด API/actor/security ในต้นฉบับเป็นแนวคิด มิใช่ endpoint ที่ทดสอบแล้ว</p>
+<div class="table-block"><p class="table-hint" id="table-hint-24">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 24" aria-describedby="table-hint-24"><table>
+<thead>
+<tr>
+<th>โมดูลใน S049</th>
+<th>รหัส TOR</th>
+<th>โปรแกรมหรือบริการหลัก</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Identity and Role Federation</td>
+<td>FM01</td>
+<td>PRG01 + authorization service</td>
+</tr>
+<tr>
+<td>Project and Event Registry</td>
+<td>FM02</td>
+<td>PRG01/02/03</td>
+</tr>
+<tr>
+<td>Incident / Request Intake</td>
+<td>XM01; CM03 สำหรับ need จากจุด</td>
+<td>PRG03/04; PRG02</td>
+</tr>
+<tr>
+<td>Situation Board</td>
+<td>CM04</td>
+<td>PRG03</td>
+</tr>
+<tr>
+<td>Dispatch and Mission Management</td>
+<td>XM05</td>
+<td>PRG02/03</td>
+</tr>
+<tr>
+<td>Field Operation Update</td>
+<td>XM05, FM04</td>
+<td>PRG02</td>
+</tr>
+<tr>
+<td>People Registry Lite</td>
+<td>CM01; XM07 เฉพาะส่งต่อ</td>
+<td>PRG02/07 ตาม Phase</td>
+</tr>
+<tr>
+<td>Shelter and Support Point Registry</td>
+<td>FM02, CM02</td>
+<td>PRG01/02/03</td>
+</tr>
+<tr>
+<td>Needs and Resource Request</td>
+<td>CM03; XM08/XM09 ตามส่วนสนับสนุน</td>
+<td>PRG02/03/06</td>
+</tr>
+<tr>
+<td>Notification and Escalation</td>
+<td>FM05</td>
+<td>หลายโปรแกรม + notification service</td>
+</tr>
+<tr>
+<td>Map and Geospatial Layer</td>
+<td>XM06</td>
+<td>PRG02/03</td>
+</tr>
+<tr>
+<td>Timeline / Activity Log</td>
+<td>FM03</td>
+<td>audit service + role-based views</td>
+</tr>
+<tr>
+<td>Document and Media Attachment</td>
+<td>FM03</td>
+<td>evidence/files service + role-based views</td>
+</tr>
+<tr>
+<td>Reporting and Export</td>
+<td>CM04, FM03</td>
+<td>PRG03; export ของแต่ละโปรแกรมตามสิทธิ์</td>
+</tr>
+</tbody></table></div></div>
+<p>S075 เพิ่ม 11 nodes ของ service blueprint เช่น Kitchen/Catering และ WASH; ร่างหลักจัดเป็นส่วนย่อยของ XM08/XM06/XM07 ตาม owner ที่เลือก รวมทั้ง pre-setup/scout/shift handover ที่ระบุในรายละเอียด ไม่ได้เพิ่มจำนวนโปรแกรมจากจำนวน nodes</p>
+<h2 id="appendix-section-d">D. โปรแกรม ต้นแบบ และสื่อที่พบจริง</h2>
+<p>รายการต่อไปจัดกลุ่มของเดิมเพื่อใช้อ้างอิง ไม่ใช่ 7 โปรแกรมที่เสนอสร้างใน TOR หลัก และไม่มีรายการใดรับรอง runtime readiness ในรอบนี้ ชื่อ preview, variant หรือ source component ไม่ทำให้เกิดโปรแกรมปฏิบัติการใหม่โดยอัตโนมัติ</p>
+<div class="table-block"><p class="table-hint" id="table-hint-25">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 25" aria-describedby="table-hint-25"><table>
+<thead>
+<tr>
+<th>กลุ่มที่มีอยู่</th>
+<th>S-ID / ต้นฉบับใน vault</th>
+<th>สิ่งที่พบจริงและสถานะ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>เว็บไซต์ onepage + prototype playground</td>
+<td>S021 <code>90_Originals/S021__index.html</code>, S042 <code>S042__index.html</code>, S014 <code>S014__app.js</code>, S020 <code>S020__cases.js</code>, S028 <code>S028__README.md</code>, S029 <code>S029__styles.css</code>, S013/S018/S019 และ assets</td>
+<td>README ระบุเว็บอธิบาย LCCS แบบหน้าเดียว/เปิด prototype iframe. <code>lccs-onepage</code> และ <code>LLCS-deploy</code> share files/hash หลายรายการ; ไม่ใช่ backend operational system</td>
+</tr>
+<tr>
+<td>เว็บ legacy/case-study/landing</td>
+<td>S043 <code>S043__index_v1.html</code>, S045/S056 overview, S048 <code>S048__index_1.html</code>, S052 <code>S052__lccs-full.html</code>, S068 <code>S068__lccs_landing_mockup_full.html</code></td>
+<td>เวอร์ชันหน้าอธิบายและ case study/landing; อย่านับเป็น operational applications แยกทุก HTML</td>
+</tr>
+<tr>
+<td>Rapid Onboarding + ICP intake board concept</td>
+<td>S025 <code>90_Originals/S025__LCCS_Rapid_Onboarding_MCP.html</code></td>
+<td>HTML แสดง activation/entry/types/board; ไม่ยืนยัน identity backend หรือ resource dispatch</td>
+</tr>
+<tr>
+<td>Volunteer onboarding variants</td>
+<td>S044 <code>90_Originals/S044__lccs-onboarding.html</code>, S055 <code>S055__lccs-onboarding.html</code></td>
+<td>ต้นแบบอาสา 2 เนื้อหา; ขอบเขต full onboarding ถูกพักใน shelter MVP S069</td>
+</tr>
+<tr>
+<td>Skill master/coordinator variants</td>
+<td>S046 <code>90_Originals/S046__lccs-skill-coord.html</code>, S058 <code>S058__lccs-skill-coord.html</code></td>
+<td>review skills/resource summary; S073 เสนอ evolve เป็น resource intake board</td>
+</tr>
+<tr>
+<td>Shelter check-in + family search demo</td>
+<td>S026 <code>90_Originals/S026__lccs_shelter_checkin_family_search.html</code></td>
+<td>พบ <code>Math.random()</code> สร้างจำนวนคนทะเบียนบ้านเดียวกัน; เป็น mock match ไม่ใช่ DOPA integration/identity proof</td>
+</tr>
+<tr>
+<td>Phone/broadcast response simulation</td>
+<td>S024 <code>90_Originals/S024__lccs_phone_simulation_actors.html</code></td>
+<td>หัวเรื่องจำลองการตอบสนอง broadcast; เป็น simulation ไม่ยืนยัน real USSD gateway</td>
+</tr>
+<tr>
+<td>Scenario walkthrough</td>
+<td>S047 <code>90_Originals/S047__lccs_scenario_walkthrough.html</code></td>
+<td>เครื่องมือเล่า/เดิน scenario; ไม่ถือเป็นระบบภาคสนามพร้อมใช้</td>
+</tr>
+<tr>
+<td>Government Console / API User Journey</td>
+<td>S022 <code>90_Originals/S022__LCCS_Government_Console_API_User_Journey.html</code></td>
+<td>แผนภาพ/เอกสาร interactive journey; ชื่อ API ไม่ได้พิสูจน์ endpoint มีอยู่จริง</td>
+</tr>
+<tr>
+<td>Onboarding Activity Diagrams</td>
+<td>S023 <code>90_Originals/S023__LCCS_Onboarding_Activity_Diagrams.html</code></td>
+<td>diagram/entry flow กรณีโทร/chat; เป็น design evidence</td>
+</tr>
+<tr>
+<td>Stakeholder Registration ORC chart</td>
+<td>S027 <code>90_Originals/S027__LCCS_Stakeholder_Registration_ORC_Chart.html</code></td>
+<td>chart การลงทะเบียนช่องทาง government/unit/form/QR; เป็น design evidence</td>
+</tr>
+<tr>
+<td>Dataflow + Stakeholder map + review findings</td>
+<td>S065 <code>S065__LCCS_DataFlow.html</code>, S076 <code>S076__lccs_stakeholder_mindmap.html</code>, S074 <code>S074__lccs_review_findings.html</code></td>
+<td>diagram/mindmap/review report; ข้ออ้างตัวเลขประกันต้องตรวจแหล่งทางการแยก</td>
+</tr>
+<tr>
+<td>Disaster Fiscal Board React/Vite app</td>
+<td>S001/S002/S003/S004/S005/S006/S007/S008/S009/S011/S012/S013; S010 <code>90_Originals/S010__Thailand_Disaster_Fiscal_Board_TH.md</code></td>
+<td>S007 mounts S005 App; S005 แสดงกระดานการคลัง/ความเสียหายด้วย static arrays/Recharts และแจ้งข้อมูล prototype. S008 อีก component ยังไม่พบ mount ใน entry ที่อ่าน. ไม่ใช่ระบบอนุมัติเงินช่วยเหลือ/เคลมประกัน</td>
+</tr>
+<tr>
+<td>Pitch/presentation artifacts</td>
+<td>S030 <code>90_Originals/S030__LCCS_20_Slide_Pitch_Deck.html</code>, S054/S057 PPTX, S051 PDF</td>
+<td>slide/storytelling; S051 อ่านภาพครบแต่ PPTX ภายในยังไม่ได้อ่านในรอบนี้; claims ไม่เป็น acceptance evidence</td>
+</tr>
+<tr>
+<td>Scope/model/blueprint/research</td>
+<td>S038/S041/S049/S050/S067/S069/S070/S071/S072/S073/S075/S077</td>
+<td>ชุด requirements candidate/concept/working draft; ยังต้อง reconcile/approve scope และ rules. S075 เป็น blueprint เตรียม demo 2026-04-24</td>
+</tr>
+<tr>
+<td>Preview images/illustrations/evidence graphic</td>
+<td>S015/S016/S017/S031–034/S036/S037/S039/S040/S059–064/S066</td>
+<td>รูปที่ช่วยอธิบาย/preview ไม่ใช่โปรแกรม; ต้องแยก ZIP assets ใน S064 จาก runtime app</td>
+</tr>
+<tr>
+<td>Site archive/source snapshots</td>
+<td>S053 <code>90_Originals/S053__lccs-github-site.zip</code>, <code>91_Project_Snapshots/*.zip</code></td>
+<td>แพ็กเกจเก็บไฟล์ ไม่ใช่ module ที่เปิดใช้เพิ่ม; ไม่ได้ build/run ภายใน</td>
+</tr>
+</tbody></table></div></div>
+<h2 id="appendix-section-e">E. การใช้ 36 ชุดงานเดิมในแผน TOR</h2>
+<p>แหล่ง: <code>03_Work/01 - งานทั้งหมด 36 ชุด.md</code><br>36 ชุด = 8 เรื่องตัดสินใจ + 16 สร้าง/พิสูจน์ + 6 ตรวจ/ทดลอง + 6 หัวข้อขยาย; ไม่ใช่ 36 วัน และไม่ได้บวก 8 decisions เพิ่มอีกครั้ง ทุกชุดในโน้ตเดิมยังไม่ระบุ owner และไม่มีหลักฐานผลในคลังรอบนั้น</p>
+<p>คงชื่องาน dependency และเกณฑ์จบจากต้นทาง ส่วน Phase และรหัสโมดูลด้านล่างเป็น mapping ที่เสนอใหม่ให้ตรงกับ TOR หลัก เกณฑ์ต้นทางเป็นฐานเท่านั้น ต้องใช้เกณฑ์ตรวจรับที่เพิ่มใน TOR หลัก เช่น retry หลัง server รับแล้ว, API permissions, restart และ partial fulfillment ด้วย</p>
+<div class="table-block"><p class="table-hint" id="table-hint-26">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 26" aria-describedby="table-hint-26"><table>
+<thead>
+<tr>
+<th>ชุด</th>
+<th>งานต้นทาง</th>
+<th>Domain</th>
+<th>ต้องอาศัยตามต้นทาง</th>
+<th>เกณฑ์จบต้นทาง</th>
+<th>Phase ใน TOR</th>
+<th>โมดูล/งาน TOR</th>
+</tr>
+</thead>
+<tbody><tr id="appendix-record-t01" data-record="T01">
+<td>T01</td>
+<td>เลือก slice แรก</td>
+<td>D01</td>
+<td>Q01</td>
+<td>scope หนึ่งประโยคและรายการไม่ทำ</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t02" data-record="T02">
+<td>T02</td>
+<td>ข้อมูลขั้นต่ำและรหัส</td>
+<td>D01</td>
+<td>Q02</td>
+<td>บันทึกคนไม่มีบัตร/วันเกิดได้ตามกฎที่เลือก</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t03" data-record="T03">
+<td>T03</td>
+<td>ขอบเขต family safety</td>
+<td>D06</td>
+<td>Q03</td>
+<td>ตารางผลค้นและสิทธิ์ที่ยอมรับร่วมกัน</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t04" data-record="T04">
+<td>T04</td>
+<td>กฎยอดคนและการย้าย</td>
+<td>D03</td>
+<td>Q04</td>
+<td>ตัวอย่าง household/person/transfer ไม่มีนับซ้ำ</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t05" data-record="T05">
+<td>T05</td>
+<td>การเตรียมเครื่อง offline</td>
+<td>D02</td>
+<td>Q05</td>
+<td>ขั้นตอน first use และเปิดซ้ำเมื่อไม่มีเน็ต</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t06" data-record="T06">
+<td>T06</td>
+<td>รูปและหน่วย stock</td>
+<td>D04</td>
+<td>Q06</td>
+<td>ระบุ photo in/out และหน่วยระดับข้อมูล</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t07" data-record="T07">
+<td>T07</td>
+<td>ขอบเขตหลักฐานสิทธิ์</td>
+<td>D12</td>
+<td>Q07</td>
+<td>ภาษาที่ไม่รับประกันสิทธิ์จาก check-in</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t08" data-record="T08">
+<td>T08</td>
+<td>ฉบับหลักและ owner</td>
+<td>D13</td>
+<td>Q08</td>
+<td>เลือก source หลักและชื่อผู้รับผิดชอบ</td>
+<td>0</td>
+<td>Baseline/Decision</td>
+</tr>
+<tr id="appendix-record-t09" data-record="T09">
+<td>T09</td>
+<td>ตั้งเหตุการณ์และจุดอพยพตัวอย่าง</td>
+<td>D01</td>
+<td>T01</td>
+<td>เลือกจุดและผู้บันทึกได้</td>
+<td>1</td>
+<td>FM02</td>
+</tr>
+<tr id="appendix-record-t10" data-record="T10">
+<td>T10</td>
+<td>แบบข้อมูลและ ID ภายใน</td>
+<td>D01</td>
+<td>T02, T04</td>
+<td>ตัวอย่าง records เชื่อมกันและไม่ชนข้ามเครื่อง</td>
+<td>0–1</td>
+<td>FM02/FM03/CM01/CM02</td>
+</tr>
+<tr id="appendix-record-t11" data-record="T11">
+<td>T11</td>
+<td>app shell และ offline readiness</td>
+<td>D02</td>
+<td>T05</td>
+<td>เตรียมแล้วเปิดใหม่แบบ offline ได้</td>
+<td>1</td>
+<td>FM04</td>
+</tr>
+<tr id="appendix-record-t12" data-record="T12">
+<td>T12</td>
+<td>บันทึก check-in ทนต่อการปิดหน้า</td>
+<td>D01</td>
+<td>T09, T10, T11</td>
+<td>กรอก 10 คน ปิดเปิดแล้วข้อมูลยังอยู่</td>
+<td>1</td>
+<td>CM01/FM04</td>
+</tr>
+<tr id="appendix-record-t13" data-record="T13">
+<td>T13</td>
+<td>แก้ข้อมูลและเติมข้อมูลภายหลัง</td>
+<td>D01</td>
+<td>T12</td>
+<td>แก้ข้อมูลโดยมีประวัติและไม่เพิ่มคนซ้ำ</td>
+<td>1–2</td>
+<td>CM01/FM03</td>
+</tr>
+<tr id="appendix-record-t14" data-record="T14">
+<td>T14</td>
+<td>คิว sync ที่มองเห็นสถานะ</td>
+<td>D02</td>
+<td>T12</td>
+<td>pending/syncing/synced/failed แยกได้</td>
+<td>1–2</td>
+<td>FM04</td>
+</tr>
+<tr id="appendix-record-t15" data-record="T15">
+<td>T15</td>
+<td>ส่งถึง backend และ retry</td>
+<td>D02</td>
+<td>T10, T14</td>
+<td>ส่งซ้ำชุดเดิมแล้วจำนวนคงเดิม</td>
+<td>2</td>
+<td>FM04</td>
+</tr>
+<tr id="appendix-record-t16" data-record="T16">
+<td>T16</td>
+<td>ตรวจและทบทวน record ซ้ำ</td>
+<td>D02</td>
+<td>T15</td>
+<td>สองเครื่องลงคนเดียวแล้ว review รวม/แยกพร้อมเหตุผล</td>
+<td>2</td>
+<td>CM01/CM02/FM03/FM04</td>
+</tr>
+<tr id="appendix-record-t17" data-record="T17">
+<td>T17</td>
+<td>ยอดคน ความจุ และย้ายออก</td>
+<td>D03</td>
+<td>T04, T12</td>
+<td>เข้า/ออก/ย้าย/merge ทำให้ยอดตรง</td>
+<td>1–2</td>
+<td>CM02</td>
+</tr>
+<tr id="appendix-record-t18" data-record="T18">
+<td>T18</td>
+<td>บันทึก stock และเวลาพอใช้</td>
+<td>D04</td>
+<td>T06, T17</td>
+<td>ระบุหน่วย สมมติฐาน และ unknown stock ได้</td>
+<td>2</td>
+<td>CM03</td>
+</tr>
+<tr id="appendix-record-t19" data-record="T19">
+<td>T19</td>
+<td>คำขอและสถานะรับของ</td>
+<td>D04</td>
+<td>T18</td>
+<td>ขอ→รับทราบ→ส่ง→รับแล้ว พร้อมยกเลิกได้</td>
+<td>2</td>
+<td>CM03</td>
+</tr>
+<tr id="appendix-record-t20" data-record="T20">
+<td>T20</td>
+<td>dashboard จากข้อมูลส่งถึงจริง</td>
+<td>D05</td>
+<td>T15, T17, T19</td>
+<td>ยอดและ need ตรงกับชุดทดสอบ</td>
+<td>2</td>
+<td>CM04</td>
+</tr>
+<tr id="appendix-record-t21" data-record="T21">
+<td>T21</td>
+<td>แสดงข้อมูลเก่าและรอ sync</td>
+<td>D05</td>
+<td>T20</td>
+<td>เวลาล่าสุดชัด ไม่แสดงของเก่าเป็นสด</td>
+<td>2</td>
+<td>CM04/FM04</td>
+</tr>
+<tr id="appendix-record-t22" data-record="T22">
+<td>T22</td>
+<td>family safety แบบจำกัด</td>
+<td>D06</td>
+<td>T03, T15</td>
+<td>ตรง/ใกล้เคียง/ไม่พบ/รอ sync มีคำตอบตามกฎ</td>
+<td>2</td>
+<td>CM05</td>
+</tr>
+<tr id="appendix-record-t23" data-record="T23">
+<td>T23</td>
+<td>สิทธิ์เข้าถึงและข้อมูลในเครื่อง</td>
+<td>D13</td>
+<td>T03, T08, T10</td>
+<td>ทดสอบผู้ไม่มีสิทธิ์และเครื่องใช้ร่วมกันตามขอบเขตทดลอง</td>
+<td>1–2; ขยายทุกระยะ</td>
+<td>FM01/FM03/FM04</td>
+</tr>
+<tr id="appendix-record-t24" data-record="T24">
+<td>T24</td>
+<td>demo เชื่อมปลายทางครบ</td>
+<td>D05</td>
+<td>T16, T21, T22, T23</td>
+<td>ผ่าน scenario ใน MVP Pack พร้อมหลักฐาน</td>
+<td>2</td>
+<td>Core end-to-end</td>
+</tr>
+<tr id="appendix-record-t25" data-record="T25">
+<td>T25</td>
+<td>ทบทวน flow กับเจ้าหน้าที่</td>
+<td>D13</td>
+<td>T01</td>
+<td>บันทึกข้อสังเกตผู้ปฏิบัติงานจริงและสิ่งที่ต้องแก้</td>
+<td>0; ทบทวนทุก release</td>
+<td>Domain validation</td>
+</tr>
+<tr id="appendix-record-t26" data-record="T26">
+<td>T26</td>
+<td>ซ้อมบนอุปกรณ์เป้าหมาย</td>
+<td>D02</td>
+<td>T24</td>
+<td>บันทึกผล offline/reopen/retry/conflict บนอุปกรณ์จริง</td>
+<td>1–2</td>
+<td>Device/field QA</td>
+</tr>
+<tr id="appendix-record-t27" data-record="T27">
+<td>T27</td>
+<td>ตกลงพื้นที่และเจ้าของ pilot</td>
+<td>D13</td>
+<td>T08, T25</td>
+<td>ชื่อคนรับผิดชอบ พื้นที่ และเงื่อนไขทดลอง</td>
+<td>0</td>
+<td>Pilot owner/site</td>
+</tr>
+<tr id="appendix-record-t28" data-record="T28">
+<td>T28</td>
+<td>ทบทวนข้อมูลส่วนบุคคลและอำนาจหน้าที่</td>
+<td>D13</td>
+<td>T03, T07, T27</td>
+<td>ผู้รับผิดชอบทบทวนข้อมูลที่เก็บ เปิดเผย และระยะเก็บ</td>
+<td>0; รับรองก่อนใช้ข้อมูลจริง</td>
+<td>Authority/Privacy</td>
+</tr>
+<tr id="appendix-record-t29" data-record="T29">
+<td>T29</td>
+<td>ตรวจตัวเลขและเรื่องเล่าที่จะใช้</td>
+<td>D14</td>
+<td>T08</td>
+<td>ทุก claim ที่เลือกใช้มีแหล่ง วันที่ หน่วย และขอบเขต</td>
+<td>0; ก่อนเผยแพร่ claim</td>
+<td>Research/Communication</td>
+</tr>
+<tr id="appendix-record-t30" data-record="T30">
+<td>T30</td>
+<td>คู่มือและแผนเมื่อระบบขัดข้อง</td>
+<td>D13</td>
+<td>T26, T27, T28</td>
+<td>เจ้าหน้าที่ซ้อมสำรอง/กู้คืนและติดต่อคนดูแลได้</td>
+<td>2; ขยายใน 5</td>
+<td>Fallback/Recovery/Support</td>
+</tr>
+<tr id="appendix-record-t31" data-record="T31">
+<td>T31</td>
+<td>signal ก่อน ICP</td>
+<td>D07</td>
+<td>T24</td>
+<td>เลือกหนึ่งช่องทางและมีหลักฐานความเป็นไปได้</td>
+<td>3A</td>
+<td>XM01</td>
+</tr>
+<tr id="appendix-record-t32" data-record="T32">
+<td>T32</td>
+<td>helper/resource onboarding</td>
+<td>D08</td>
+<td>T24</td>
+<td>เลือกหนึ่ง intake type และเชื่อมถึง board</td>
+<td>3A</td>
+<td>XM02/XM03</td>
+</tr>
+<tr id="appendix-record-t33" data-record="T33">
+<td>T33</td>
+<td>mission และภาพพื้นที่</td>
+<td>D09</td>
+<td>T32</td>
+<td>กำหนดหนึ่ง request→mission→report flow</td>
+<td>3B</td>
+<td>XM04/XM05/XM06</td>
+</tr>
+<tr id="appendix-record-t34" data-record="T34">
+<td>T34</td>
+<td>medical handoff</td>
+<td>D10</td>
+<td>T27</td>
+<td>มีผู้ปฏิบัติงานรับรองขอบเขตการส่งต่อที่จะออกแบบ</td>
+<td>0 ประเมิน owner; 4 พัฒนา</td>
+<td>XM07</td>
+</tr>
+<tr id="appendix-record-t35" data-record="T35">
+<td>T35</td>
+<td>donation และ delivery</td>
+<td>D11</td>
+<td>T19, T32</td>
+<td>ทดสอบหนึ่ง lot ถึงผู้รับพร้อมหลักฐาน</td>
+<td>4</td>
+<td>XM08</td>
+</tr>
+<tr id="appendix-record-t36" data-record="T36">
+<td>T36</td>
+<td>aid/insurance/procurement</td>
+<td>D12</td>
+<td>T07, T28, T29</td>
+<td>เลือกหนึ่งกระบวนการที่มี owner และเงื่อนไขข้อมูล</td>
+<td>4</td>
+<td>XM09/XM10</td>
+</tr>
+</tbody></table></div></div>
+<p>ข้อเสนอเพิ่มจากการตรวจขอบเขต: T26 ต้องเริ่มทดสอบอุปกรณ์ใน Phase 1 มิใช่รอ end-to-end ครั้งเดียว; งานสิทธิ์/ประวัติ T23 และ recovery ต้องเริ่มพร้อมข้อมูล ส่วน T34 เป็นการหา owner/protocol ตั้งแต่ต้น ก่อนเลือกระยะพัฒนาการส่งต่อ</p>
+<p>คอลัมน์ dependency เก็บข้อความต้นทางเพื่อให้ตรวจย้อนกลับ ไม่ถือเป็น dependency ที่รับรองใหม่ทุกแถว หากแพ็กเกจแกนแรกไม่เชื่อมสิทธิ์ช่วยเหลือ งาน privacy/authority ของแกนนั้นใน T28 ต้องปิดก่อนใช้ข้อมูลจริงได้โดยไม่รอ T07/Q07 ของส่วนสิทธิ์ช่วยเหลือ ให้กำหนด dependency ของแพ็กเกจจริงใน Phase 0 ตามขอบเขตที่เลือก</p>
+<h2 id="appendix-section-f">F. สำเนาซ้ำ รุ่นต่างกัน และการเลือกฉบับหลัก</h2>
+<ol>
+<li>ลดซ้ำเมื่อ SHA-256 ตรงกัน; ชื่อเหมือนกันแต่เนื้อหาต่างต้องรักษา S-ID แยก</li>
+<li>S067 PreRead มี 4 ที่มาตรงกัน; S069 MVP Pack มี 2 ที่มาตรงกัน; S071 Collected Notes มี 2 ที่มาตรงกัน ไม่เพิ่มรายการพัฒนาจากสำเนา</li>
+<li>S071 กับ S072 v0.2 เป็นคนละเนื้อหา การมี v0.2 ยังไม่พิสูจน์ว่าทุกเนื้อหารุ่นก่อนถูกยกเลิก</li>
+<li>S021/S042 เป็น index ของ onepage/deploy ต่างกัน 1 byte; S001 เป็น entry อีกโครงการ; S043/S048 เป็น legacy context อย่าจัดทุก index เป็นโปรแกรมเดียวกันหรือโปรแกรมเพิ่มโดยไม่ดูบริบท</li>
+<li>S044/S055 onboarding, S045/S056 overview และ S046/S058 skill coordinator เป็น variants ที่เนื้อหาต่างกัน</li>
+<li>S035 LCCS_PROBLEMS.md ว่าง 0 bytes ไม่เป็น problem backlog ที่มีเนื้อหาแล้ว</li>
+<li>ชื่อขยาย LCCS และ dates/phase/stack ไม่เหมือนกัน เลือก source baseline ด้วย decision owner ใน Q08 ไม่เลือกจากวันไฟล์อย่างเดียว</li>
+<li>S026 มี mock matching; Fiscal React ใช้ static data; S051 มีข้อความ readiness/standards ที่ไม่มีหลักฐานทดสอบในคลัง; ไม่คัดลอกเป็นผลสำเร็จ/ความพร้อมจริง</li>
+</ol>
+<h2 id="appendix-section-g">G. ทะเบียนหลักฐาน 77 เนื้อหาไม่ซ้ำ</h2>
+<p>ทุกแถวตรวจ existence/hash ตรง manifest ในรอบ TOR จำนวนที่มารวม 112; ตัวเลขนี้ไม่นับโน้ตสังเคราะห์ source cards และ snapshots ที่สร้างเพิ่ม ระดับการอ่านไม่เท่ากับระดับพร้อมใช้</p>
+<p>ใน MD ต้นฉบับ ลิงก์หลักฐานชี้ไปเครื่องเจ้าของคลัง ฉบับเว็บนี้แสดงชื่อไฟล์และตำแหน่งภายในคลังเพื่อใช้อ้างอิง การเข้าถึงหลักฐานจริงต้องได้รับสิทธิ์ตามนโยบาย</p>
+<div class="table-block"><p class="table-hint" id="table-hint-27">เลื่อนตารางแนวนอนเพื่ออ่านคอลัมน์เพิ่มเติม <span aria-hidden="true">↔</span></p><div class="table-scroll" role="region" tabindex="0" aria-label="ตารางที่ 27" aria-describedby="table-hint-27"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ต้นฉบับ</th>
+<th>ชนิด/หมวด</th>
+<th align="right">bytes</th>
+<th align="right">ที่มา</th>
+<th>ระดับการอ่านรอบ TOR</th>
+</tr>
+</thead>
+<tbody><tr id="appendix-record-s001" data-record="S001">
+<td>S001</td>
+<td>index.html — <code>90_Originals/S001__index.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">317</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s002" data-record="S002">
+<td>S002</td>
+<td>package-lock.json — <code>90_Originals/S002__package-lock.json</code></td>
+<td>.json / source/config ของ prototype</td>
+<td align="right">107,166</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s003" data-record="S003">
+<td>S003</td>
+<td>package.json — <code>90_Originals/S003__package.json</code></td>
+<td>.json / source/config ของ prototype</td>
+<td align="right">641</td>
+<td align="right">1</td>
+<td>อ่าน source ส่วนที่เกี่ยวข้องกับ app entry/static fiscal data; ไม่ทดสอบ runtime</td>
+</tr>
+<tr id="appendix-record-s004" data-record="S004">
+<td>S004</td>
+<td>postcss.config.js — <code>90_Originals/S004__postcss.config.js</code></td>
+<td>.js / source/config ของ prototype</td>
+<td align="right">81</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s005" data-record="S005">
+<td>S005</td>
+<td>App.tsx — <code>90_Originals/S005__App.tsx</code></td>
+<td>.tsx / source/config ของ prototype</td>
+<td align="right">57,511</td>
+<td align="right">1</td>
+<td>อ่าน source ส่วนที่เกี่ยวข้องกับ app entry/static fiscal data; ไม่ทดสอบ runtime</td>
+</tr>
+<tr id="appendix-record-s006" data-record="S006">
+<td>S006</td>
+<td>index.css — <code>90_Originals/S006__index.css</code></td>
+<td>.css / source/config ของ prototype</td>
+<td align="right">693</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s007" data-record="S007">
+<td>S007</td>
+<td>main.tsx — <code>90_Originals/S007__main.tsx</code></td>
+<td>.tsx / source/config ของ prototype</td>
+<td align="right">237</td>
+<td align="right">1</td>
+<td>อ่าน source ส่วนที่เกี่ยวข้องกับ app entry/static fiscal data; ไม่ทดสอบ runtime</td>
+</tr>
+<tr id="appendix-record-s008" data-record="S008">
+<td>S008</td>
+<td>ThailandDisasterFiscalBoard.tsx — <code>90_Originals/S008__ThailandDisasterFiscalBoard.tsx</code></td>
+<td>.tsx / source/config ของ prototype</td>
+<td align="right">10,893</td>
+<td align="right">1</td>
+<td>อ่าน source ส่วนที่เกี่ยวข้องกับ app entry/static fiscal data; ไม่ทดสอบ runtime</td>
+</tr>
+<tr id="appendix-record-s009" data-record="S009">
+<td>S009</td>
+<td>tailwind.config.js — <code>90_Originals/S009__tailwind.config.js</code></td>
+<td>.js / source/config ของ prototype</td>
+<td align="right">378</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s010" data-record="S010">
+<td>S010</td>
+<td>Thailand_Disaster_Fiscal_Board_TH.md — <code>90_Originals/S010__Thailand_Disaster_Fiscal_Board_TH.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">11,993</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s011" data-record="S011">
+<td>S011</td>
+<td>tsconfig.json — <code>90_Originals/S011__tsconfig.json</code></td>
+<td>.json / source/config ของ prototype</td>
+<td align="right">507</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s012" data-record="S012">
+<td>S012</td>
+<td>tsconfig.node.json — <code>90_Originals/S012__tsconfig.node.json</code></td>
+<td>.json / source/config ของ prototype</td>
+<td align="right">213</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s013" data-record="S013">
+<td>S013</td>
+<td>vite.config.mjs — <code>90_Originals/S013__vite.config.mjs</code></td>
+<td>.mjs / source/config ของ prototype</td>
+<td align="right">136</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s014" data-record="S014">
+<td>S014</td>
+<td>app.js — <code>90_Originals/S014__app.js</code></td>
+<td>.js / source/config ของ prototype</td>
+<td align="right">13,576</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s015" data-record="S015">
+<td>S015</td>
+<td>lccs-layer-model.png — <code>90_Originals/S015__lccs-layer-model.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">1,988,460</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s016" data-record="S016">
+<td>S016</td>
+<td>lccs-operational-gis.png — <code>90_Originals/S016__lccs-operational-gis.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">2,057,153</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s017" data-record="S017">
+<td>S017</td>
+<td>lccs-route-map.png — <code>90_Originals/S017__lccs-route-map.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">1,955,649</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s018" data-record="S018">
+<td>S018</td>
+<td>placeholder-map.svg — <code>90_Originals/S018__placeholder-map.svg</code></td>
+<td>.svg / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">2,009</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s019" data-record="S019">
+<td>S019</td>
+<td>placeholder-network.svg — <code>90_Originals/S019__placeholder-network.svg</code></td>
+<td>.svg / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">1,665</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s020" data-record="S020">
+<td>S020</td>
+<td>cases.js — <code>90_Originals/S020__cases.js</code></td>
+<td>.js / source/config ของ prototype</td>
+<td align="right">21,285</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s021" data-record="S021">
+<td>S021</td>
+<td>index.html — <code>90_Originals/S021__index.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">40,705</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s022" data-record="S022">
+<td>S022</td>
+<td>LCCS_Government_Console_API_User_Journey.html — <code>90_Originals/S022__LCCS_Government_Console_API_User_Journey.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">27,980</td>
+<td align="right">3</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s023" data-record="S023">
+<td>S023</td>
+<td>LCCS_Onboarding_Activity_Diagrams.html — <code>90_Originals/S023__LCCS_Onboarding_Activity_Diagrams.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">48,194</td>
+<td align="right">3</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s024" data-record="S024">
+<td>S024</td>
+<td>lccs_phone_simulation_actors.html — <code>90_Originals/S024__lccs_phone_simulation_actors.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">20,148</td>
+<td align="right">3</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s025" data-record="S025">
+<td>S025</td>
+<td>LCCS_Rapid_Onboarding_MCP.html — <code>90_Originals/S025__LCCS_Rapid_Onboarding_MCP.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">33,299</td>
+<td align="right">3</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s026" data-record="S026">
+<td>S026</td>
+<td>lccs_shelter_checkin_family_search.html — <code>90_Originals/S026__lccs_shelter_checkin_family_search.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">24,999</td>
+<td align="right">5</td>
+<td>อ่าน source ส่วน check-in/search mock; ไม่ทดสอบ runtime</td>
+</tr>
+<tr id="appendix-record-s027" data-record="S027">
+<td>S027</td>
+<td>LCCS_Stakeholder_Registration_ORC_Chart.html — <code>90_Originals/S027__LCCS_Stakeholder_Registration_ORC_Chart.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">30,218</td>
+<td align="right">3</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s028" data-record="S028">
+<td>S028</td>
+<td>README.md — <code>90_Originals/S028__README.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">4,376</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s029" data-record="S029">
+<td>S029</td>
+<td>styles.css — <code>90_Originals/S029__styles.css</code></td>
+<td>.css / source/config ของ prototype</td>
+<td align="right">29,751</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s030" data-record="S030">
+<td>S030</td>
+<td>LCCS_20_Slide_Pitch_Deck.html — <code>90_Originals/S030__LCCS_20_Slide_Pitch_Deck.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">113,724</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s031" data-record="S031">
+<td>S031</td>
+<td>LCCS_Government_Console_API_User_Journey_mobile_preview.png — <code>90_Originals/S031__LCCS_Government_Console_API_User_Journey_mobile_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">52,449</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s032" data-record="S032">
+<td>S032</td>
+<td>LCCS_Government_Console_API_User_Journey_preview.png — <code>90_Originals/S032__LCCS_Government_Console_API_User_Journey_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">210,587</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s033" data-record="S033">
+<td>S033</td>
+<td>LCCS_Onboarding_Activity_Diagrams_mobile_preview.png — <code>90_Originals/S033__LCCS_Onboarding_Activity_Diagrams_mobile_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">55,150</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s034" data-record="S034">
+<td>S034</td>
+<td>LCCS_Onboarding_Activity_Diagrams_preview.png — <code>90_Originals/S034__LCCS_Onboarding_Activity_Diagrams_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">150,282</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s035" data-record="S035">
+<td>S035</td>
+<td>LCCS_PROBLEMS.md — <code>90_Originals/S035__LCCS_PROBLEMS.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s036" data-record="S036">
+<td>S036</td>
+<td>LCCS_Rapid_Onboarding_MCP_mobile_preview.png — <code>90_Originals/S036__LCCS_Rapid_Onboarding_MCP_mobile_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">62,941</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s037" data-record="S037">
+<td>S037</td>
+<td>LCCS_Rapid_Onboarding_MCP_preview.png — <code>90_Originals/S037__LCCS_Rapid_Onboarding_MCP_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">263,697</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s038" data-record="S038">
+<td>S038</td>
+<td>LCCS_Rapid_Onboarding_v0.1.md — <code>90_Originals/S038__LCCS_Rapid_Onboarding_v0.1.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">14,638</td>
+<td align="right">1</td>
+<td>อ่านส่วนที่เกี่ยวข้องกับขอบเขต/flow; ไม่ยืนยันข้อกล่าวอ้างภายนอก</td>
+</tr>
+<tr id="appendix-record-s039" data-record="S039">
+<td>S039</td>
+<td>LCCS_Stakeholder_Registration_ORC_Chart_mobile_preview.png — <code>90_Originals/S039__LCCS_Stakeholder_Registration_ORC_Chart_mobile_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">68,751</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s040" data-record="S040">
+<td>S040</td>
+<td>LCCS_Stakeholder_Registration_ORC_Chart_preview.png — <code>90_Originals/S040__LCCS_Stakeholder_Registration_ORC_Chart_preview.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">214,263</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s041" data-record="S041">
+<td>S041</td>
+<td>LCCS_USSD_Response_Protocol_v0.1.md — <code>90_Originals/S041__LCCS_USSD_Response_Protocol_v0.1.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">8,582</td>
+<td align="right">1</td>
+<td>อ่านต้นฉบับข้อความรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s042" data-record="S042">
+<td>S042</td>
+<td>index.html — <code>90_Originals/S042__index.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">40,704</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s043" data-record="S043">
+<td>S043</td>
+<td>index_v1.html — <code>90_Originals/S043__index_v1.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">51,435</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s044" data-record="S044">
+<td>S044</td>
+<td>lccs-onboarding.html — <code>90_Originals/S044__lccs-onboarding.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">36,606</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s045" data-record="S045">
+<td>S045</td>
+<td>lccs-overview.html — <code>90_Originals/S045__lccs-overview.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">25,645</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s046" data-record="S046">
+<td>S046</td>
+<td>lccs-skill-coord.html — <code>90_Originals/S046__lccs-skill-coord.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">33,704</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s047" data-record="S047">
+<td>S047</td>
+<td>lccs_scenario_walkthrough.html — <code>90_Originals/S047__lccs_scenario_walkthrough.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">20,021</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s048" data-record="S048">
+<td>S048</td>
+<td>index_1.html — <code>90_Originals/S048__index_1.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">57,128</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s049" data-record="S049">
+<td>S049</td>
+<td>LCCS MVP — Domain - Actor - Module Matrix.pdf — <code>90_Originals/S049__LCCS MVP — Domain - Actor - Module Matrix.pdf</code></td>
+<td>.pdf / เอกสาร PDF</td>
+<td align="right">43,055</td>
+<td align="right">1</td>
+<td>อ่านข้อความ PDF ครบ 3 หน้า</td>
+</tr>
+<tr id="appendix-record-s050" data-record="S050">
+<td>S050</td>
+<td>LCCS Research.md — <code>90_Originals/S050__LCCS Research.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">25,559</td>
+<td align="right">1</td>
+<td>อ่านส่วนที่เกี่ยวข้องกับขอบเขต/flow; ไม่ยืนยันข้อกล่าวอ้างภายนอก</td>
+</tr>
+<tr id="appendix-record-s051" data-record="S051">
+<td>S051</td>
+<td>LCCS Strategic UX Presentation.pdf — <code>90_Originals/S051__LCCS Strategic UX Presentation.pdf</code></td>
+<td>.pdf / เอกสาร PDF</td>
+<td align="right">1,820,195</td>
+<td align="right">1</td>
+<td>render และดู PDF ครบ 13 หน้า; เป็นภาพ ไม่ใช่ text layer</td>
+</tr>
+<tr id="appendix-record-s052" data-record="S052">
+<td>S052</td>
+<td>lccs-full.html — <code>90_Originals/S052__lccs-full.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">50,508</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s053" data-record="S053">
+<td>S053</td>
+<td>lccs-github-site.zip — <code>90_Originals/S053__lccs-github-site.zip</code></td>
+<td>.zip / archive/package</td>
+<td align="right">129,563</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s054" data-record="S054">
+<td>S054</td>
+<td>LCCS-Investor-Pitch-V2.pptx — <code>90_Originals/S054__LCCS-Investor-Pitch-V2.pptx</code></td>
+<td>.pptx / สไลด์นำเสนอ</td>
+<td align="right">741,215</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s055" data-record="S055">
+<td>S055</td>
+<td>lccs-onboarding.html — <code>90_Originals/S055__lccs-onboarding.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">35,434</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s056" data-record="S056">
+<td>S056</td>
+<td>lccs-overview.html — <code>90_Originals/S056__lccs-overview.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">24,917</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s057" data-record="S057">
+<td>S057</td>
+<td>LCCS-Pitch-Deck.pptx — <code>90_Originals/S057__LCCS-Pitch-Deck.pptx</code></td>
+<td>.pptx / สไลด์นำเสนอ</td>
+<td align="right">264,827</td>
+<td align="right">4</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s058" data-record="S058">
+<td>S058</td>
+<td>lccs-skill-coord.html — <code>90_Originals/S058__lccs-skill-coord.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">33,132</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s059" data-record="S059">
+<td>S059</td>
+<td>lccs_01_the_crisis_gap.png — <code>90_Originals/S059__lccs_01_the_crisis_gap.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">86,136</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s060" data-record="S060">
+<td>S060</td>
+<td>lccs_02_one_disaster_many_actors.png — <code>90_Originals/S060__lccs_02_one_disaster_many_actors.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">84,968</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s061" data-record="S061">
+<td>S061</td>
+<td>lccs_03_mapping_the_aid_operation.png — <code>90_Originals/S061__lccs_03_mapping_the_aid_operation.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">87,675</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s062" data-record="S062">
+<td>S062</td>
+<td>lccs_04_designing_shared_humanitarian_visibility.png — <code>90_Originals/S062__lccs_04_designing_shared_humanitarian_visibility.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">106,797</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s063" data-record="S063">
+<td>S063</td>
+<td>lccs_05_system_value.png — <code>90_Originals/S063__lccs_05_system_value.png</code></td>
+<td>.png / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">83,321</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s064" data-record="S064">
+<td>S064</td>
+<td>lccs_case_study_assets_4x3.zip — <code>90_Originals/S064__lccs_case_study_assets_4x3.zip</code></td>
+<td>.zip / archive/package</td>
+<td align="right">415,922</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s065" data-record="S065">
+<td>S065</td>
+<td>LCCS_DataFlow.html — <code>90_Originals/S065__LCCS_DataFlow.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">22,937</td>
+<td align="right">2</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s066" data-record="S066">
+<td>S066</td>
+<td>lccs_evidence_decision_layer.svg — <code>90_Originals/S066__lccs_evidence_decision_layer.svg</code></td>
+<td>.svg / ภาพ/ทรัพย์สินประกอบ</td>
+<td align="right">8,100</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s067" data-record="S067">
+<td>S067</td>
+<td>LCCS_Journey_PreRead.md — <code>90_Originals/S067__LCCS_Journey_PreRead.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">9,420</td>
+<td align="right">4</td>
+<td>อ่านส่วนที่เกี่ยวข้องกับขอบเขต/flow; ไม่ยืนยันข้อกล่าวอ้างภายนอก</td>
+</tr>
+<tr id="appendix-record-s068" data-record="S068">
+<td>S068</td>
+<td>lccs_landing_mockup_full.html — <code>90_Originals/S068__lccs_landing_mockup_full.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">21,587</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s069" data-record="S069">
+<td>S069</td>
+<td>LCCS_MVP_PACK (1).md — <code>90_Originals/S069__LCCS_MVP_PACK (1).md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">20,659</td>
+<td align="right">2</td>
+<td>อ่านต้นฉบับข้อความรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s070" data-record="S070">
+<td>S070</td>
+<td>LCCS_MVP_System_Relationship_For_Vut.md — <code>90_Originals/S070__LCCS_MVP_System_Relationship_For_Vut.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">18,896</td>
+<td align="right">1</td>
+<td>อ่านต้นฉบับข้อความรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s071" data-record="S071">
+<td>S071</td>
+<td>LCCS_Project_Collected_Notes (1).md — <code>90_Originals/S071__LCCS_Project_Collected_Notes (1).md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">53,434</td>
+<td align="right">2</td>
+<td>อ่านบางส่วนรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s072" data-record="S072">
+<td>S072</td>
+<td>LCCS_Project_Collected_Notes_v0.2.md — <code>90_Originals/S072__LCCS_Project_Collected_Notes_v0.2.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">41,018</td>
+<td align="right">1</td>
+<td>อ่านบางส่วนรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s073" data-record="S073">
+<td>S073</td>
+<td>LCCS_Project_Size_and_Scope_v0.1.md — <code>90_Originals/S073__LCCS_Project_Size_and_Scope_v0.1.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">25,909</td>
+<td align="right">1</td>
+<td>อ่านต้นฉบับข้อความรอบ TOR</td>
+</tr>
+<tr id="appendix-record-s074" data-record="S074">
+<td>S074</td>
+<td>lccs_review_findings.html — <code>90_Originals/S074__lccs_review_findings.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">17,961</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s075" data-record="S075">
+<td>S075</td>
+<td>LCCS_Service_Blueprint.pdf — <code>90_Originals/S075__LCCS_Service_Blueprint.pdf</code></td>
+<td>.pdf / เอกสาร PDF</td>
+<td align="right">37,971</td>
+<td align="right">1</td>
+<td>อ่านข้อความ PDF ครบ 2 หน้า</td>
+</tr>
+<tr id="appendix-record-s076" data-record="S076">
+<td>S076</td>
+<td>lccs_stakeholder_mindmap.html — <code>90_Originals/S076__lccs_stakeholder_mindmap.html</code></td>
+<td>.html / prototype/เว็บสาธิต</td>
+<td align="right">9,142</td>
+<td align="right">1</td>
+<td>Inventory/manifest; ไม่ได้อ่านต้นฉบับครบ</td>
+</tr>
+<tr id="appendix-record-s077" data-record="S077">
+<td>S077</td>
+<td>LCCS_Summary.md — <code>90_Originals/S077__LCCS_Summary.md</code></td>
+<td>.md / เอกสาร/แนวคิด/งานวิจัย</td>
+<td align="right">17,471</td>
+<td align="right">1</td>
+<td>อ่านต้นฉบับข้อความรอบ TOR</td>
+</tr>
+</tbody></table></div></div>
+<h2 id="appendix-section-h">H. วิธีใช้ภาคผนวกทบทวนขอบเขต</h2>
+<p>เริ่มจาก D ของปัญหาที่ต้องแก้ → เทียบโมดูล TOR และโปรแกรม → อ่าน S ที่เป็นหลักฐาน → ปิด Q ที่เกี่ยวข้อง → เลือก T และ acceptance cases ที่ต้องส่งมอบในแพ็กเกจนั้น ทุก requirement ใหม่ให้ระบุว่าเป็นข้อเสนอ พร้อม owner/phase/test ไม่เพิ่มจากชื่อไฟล์หรือโหนดที่อยู่ใกล้กันในกราฟเพียงอย่างเดียว</p>
+<p>เมื่อรับรอง scope ให้ลง source baseline, ผู้ตัดสินใจ วันที่ เหตุผล และรายการที่ไม่รวม แล้วจึงเติมราคา ระยะเวลา งวดส่งมอบและเงื่อนไขสัญญาใน TOR หลัก</p>
+</article>
+<footer class="reader-footer"><p>ฉบับเว็บแปลงจาก Markdown รุ่น 0.1 โดยคงขอบเขตที่เสนอและเรื่องรอตัดสินใจ อ่านข้อจำกัดและเงื่อนไขก่อนใช้จัดจ้างใน TOR หลัก</p><a href="#page-top">กลับขึ้นด้านบน ↑</a></footer>
+</main></div>
+<script>
+document.documentElement.classList.add('js');
+const records = [{"id":"tor-section-1","title":"1. หลักการและเหตุผล","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-2","title":"2. วัตถุประสงค์และผลลัพธ์","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-3","title":"3. ฐานหลักฐานและสถานะของข้อกำหนด","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-3-1","title":"3.1 สิ่งที่ตรวจพบในคลัง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-3-2","title":"3.2 วิธีอ่านถ้อยคำในร่าง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-3-3","title":"3.3 ข้อแตกต่างที่ต้องรักษาไว้","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-4","title":"4. กระบวนการทำงานและผู้เกี่ยวข้อง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-4-1","title":"4.1 กระบวนการของคนก่อนระบบ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-4-2","title":"4.2 ผู้เกี่ยวข้องและขอบเขตสิทธิ์ที่เสนอ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-5","title":"5. ขอบเขตระบบและรายการโปรแกรม","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-5-1","title":"5.1 ขอบเขตโดยรวม","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-5-2","title":"5.2 โปรแกรมหรือพื้นที่ใช้งานที่เสนอ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-5-3","title":"5.3 บริการเบื้องหลังที่ต้องออกแบบร่วม","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-5-4","title":"5.4 โปรแกรมและต้นแบบที่พบเดิม","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-6","title":"6. แผนระยะงานและเงื่อนไขผ่านแต่ละ Phase","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-6-1","title":"6.1 หลักการแบ่งระยะ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-6-2","title":"6.2 ตารางระยะงาน","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-6-3","title":"6.3 ความสัมพันธ์และลำดับตัดสินใจ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-7","title":"7. รายการโมดูลและความสัมพันธ์","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-8","title":"8. รายละเอียดข้อกำหนดรายโมดูล","doc":"tor","kind":"หัวข้อ"},{"id":"tor-fm01","title":"FM01 — ตัวตน องค์กร สิทธิ์ และอำนาจ","doc":"tor","kind":"โมดูล"},{"id":"tor-fm02","title":"FM02 — เหตุการณ์และทะเบียนจุดปฏิบัติงาน","doc":"tor","kind":"โมดูล"},{"id":"tor-fm03","title":"FM03 — ที่มา คุณภาพข้อมูล ประวัติ หลักฐานและการคุ้มครองข้อมูล","doc":"tor","kind":"โมดูล"},{"id":"tor-fm04","title":"FM04 — ออฟไลน์และการซิงก์","doc":"tor","kind":"โมดูล"},{"id":"tor-fm05","title":"FM05 — แจ้งเตือนและส่งต่อเรื่องเร่งด่วน","doc":"tor","kind":"โมดูล"},{"id":"tor-cm01","title":"CM01 — ลงทะเบียนผู้มาถึงและทะเบียนคน ณ จุดพักพิง","doc":"tor","kind":"โมดูล"},{"id":"tor-cm02","title":"CM02 — จำนวนคน ความจุ และการย้าย","doc":"tor","kind":"โมดูล"},{"id":"tor-cm03","title":"CM03 — ของคงเหลือโดยประมาณและคำขอ","doc":"tor","kind":"โมดูล"},{"id":"tor-cm04","title":"CM04 — ภาพสถานการณ์ส่วนกลาง รายงานและส่งต่อเวร","doc":"tor","kind":"โมดูล"},{"id":"tor-cm05","title":"CM05 — สถานะสำหรับครอบครัว","doc":"tor","kind":"โมดูล"},{"id":"tor-xm01","title":"XM01 — รับสัญญาณและประเมินภาระการดูแล","doc":"tor","kind":"โมดูล"},{"id":"tor-xm02","title":"XM02 — รับผู้ช่วย ทีม อุปกรณ์ และสิ่งสนับสนุน","doc":"tor","kind":"โมดูล"},{"id":"tor-xm03","title":"XM03 — ตรวจทรัพยากร ความพร้อม และเงื่อนไขก่อนใช้งาน","doc":"tor","kind":"โมดูล"},{"id":"tor-xm04","title":"XM04 — วางแผน เป้าหมาย และบันทึกการตัดสินใจ","doc":"tor","kind":"โมดูล"},{"id":"tor-xm05","title":"XM05 — ภารกิจและรายงานภาคสนาม","doc":"tor","kind":"โมดูล"},{"id":"tor-xm06","title":"XM06 — แผนที่ เส้นทาง และสถานะโครงสร้างพื้นฐาน","doc":"tor","kind":"โมดูล"},{"id":"tor-xm07","title":"XM07 — ประสานการแพทย์และส่งต่อ","doc":"tor","kind":"โมดูล"},{"id":"tor-xm08","title":"XM08 — คลัง บริจาค ขนส่ง และรับมอบ","doc":"tor","kind":"โมดูล"},{"id":"tor-xm09","title":"XM09 — คำขอจัดซื้อ ผู้สนับสนุน และหลักฐานค่าใช้จ่าย","doc":"tor","kind":"โมดูล"},{"id":"tor-xm10","title":"XM10 — แฟ้มหลักฐานช่วยเหลือและประกัน","doc":"tor","kind":"โมดูล"},{"id":"tor-xm11","title":"XM11 — ข้อมูลสาธารณะที่รับรอง","doc":"tor","kind":"โมดูล"},{"id":"tor-section-9","title":"9. แบบข้อมูลและกฎที่ใช้ร่วมกัน","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-9-1","title":"9.1 Entity หลักที่ต้องออกแบบ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-9-2","title":"9.2 กฎร่วมที่ต้องพิสูจน์","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-10","title":"10. ข้อกำหนดด้านคุณภาพและบริการเบื้องหลัง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-10-1","title":"10.1 การใช้งาน","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-10-2","title":"10.2 ความปลอดภัยและข้อมูล","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-10-3","title":"10.3 ความถูกต้อง ความทนทาน และการดูแล","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-10-4","title":"10.4 ตัวเลขคุณภาพที่ต้องกำหนดก่อนตรึงราคา/เริ่มงาน","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-10-5","title":"10.5 ซอฟต์แวร์และเทคโนโลยีที่พบ/เสนอไว้","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-11","title":"11. การเชื่อมต่อระบบภายนอก","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-12","title":"12. สิ่งส่งมอบและแพ็กเกจงาน","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-12-1","title":"12.1 สิ่งส่งมอบขั้นต่ำ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-12-2","title":"12.2 แพ็กเกจสำหรับพิจารณาจ้าง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-13","title":"13. การตรวจรับและหลักฐานทดสอบ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-13-1","title":"13.1 กรณีหลักของ Phase 1–2","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-13-2","title":"13.2 กรณีส่วนขยาย","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-13-3","title":"13.3 เงื่อนไขรับมอบที่เสนอ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-14","title":"14. การบริหารโครงการและความรับผิดชอบ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-14-1","title":"14.1 บทบาทที่ต้องมี","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-14-2","title":"14.2 การทำงานและควบคุมการเปลี่ยนแปลง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-15","title":"15. สิ่งที่อยู่นอกขอบเขตเริ่มต้น","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-16","title":"16. ความเสี่ยงและเงื่อนไขควบคุม","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-17","title":"17. เรื่องที่ต้องตัดสินใจและข้อมูลที่ยังขาด","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-17-1","title":"17.1 เรื่องเดิม Q01–Q08","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-17-2","title":"17.2 ข้อมูลเพิ่มเติมที่ต้องเก็บ","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-18","title":"18. ข้อมูลที่ต้องเติมก่อนใช้จัดจ้าง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-section-19","title":"19. แหล่งอ้างอิงสำคัญและการดำเนินการถัดไป","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-19-1","title":"19.1 แหล่งอ้างอิง","doc":"tor","kind":"หัวข้อ"},{"id":"tor-subsection-19-2","title":"19.2 การดำเนินการถัดไป","doc":"tor","kind":"หัวข้อ"},{"id":"tor-record-prg01","title":"PRG01 · ระบบบริหารจัดการกลาง (Admin Console)","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg02","title":"PRG02 · แอปภาคสนามแบบออฟไลน์ (Field App)","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg03","title":"PRG03 · ระบบภาพรวมและวางแผนส่วนกลาง","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg04","title":"PRG04 · ระบบสถานะสำหรับครอบครัวและข้อมูลสาธารณะ","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg05","title":"PRG05 · ระบบรับผู้ช่วยและทรัพยากร","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg06","title":"PRG06 · ระบบโลจิสติกส์และหลักฐานการสนับสนุน","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-prg07","title":"PRG07 · ระบบประสานการแพทย์และส่งต่อ","doc":"tor","kind":"โปรแกรม"},{"id":"tor-record-at01","title":"AT01 · เตรียมเครื่อง เลือกเหตุการณ์/จุด ปิดอินเทอร์เน็ต","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at02","title":"AT02 · ลงทะเบียนผู้มาถึงรวม 10 คนโดยข้อมูลส่วนบุคคลไม่ครบ","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at03","title":"AT03 · ปิดแอป รีสตาร์ตเครื่อง เปิดใหม่ขณะ offline","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at04","title":"AT04 · แก้ยอดกลุ่มและเติมข้อมูล person","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at05","title":"AT05 · บันทึก flag ขอความช่วยเหลือแพทย์ 1 คน","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at06","title":"AT06 · น้ำเหลือประมาณ 8 ชั่วโมงและขอน้ำ 200 ขวด","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at07","title":"AT07 · เปิดเน็ต ส่งส่วนกลาง; response หายหลัง server รับแล้ว; retry","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at08","title":"AT08 · ขาดสัญญาณหรือปิดแอประหว่างส่ง batch","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at09","title":"AT09 · 2 เครื่องลงรายการที่อาจเป็นคนกลุ่มเดียวกัน","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at10","title":"AT10 · แก้ record เดียวกันคนละเครื่อง","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at11","title":"AT11 · ตรวจยอดศูนย์และย้ายผู้พักระหว่างจุดตัวอย่าง","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at12","title":"AT12 · ส่วนกลางดูจุดที่ offline/ข้อมูลเก่า","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at13","title":"AT13 · ขอ 200 ส่ง 120 รับ 100 แล้วส่งเพิ่มเติม/ยกเลิกตามกรณี","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at14","title":"AT14 · ญาติค้นชื่อซ้ำ/ใกล้เคียง/ยังไม่ส่ง/สถานะเก่า","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at15","title":"AT15 · เปลี่ยน ID/เรียก API/เปิดไฟล์/export ด้วยผู้ไร้สิทธิ์","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at16","title":"AT16 · storage เต็ม/ไม่ได้เตรียมเครื่อง/ข้อมูลถูกล้าง/upgrade/เครื่องหาย","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at17","title":"AT17 · backup→restore และ operator handover","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at18","title":"AT18 · local-data protection/session lock/offline expiry/เครื่องหาย","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at19","title":"AT19 · trace create/edit/status/merge/sync/permission/export รวม offline→sync","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-at20","title":"AT20 · retention/ลดข้อมูลตามอายุและวัตถุประสงค์ที่เลือก","doc":"tor","kind":"เกณฑ์ตรวจรับ"},{"id":"tor-record-q01","title":"Q01 · จุดเริ่ม","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q02","title":"Q02 · ข้อมูลขั้นต่ำและรหัส","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q03","title":"Q03 · ครอบครัวเห็นอะไร","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q04","title":"Q04 · นับคนจาก record ใด","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q05","title":"Q05 · offline พร้อมใช้อย่างไร","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q06","title":"Q06 · รูป/ของคงเหลือเก็บระดับไหน","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q07","title":"Q07 · หลักฐานเชื่อมสิทธิ์อย่างไร","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-q08","title":"Q08 · ฉบับหลักและเจ้าของ","doc":"tor","kind":"เรื่องตัดสินใจ"},{"id":"tor-record-s038","title":"S038 · LCCS_Rapid_Onboarding_v0.1.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s041","title":"S041 · LCCS_USSD_Response_Protocol_v0.1.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s049","title":"S049 · LCCS MVP — Domain - Actor - Module Matrix.pdf","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s050","title":"S050 · LCCS Research.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s051","title":"S051 · LCCS Strategic UX Integration.pdf","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s067","title":"S067 · LCCS_Journey_PreRead3.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s069","title":"S069 · LCCS_MVP_PACK (1).md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s070","title":"S070 · LCCS_MVP_System_Relationship_For_Vut.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s072","title":"S072 · LCCS_Project_Collected_Notes_v0.2.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s073","title":"S073 · LCCS_Project_Size_and_Scope_v0.1.md","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s075","title":"S075 · LCCS_Service_Blueprint.pdf","doc":"tor","kind":"หลักฐาน"},{"id":"tor-record-s077","title":"S077 · LCCS_Summary.md","doc":"tor","kind":"หลักฐาน"},{"id":"appendix-section-a","title":"A. วิธีรวมไฟล์และขอบเขตการตรวจ","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-b","title":"B. พื้นที่งานเดิม 14 กลุ่มและโมดูล TOR","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-c","title":"C. เทียบ 14 โมดูลใน S049 กับรหัส TOR","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-d","title":"D. โปรแกรม ต้นแบบ และสื่อที่พบจริง","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-e","title":"E. การใช้ 36 ชุดงานเดิมในแผน TOR","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-f","title":"F. สำเนาซ้ำ รุ่นต่างกัน และการเลือกฉบับหลัก","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-g","title":"G. ทะเบียนหลักฐาน 77 เนื้อหาไม่ซ้ำ","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-section-h","title":"H. วิธีใช้ภาคผนวกทบทวนขอบเขต","doc":"appendix","kind":"หัวข้อ"},{"id":"appendix-record-t01","title":"T01 · เลือก slice แรก","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t02","title":"T02 · ข้อมูลขั้นต่ำและรหัส","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t03","title":"T03 · ขอบเขต family safety","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t04","title":"T04 · กฎยอดคนและการย้าย","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t05","title":"T05 · การเตรียมเครื่อง offline","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t06","title":"T06 · รูปและหน่วย stock","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t07","title":"T07 · ขอบเขตหลักฐานสิทธิ์","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t08","title":"T08 · ฉบับหลักและ owner","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t09","title":"T09 · ตั้งเหตุการณ์และจุดอพยพตัวอย่าง","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t10","title":"T10 · แบบข้อมูลและ ID ภายใน","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t11","title":"T11 · app shell และ offline readiness","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t12","title":"T12 · บันทึก check-in ทนต่อการปิดหน้า","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t13","title":"T13 · แก้ข้อมูลและเติมข้อมูลภายหลัง","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t14","title":"T14 · คิว sync ที่มองเห็นสถานะ","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t15","title":"T15 · ส่งถึง backend และ retry","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t16","title":"T16 · ตรวจและทบทวน record ซ้ำ","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t17","title":"T17 · ยอดคน ความจุ และย้ายออก","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t18","title":"T18 · บันทึก stock และเวลาพอใช้","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t19","title":"T19 · คำขอและสถานะรับของ","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t20","title":"T20 · dashboard จากข้อมูลส่งถึงจริง","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t21","title":"T21 · แสดงข้อมูลเก่าและรอ sync","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t22","title":"T22 · family safety แบบจำกัด","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t23","title":"T23 · สิทธิ์เข้าถึงและข้อมูลในเครื่อง","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t24","title":"T24 · demo เชื่อมปลายทางครบ","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t25","title":"T25 · ทบทวน flow กับเจ้าหน้าที่","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t26","title":"T26 · ซ้อมบนอุปกรณ์เป้าหมาย","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t27","title":"T27 · ตกลงพื้นที่และเจ้าของ pilot","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t28","title":"T28 · ทบทวนข้อมูลส่วนบุคคลและอำนาจหน้าที่","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t29","title":"T29 · ตรวจตัวเลขและเรื่องเล่าที่จะใช้","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t30","title":"T30 · คู่มือและแผนเมื่อระบบขัดข้อง","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t31","title":"T31 · signal ก่อน ICP","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t32","title":"T32 · helper/resource onboarding","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t33","title":"T33 · mission และภาพพื้นที่","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t34","title":"T34 · medical handoff","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t35","title":"T35 · donation และ delivery","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-t36","title":"T36 · aid/insurance/procurement","doc":"appendix","kind":"งานเดิม"},{"id":"appendix-record-s001","title":"S001 · index.html — 90_Originals/S001__index.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s002","title":"S002 · package-lock.json — 90_Originals/S002__package-lock.json","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s003","title":"S003 · package.json — 90_Originals/S003__package.json","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s004","title":"S004 · postcss.config.js — 90_Originals/S004__postcss.config.js","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s005","title":"S005 · App.tsx — 90_Originals/S005__App.tsx","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s006","title":"S006 · index.css — 90_Originals/S006__index.css","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s007","title":"S007 · main.tsx — 90_Originals/S007__main.tsx","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s008","title":"S008 · ThailandDisasterFiscalBoard.tsx — 90_Originals/S008__ThailandDisasterFiscalBoard.tsx","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s009","title":"S009 · tailwind.config.js — 90_Originals/S009__tailwind.config.js","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s010","title":"S010 · Thailand_Disaster_Fiscal_Board_TH.md — 90_Originals/S010__Thailand_Disaster_Fiscal_Board_TH.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s011","title":"S011 · tsconfig.json — 90_Originals/S011__tsconfig.json","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s012","title":"S012 · tsconfig.node.json — 90_Originals/S012__tsconfig.node.json","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s013","title":"S013 · vite.config.mjs — 90_Originals/S013__vite.config.mjs","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s014","title":"S014 · app.js — 90_Originals/S014__app.js","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s015","title":"S015 · lccs-layer-model.png — 90_Originals/S015__lccs-layer-model.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s016","title":"S016 · lccs-operational-gis.png — 90_Originals/S016__lccs-operational-gis.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s017","title":"S017 · lccs-route-map.png — 90_Originals/S017__lccs-route-map.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s018","title":"S018 · placeholder-map.svg — 90_Originals/S018__placeholder-map.svg","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s019","title":"S019 · placeholder-network.svg — 90_Originals/S019__placeholder-network.svg","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s020","title":"S020 · cases.js — 90_Originals/S020__cases.js","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s021","title":"S021 · index.html — 90_Originals/S021__index.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s022","title":"S022 · LCCS_Government_Console_API_User_Journey.html — 90_Originals/S022__LCCS_Government_Console_API_User_Journey.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s023","title":"S023 · LCCS_Onboarding_Activity_Diagrams.html — 90_Originals/S023__LCCS_Onboarding_Activity_Diagrams.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s024","title":"S024 · lccs_phone_simulation_actors.html — 90_Originals/S024__lccs_phone_simulation_actors.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s025","title":"S025 · LCCS_Rapid_Onboarding_MCP.html — 90_Originals/S025__LCCS_Rapid_Onboarding_MCP.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s026","title":"S026 · lccs_shelter_checkin_family_search.html — 90_Originals/S026__lccs_shelter_checkin_family_search.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s027","title":"S027 · LCCS_Stakeholder_Registration_ORC_Chart.html — 90_Originals/S027__LCCS_Stakeholder_Registration_ORC_Chart.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s028","title":"S028 · README.md — 90_Originals/S028__README.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s029","title":"S029 · styles.css — 90_Originals/S029__styles.css","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s030","title":"S030 · LCCS_20_Slide_Pitch_Deck.html — 90_Originals/S030__LCCS_20_Slide_Pitch_Deck.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s031","title":"S031 · LCCS_Government_Console_API_User_Journey_mobile_preview.png — 90_Originals/S031__LCCS_Government_Console_API_User_Journey_mobile_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s032","title":"S032 · LCCS_Government_Console_API_User_Journey_preview.png — 90_Originals/S032__LCCS_Government_Console_API_User_Journey_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s033","title":"S033 · LCCS_Onboarding_Activity_Diagrams_mobile_preview.png — 90_Originals/S033__LCCS_Onboarding_Activity_Diagrams_mobile_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s034","title":"S034 · LCCS_Onboarding_Activity_Diagrams_preview.png — 90_Originals/S034__LCCS_Onboarding_Activity_Diagrams_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s035","title":"S035 · LCCS_PROBLEMS.md — 90_Originals/S035__LCCS_PROBLEMS.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s036","title":"S036 · LCCS_Rapid_Onboarding_MCP_mobile_preview.png — 90_Originals/S036__LCCS_Rapid_Onboarding_MCP_mobile_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s037","title":"S037 · LCCS_Rapid_Onboarding_MCP_preview.png — 90_Originals/S037__LCCS_Rapid_Onboarding_MCP_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s038","title":"S038 · LCCS_Rapid_Onboarding_v0.1.md — 90_Originals/S038__LCCS_Rapid_Onboarding_v0.1.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s039","title":"S039 · LCCS_Stakeholder_Registration_ORC_Chart_mobile_preview.png — 90_Originals/S039__LCCS_Stakeholder_Registration_ORC_Chart_mobile_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s040","title":"S040 · LCCS_Stakeholder_Registration_ORC_Chart_preview.png — 90_Originals/S040__LCCS_Stakeholder_Registration_ORC_Chart_preview.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s041","title":"S041 · LCCS_USSD_Response_Protocol_v0.1.md — 90_Originals/S041__LCCS_USSD_Response_Protocol_v0.1.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s042","title":"S042 · index.html — 90_Originals/S042__index.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s043","title":"S043 · index_v1.html — 90_Originals/S043__index_v1.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s044","title":"S044 · lccs-onboarding.html — 90_Originals/S044__lccs-onboarding.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s045","title":"S045 · lccs-overview.html — 90_Originals/S045__lccs-overview.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s046","title":"S046 · lccs-skill-coord.html — 90_Originals/S046__lccs-skill-coord.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s047","title":"S047 · lccs_scenario_walkthrough.html — 90_Originals/S047__lccs_scenario_walkthrough.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s048","title":"S048 · index_1.html — 90_Originals/S048__index_1.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s049","title":"S049 · LCCS MVP — Domain - Actor - Module Matrix.pdf — 90_Originals/S049__LCCS MVP — Domain - Actor - Module Matrix.pdf","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s050","title":"S050 · LCCS Research.md — 90_Originals/S050__LCCS Research.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s051","title":"S051 · LCCS Strategic UX Presentation.pdf — 90_Originals/S051__LCCS Strategic UX Presentation.pdf","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s052","title":"S052 · lccs-full.html — 90_Originals/S052__lccs-full.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s053","title":"S053 · lccs-github-site.zip — 90_Originals/S053__lccs-github-site.zip","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s054","title":"S054 · LCCS-Investor-Pitch-V2.pptx — 90_Originals/S054__LCCS-Investor-Pitch-V2.pptx","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s055","title":"S055 · lccs-onboarding.html — 90_Originals/S055__lccs-onboarding.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s056","title":"S056 · lccs-overview.html — 90_Originals/S056__lccs-overview.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s057","title":"S057 · LCCS-Pitch-Deck.pptx — 90_Originals/S057__LCCS-Pitch-Deck.pptx","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s058","title":"S058 · lccs-skill-coord.html — 90_Originals/S058__lccs-skill-coord.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s059","title":"S059 · lccs_01_the_crisis_gap.png — 90_Originals/S059__lccs_01_the_crisis_gap.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s060","title":"S060 · lccs_02_one_disaster_many_actors.png — 90_Originals/S060__lccs_02_one_disaster_many_actors.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s061","title":"S061 · lccs_03_mapping_the_aid_operation.png — 90_Originals/S061__lccs_03_mapping_the_aid_operation.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s062","title":"S062 · lccs_04_designing_shared_humanitarian_visibility.png — 90_Originals/S062__lccs_04_designing_shared_humanitarian_visibility.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s063","title":"S063 · lccs_05_system_value.png — 90_Originals/S063__lccs_05_system_value.png","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s064","title":"S064 · lccs_case_study_assets_4x3.zip — 90_Originals/S064__lccs_case_study_assets_4x3.zip","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s065","title":"S065 · LCCS_DataFlow.html — 90_Originals/S065__LCCS_DataFlow.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s066","title":"S066 · lccs_evidence_decision_layer.svg — 90_Originals/S066__lccs_evidence_decision_layer.svg","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s067","title":"S067 · LCCS_Journey_PreRead.md — 90_Originals/S067__LCCS_Journey_PreRead.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s068","title":"S068 · lccs_landing_mockup_full.html — 90_Originals/S068__lccs_landing_mockup_full.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s069","title":"S069 · LCCS_MVP_PACK (1).md — 90_Originals/S069__LCCS_MVP_PACK (1).md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s070","title":"S070 · LCCS_MVP_System_Relationship_For_Vut.md — 90_Originals/S070__LCCS_MVP_System_Relationship_For_Vut.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s071","title":"S071 · LCCS_Project_Collected_Notes (1).md — 90_Originals/S071__LCCS_Project_Collected_Notes (1).md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s072","title":"S072 · LCCS_Project_Collected_Notes_v0.2.md — 90_Originals/S072__LCCS_Project_Collected_Notes_v0.2.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s073","title":"S073 · LCCS_Project_Size_and_Scope_v0.1.md — 90_Originals/S073__LCCS_Project_Size_and_Scope_v0.1.md","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s074","title":"S074 · lccs_review_findings.html — 90_Originals/S074__lccs_review_findings.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s075","title":"S075 · LCCS_Service_Blueprint.pdf — 90_Originals/S075__LCCS_Service_Blueprint.pdf","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s076","title":"S076 · lccs_stakeholder_mindmap.html — 90_Originals/S076__lccs_stakeholder_mindmap.html","doc":"appendix","kind":"หลักฐาน"},{"id":"appendix-record-s077","title":"S077 · LCCS_Summary.md — 90_Originals/S077__LCCS_Summary.md","doc":"appendix","kind":"หลักฐาน"}];
+const input = document.querySelector('#document-search');
+const results = document.querySelector('#search-results');
+const status = document.querySelector('#search-status');
+let searchTimer;
+function showSearch(){
+  const query=input.value.trim().normalize('NFC').toLocaleLowerCase('th');
+  results.replaceChildren();
+  if(!query){results.hidden=true;status.textContent='ค้นหาหัวข้อหรือรหัส เช่น FM04, AT07, T12 หรือ S069';return;}
+  const all=records.filter(item=>item.title.normalize('NFC').toLocaleLowerCase('th').includes(query));
+  const matches=all.slice(0,40);
+  status.textContent=all.length ? 'พบ '+all.length+' รายการ'+(all.length>40?' · แสดง 40 รายการแรก ลองเพิ่มคำค้นเพื่อระบุให้ชัด':'') : 'ไม่พบหัวข้อหรือรหัสนี้ ลองใช้คำอื่น';
+  results.hidden=!matches.length;
+  for(const item of matches){
+    const li=document.createElement('li');
+    const link=document.createElement('a');link.href='#'+item.id;
+    const label=document.createElement('span');label.className='result-label';label.textContent=(item.doc==='tor'?'TOR หลัก':'ภาคผนวก')+' · '+item.kind;
+    const title=document.createElement('span');title.textContent=item.title;
+    link.append(label,title);li.append(link);results.append(li);
+  }
+}
+input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(showSearch,100);});
+input.addEventListener('keydown',event=>{if(event.key==='Escape'){input.value='';showSearch();input.blur();}if(event.key==='Enter'){const first=results.querySelector('a');if(first){event.preventDefault();first.click();}}});
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a[href^="#"]');
+  if(!link)return;
+  const id=decodeURIComponent(link.getAttribute('href').slice(1));
+  const target=document.getElementById(id);if(!target)return;
+  const toc=document.querySelector('#mobile-toc');if(toc&&toc.contains(link))toc.open=false;
+  requestAnimationFrame(()=>{target.scrollIntoView({block:'start',behavior:'auto'});});
+});
+document.querySelector('#print-document').addEventListener('click',()=>window.print());
+showSearch();
+</script>
+</body></html>
